@@ -1,0 +1,1 @@
+import classes from './WelcomeContent.module.css';
