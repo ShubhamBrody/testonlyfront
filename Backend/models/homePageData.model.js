@@ -12,4 +12,4 @@ const homePageSchema = new mongoose.Schema({
     videoTwo: String // testimonal video url.
 });
 
-module.export = mongoose.model('HomeData', homePageSchema);
+module.export = mongoose.model('HomeData', homePageSchema, 'GYCData');

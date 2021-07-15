@@ -38,7 +38,7 @@ export default () => {
         console.log("Works!!");
         axios.post('http://localhost:5000/admin/add', {
             username: 'Shubham Tiwari',
-            password: 'ShubhamIsABAdBoy'
+            password: 'ShubhamIsAGOOdBoy'
         })
         .then(res => {
             setDummy(res.data);
