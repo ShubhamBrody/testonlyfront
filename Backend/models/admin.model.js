@@ -6,4 +6,4 @@ const adminSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Admin', adminSchema, 'GYCData');
+module.exports = mongoose.model('Admin', adminSchema, 'GYCData-admin');

@@ -6,4 +6,4 @@ const teamCarouselSchema = new mongoose.Schema({
     designation: String
 });
 
-module.exports = mongoose.model('Team', teamCarouselSchema, 'GYCData');
+module.exports = mongoose.model('Team', teamCarouselSchema, 'GYCData-team');

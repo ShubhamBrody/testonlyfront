@@ -7,4 +7,4 @@ const newsSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('News', newsSchema, 'GYCData');
+module.exports = mongoose.model('News', newsSchema, 'GYCData-news');
