@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
 require('dotenv').config();
 var cors = require('cors')
 
@@ -9,14 +8,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_DB, { useNewUrlParser: true },
- {useUnifiedTopology: true });
-
 const adminRoute = require('./routes/admin');
-const homeRoute = require('./routes/homedata');
+const newsRoute = require('./routes/newsData');
+const team = require('./routes/teamCarousel');
 
 app.use('/admin', adminRoute);
-app.use('/home', homeRoute);
+app.use('/news', newsRoute);
+app.use('/team', team);
 
 app.listen(port, () => {
     console.log('Server started at ' + port);

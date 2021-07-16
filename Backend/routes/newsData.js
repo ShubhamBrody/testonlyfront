@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const Admin = require("../models/admin.model");
+const News = require("../models/news.model");
 
 const app = express();
 app.use(express.json());
@@ -12,23 +12,23 @@ mongoose.connect(process.env.MONGO_DB, {
   useUnifiedTopology: true,
 });
 
-router.post("/find", (req, res) => {
-  Admin.find({ username: req.body.username }, (err, results) => {
+router.post("/get", (req, res) => {
+  News.find({ header: req.body.header }, (err, results) => {
     if (err) {
       res.send("error :");
     } else {
       console.log(results);
-      if (results.length > 0) res.send("Found");
+      if (results.length > 0) res.send(results[0]);
       else res.send("Not Found");
     }
   });
   //   res.send('Not Found');
 });
 
-router.post("/updatepassword", (req, res) => {
-  Admin.findOneAndUpdate(
-    { username: req.body.username },
-    { password: req.body.password },
+router.post("/update", (req, res) => {
+  News.findOneAndUpdate(
+    { header: req.body.header },
+    { date: req.body.date, news: req.body.news },
     null,
     (err, results) => {
       if (err) {
@@ -41,14 +41,15 @@ router.post("/updatepassword", (req, res) => {
   //   res.send("admin/add was called");
 });
 
-router.post("/add", (req, res) => {
-  new Admin({
-    username: req.body.username,
-    password: req.body.password,
+router.post("/create", (req, res) => {
+  new News({
+    header: req.body.header,
+    date: req.body.date,
+    news: req.body.news,
   })
     .save()
     .then((resp) => {
-      res.send("Admin Created / Updated");
+      res.send("News Created / Updated");
     });
 });
 
