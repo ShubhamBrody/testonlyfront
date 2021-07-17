@@ -12,13 +12,14 @@ export default () => {
     date: "??",
     news: "No News...",
   });
+  const [passwordEntered, setPasswordEntered] = useState('');
 
   const adminSubmitHandler1 = () => {
     console.log("Works!!");
     axios
-      .post("http://localhost:5000/admin/find", {
-        username: "Shubham Tiwari",
-        password: "ShubhamIsAGooDBoY",
+      .post("http://localhost:5000/admin/login", {
+        username: "ShubhamTiwari",
+        password: passwordEntered,
       })
       .then((res) => {
         setDummy(res.data);
@@ -32,8 +33,8 @@ export default () => {
     console.log("Works!!");
     axios
       .post("http://localhost:5000/admin/updatepassword", {
-        username: "Shubham Tiwari",
-        password: "ShubhamIsABAdBoy",
+        username: "ShubhamTiwari",
+        password: passwordEntered,
       })
       .then((res) => {
         setDummy(res.data);
@@ -47,8 +48,23 @@ export default () => {
     console.log("Works!!");
     axios
       .post("http://localhost:5000/admin/add", {
-        username: "Shubham Tiwari",
-        password: "ShubhamIsAGOOdBoy",
+        username: "ShubhamTiwari",
+        password: passwordEntered,
+        securitykey: "12345",
+      })
+      .then((res) => {
+        setDummy(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const adminSubmitHandler4 = () => {
+    console.log("Works!!");
+    axios
+      .post("http://localhost:5000/admin/securitykeyvalidation", {
+        securitykey: passwordEntered,
       })
       .then((res) => {
         setDummy(res.data);
@@ -86,13 +102,19 @@ export default () => {
     }).catch(err => {console.error(err);});
   }
 
+  const inputChangeHandler = (e) => {
+    setPasswordEntered(e.target.value);
+  }
+
 
   return (
     <Fragment>
       <Navbar links={links} imgSrc={logo} />
-      <button onClick={adminSubmitHandler1}>find</button>
-      <button onClick={adminSubmitHandler2}>update</button>
+      <input type='text' onChange={inputChangeHandler} />
+      <button onClick={adminSubmitHandler1}>Login</button>
+      <button onClick={adminSubmitHandler2}>Update</button>
       <button onClick={adminSubmitHandler3}>make one pass</button>
+      <button onClick={adminSubmitHandler4}>SecurityKeyValidation</button>
       <p>The value is : {dummy}</p>
       <br />
       <br />
