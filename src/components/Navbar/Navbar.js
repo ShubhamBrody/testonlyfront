@@ -9,7 +9,7 @@ export default (props) => {
       <div
         style={{ backgroundImage: `url(${props.imgSrc})` }}
         className={classes.logo}
-      ></div>
+      />
       <div className={classes.links}>
         <ul>
           {props.links.map((link) => {
@@ -27,6 +27,27 @@ export default (props) => {
             );
           })}
         </ul>
+      </div>
+      <div className={classes.dropdown}>
+        <div className={classes.dropbtn}>Links(IMG)</div>
+        <div className={classes.dropdowncontent}>
+          <ul>
+            {props.links.map((link) => {
+              return (
+                <li>
+                  <NavLink
+                    activeClassName={classes.activelink}
+                    exact={true}
+                    to={link.linkto}
+                    style={link.style || {}}
+                  >
+                    <div className={classes.navdivinternal}>{link.text}</div>
+                  </NavLink>
+                </li>
+              );
+            })}
+          </ul>
+        </div>        
       </div>
     </div>
   );

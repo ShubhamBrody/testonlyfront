@@ -6,6 +6,7 @@ import Navbar from "../Navbar/Navbar";
 import links from "../Navbar/Navbar.initial";
 import logo from "../../resources/images/logo.png";
 
+
 export default () => {
   const [dummy, setDummy] = useState("qwqwqw");
   const [newsObj, setNewsObj] = useState({
@@ -14,6 +15,7 @@ export default () => {
   });
   const [passwordEntered, setPasswordEntered] = useState('');
 
+  
   const adminSubmitHandler1 = () => {
     console.log("Works!!");
     axios
@@ -106,6 +108,10 @@ export default () => {
     setPasswordEntered(e.target.value);
   }
 
+  // function isPasswordValid(pass)
+  // {
+  //   return pass.length >= 8;
+  // }
 
   return (
     <Fragment>
