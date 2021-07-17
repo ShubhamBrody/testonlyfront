@@ -17,10 +17,10 @@ const Video = ({ youtubeId }) => {
           position: 'absolute',
           top: 0,
           left: 0,
-          paddingLeft: '65px',
-          paddingTop: '10px',
-          width: '75%',
-          height: '70%',
+          paddingLeft: '75px',
+          paddingTop: '40px',
+          width: '80%',
+          height: '75%',
         }}
         src={`https://www.youtube.com/embed/${youtubeId}`}
         frameBorder='0'
