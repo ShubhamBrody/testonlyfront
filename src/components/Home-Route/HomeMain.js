@@ -2,6 +2,7 @@
 
 import {useState, Fragment} from 'react';
 import axios from 'axios';
+import Information from './Information/Information';
 
 
 export default () => {
@@ -65,6 +66,7 @@ export default () => {
             <button onClick={submitHandler3}>make one pass</button>
             <button onClick={submitHandler4}>homes home</button>
             <p>The value is : {dummy}</p>
+            <Information/>
         </Fragment>
     )
 }
