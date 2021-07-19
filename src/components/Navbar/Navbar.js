@@ -1,15 +1,19 @@
 /* eslint-disable import/no-anonymous-default-export */
 import classes from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
-// import logo from '../../resources/images/logo.png';
+import hamburger from "../../resources/images/hamburger.svg";
 
 export default (props) => {
   return (
     <div className={classes.Navbar}>
-      <div
-        style={{ backgroundImage: `url(${props.imgSrc})` }}
-        className={classes.logo}
-      />
+      <div className={classes.logo}>
+        <NavLink
+          exact={true}
+          to={'/'}
+        >
+          <img src={props.imgSrc} alt="GYC Logo" />
+        </NavLink>
+      </div>
       <div className={classes.links}>
         <ul>
           {props.links.map((link) => {
@@ -29,7 +33,9 @@ export default (props) => {
         </ul>
       </div>
       <div className={classes.dropdown}>
-        <div className={classes.dropbtn}>Links(IMG)</div>
+        <div className={classes.dropbtn}>
+          <button style={{ backgroundImage: `url(${hamburger})` }} />
+        </div>
         <div className={classes.dropdowncontent}>
           <ul>
             {props.links.map((link) => {
@@ -47,7 +53,7 @@ export default (props) => {
               );
             })}
           </ul>
-        </div>        
+        </div>
       </div>
     </div>
   );
