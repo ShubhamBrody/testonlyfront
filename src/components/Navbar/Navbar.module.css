@@ -67,19 +67,11 @@ a {
   border-radius: 5px;
   box-shadow: 0px 0px 5px #ccc;
   background-color: #ccc;
-  width: 150px;
+  width: 30vw;
   justify-content: center;
-  animation: ddcrev 1s ease-in-out;
+  opacity: 0;
   display: none;
-}
-
-@keyframes dropdowncontententry {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: auto;
-  }
+  animation: ddcrev 0.5s ease-in-out;
 }
 
 .dropbtn {
@@ -127,11 +119,8 @@ a {
   .dropdown:hover .dropdowncontent {
     display: block;
     width: 50vw;
+    opacity: 1;
     animation: ddc 0.5s ease-in-out;
-  }
-
-  .dropdowncontent:hover .dropdowncontent {
-    display: block;
   }
 }
 
@@ -147,12 +136,19 @@ a {
 }
 
 @keyframes ddcrev {
-  0% {
+  from {
     opacity: 1;
     width: 50vw;
   }
-  100% {
+  to {
     width: 30vw;
     opacity: 0;
   }
 }
+/* 
+Need to fix the outro animation for the main menu options. It just snaps.
+Ideas elimination : 
+-> keyframes--not working
+-> transitions--not working
+-> 
+*/

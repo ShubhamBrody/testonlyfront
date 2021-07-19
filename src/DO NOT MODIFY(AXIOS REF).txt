@@ -5,6 +5,7 @@ import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import links from "../Navbar/Navbar.initial";
 import logo from "../../resources/images/logo.png";
+// import fs from 'fs';
 
 export default () => {
   const [dummy, setDummy] = useState("qwqwqw");
@@ -14,9 +15,10 @@ export default () => {
   });
   const [passwordEntered, setPasswordEntered] = useState('');
 
-  const adminSubmitHandler1 = () => {
+  
+  const adminSubmitHandler1 = async () => {
     console.log("Works!!");
-    axios
+    await axios
       .post("http://localhost:5000/admin/login", {
         username: "ShubhamTiwari",
         password: passwordEntered,
@@ -29,9 +31,9 @@ export default () => {
       });
   };
 
-  const adminSubmitHandler2 = () => {
+  const adminSubmitHandler2 = async () => {
     console.log("Works!!");
-    axios
+    await axios
       .post("http://localhost:5000/admin/updatepassword", {
         username: "ShubhamTiwari",
         password: passwordEntered,
@@ -44,9 +46,9 @@ export default () => {
       });
   };
 
-  const adminSubmitHandler3 = () => {
+  const adminSubmitHandler3 = async () => {
     console.log("Works!!");
-    axios
+    await axios
       .post("http://localhost:5000/admin/add", {
         username: "ShubhamTiwari",
         password: passwordEntered,
@@ -60,9 +62,9 @@ export default () => {
       });
   };
 
-  const adminSubmitHandler4 = () => {
+  const adminSubmitHandler4 = async () => {
     console.log("Works!!");
-    axios
+    await axios
       .post("http://localhost:5000/admin/securitykeyvalidation", {
         securitykey: passwordEntered,
       })
@@ -74,24 +76,24 @@ export default () => {
       });
   };
 
-  const newsSubmitHandler1 = () => {
-    axios.post("http://localhost:5000/news/create", {
+  const newsSubmitHandler1 = async () => {
+    await axios.post("http://localhost:5000/news/create", {
       header: "News",
       date: "MAY 2021",
       news: "Geolife Youth Club has comeup with the PROJECT RED DOT campaign to raise awareness about menstruation and sanitary menstruation practices. This campaign focusses on period positivity and eco-friendly sustainable practices for the same.",
     }).then(res => console.log(res)).catch(err => {console.error(err);});
   };
 
-  const newsSubmitHandler2 = () => {
-    axios.post("http://localhost:5000/news/update", {
+  const newsSubmitHandler2 = async () => {
+    await axios.post("http://localhost:5000/news/update", {
       header: "News",
       date: "JULY 2021",
       news: 'The campaign was successful and we plan to organise more campaigns.',
     }).then(res => console.log(res)).catch(err => {console.error(err);});
   };
 
-  const newsSubmitHandler3 = () => {
-    axios.post('http://localhost:5000/news/get', {
+  const newsSubmitHandler3 = async () => {
+    await axios.post('http://localhost:5000/news/get', {
       header: 'News',
     })
     .then(res => {
@@ -106,6 +108,10 @@ export default () => {
     setPasswordEntered(e.target.value);
   }
 
+  // function isPasswordValid(pass)
+  // {
+  //   return pass.length >= 8;
+  // }
 
   return (
     <Fragment>
