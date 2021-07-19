@@ -127,7 +127,7 @@ a {
   .dropdown:hover .dropdowncontent {
     display: block;
     width: 50vw;
-    animation: ddc 1s ease-in-out;
+    animation: ddc 0.5s ease-in-out;
   }
 
   .dropdowncontent:hover .dropdowncontent {
