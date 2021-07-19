@@ -2,6 +2,8 @@
 
 import {useState, Fragment} from 'react';
 import axios from 'axios';
+import Footer from '../Footer/Footer';
+import background from '../../assets/images/background.png';
 
 
 export default () => {
@@ -60,11 +62,15 @@ export default () => {
     }
     return (
         <Fragment>
-            <button onClick={submitHandler1}>find</button>
+             <div>
+            <img className="background" src={background}></img>
+            <button onClick={submitHandler1}>find </button>
             <button onClick={submitHandler2}>update</button>
             <button onClick={submitHandler3}>make one pass</button>
             <button onClick={submitHandler4}>homes home</button>
             <p>The value is : {dummy}</p>
+            <Footer/>
+            </div>
         </Fragment>
     )
 }
