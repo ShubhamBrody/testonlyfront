@@ -7,17 +7,14 @@ export default (props) => {
   return (
     <div className={classes.Navbar}>
       <div className={classes.logo}>
-        <NavLink
-          exact={true}
-          to={'/'}
-        >
+        <NavLink exact={true} to={"/"}>
           <img src={props.imgSrc} alt="GYC Logo" />
         </NavLink>
       </div>
       <div className={classes.links}>
         <ul>
           {props.links.map((link) => {
-            return (
+            return link.text !== "Projects" ? (
               <li>
                 <NavLink
                   activeClassName={classes.activelink}
@@ -27,6 +24,32 @@ export default (props) => {
                 >
                   <div className={classes.navdivinternal}>{link.text}</div>
                 </NavLink>
+              </li>
+            ) : (
+              <li>
+                <div className={(classes.dropdown, classes.projects_dropdown)}>
+                  <div className={classes.dropbtn}>Projects v</div>
+                  <div className={classes.dropdowncontent}>
+                    <ul>
+                      {link.missions.map((mission) => {
+                        return (
+                          <li>
+                            <NavLink
+                              activeClassName={classes.activelink}
+                              exact={true}
+                              to={mission.linkto}
+                              style={link.style || {}}
+                            >
+                              <div className={classes.navdivinternal}>
+                                {mission.text}
+                              </div>
+                            </NavLink>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </div>
               </li>
             );
           })}

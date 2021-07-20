@@ -8,7 +8,7 @@ import logo from "../../resources/images/logo.png";
 // import fs from 'fs';
 
 export default () => {
-  const [dummy, setDummy] = useState("qwqwqw");
+  const [dummy, setDummy] = useState("No value");
   const [newsObj, setNewsObj] = useState({
     date: "??",
     news: "No News...",

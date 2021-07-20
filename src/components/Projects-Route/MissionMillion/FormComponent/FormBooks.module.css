@@ -1,0 +1,56 @@
+.formConatiner {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem auto;
+    background-color: #141414;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    padding: 20px 0;
+}
+
+.formConatiner * {
+    justify-content: center;
+    width: 90%;
+}
+
+.formConatiner form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.formTitle {
+    color: #ffb302;
+    text-align: center;
+}
+
+.background {
+    background-image: url('../../../../resources/images/form-bg-books.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 300px 0;
+}
+
+.submitbtn {
+    height: 40px;
+    width: 30%;
+    border-radius: 10px;
+    background-color: #ffb302;
+    color: #000;
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 1000px) {
+    .formConatiner {
+        width: 90vw;
+    }
+
+    .submitbtn {
+        height: 100px;
+    }
+}

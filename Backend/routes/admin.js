@@ -68,7 +68,9 @@ router.post("/securitykeyvalidation", (req, res) => {
     if (err) {
       res.send("error :");
     } else {
-      if (bcrypt.compareSync(req.body.securitykey, result.securitykey)) {
+      if(result.length == 0)
+        res.send("Not Found");
+      else if (bcrypt.compareSync(req.body.securitykey, result.securitykey)) {
         res.send("SecurityKeyMatched");
       } else {
         res.send("SecurityKeyNotMatched");
