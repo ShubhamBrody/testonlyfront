@@ -80,6 +80,8 @@ a:hover {
   opacity: 0;
   display: none;
   animation: ddcrev 0.5s ease-in-out;
+  word-wrap: none;
+  overflow: hidden;
 }
 
 .dropbtn {

@@ -38,7 +38,7 @@ export default (props) => {
                               activeClassName={classes.activelink}
                               exact={true}
                               to={mission.linkto}
-                              style={link.style || {}}
+                              style={mission.style || {}}
                             >
                               <div className={classes.navdivinternal}>
                                 {mission.text}
@@ -62,7 +62,7 @@ export default (props) => {
         <div className={classes.dropdowncontent}>
           <ul>
             {props.links.map((link) => {
-              return (
+              return link.text !== "Projects" ? (
                 <li>
                   <NavLink
                     activeClassName={classes.activelink}
@@ -73,6 +73,25 @@ export default (props) => {
                     <div className={classes.navdivinternal}>{link.text}</div>
                   </NavLink>
                 </li>
+              ) : (
+                <ul>
+                {link.missions.map((mission) => {
+                  return (
+                    <li>
+                      <NavLink
+                        activeClassName={classes.activelink}
+                        exact={true}
+                        to={mission.linkto}
+                        style={mission.style || {}}
+                      >
+                        <div className={classes.navdivinternal}>
+                          {mission.text}
+                        </div>
+                      </NavLink>
+                    </li>
+                  );
+                })}
+                </ul>
               );
             })}
           </ul>
