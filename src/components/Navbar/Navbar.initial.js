@@ -9,7 +9,7 @@ const links = [
       missions: [
         {
           linkto: "/projects/missionmillion",
-          text: 'Mission Million',
+          text: 'Mission Million Books',
         },
         {
           linkto: "/projects/missionreddot",

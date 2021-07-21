@@ -2,6 +2,7 @@
 import classes from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
 import hamburger from "../../resources/images/hamburger.svg";
+import Dropdown from "../UI/Dropdown";
 
 export default (props) => {
   return (
@@ -15,7 +16,7 @@ export default (props) => {
         <ul>
           {props.links.map((link) => {
             return link.text !== "Projects" ? (
-              <li>
+              <li className={classes.listInline}>
                 <NavLink
                   activeClassName={classes.activelink}
                   exact={true}
@@ -26,77 +27,28 @@ export default (props) => {
                 </NavLink>
               </li>
             ) : (
-              <li>
-                <div className={(classes.dropdown, classes.projects_dropdown)}>
-                  <div className={classes.dropbtn}>Projects v</div>
-                  <div className={classes.dropdowncontent}>
-                    <ul>
-                      {link.missions.map((mission) => {
-                        return (
-                          <li>
-                            <NavLink
-                              activeClassName={classes.activelink}
-                              exact={true}
-                              to={mission.linkto}
-                              style={mission.style || {}}
-                            >
-                              <div className={classes.navdivinternal}>
-                                {mission.text}
-                              </div>
-                            </NavLink>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                </div>
+              <li className={classes.listInline}>
+                <Dropdown
+                  isMedia={false}
+                  extraClass = "projects_dropdown"
+                  dropbtncontent="Projects V"
+                  links={link.missions}
+                  exception={null}
+                />
               </li>
             );
           })}
         </ul>
       </div>
-      <div className={classes.dropdown}>
-        <div className={classes.dropbtn}>
-          <button style={{ backgroundImage: `url(${hamburger})` }} />
-        </div>
-        <div className={classes.dropdowncontent}>
-          <ul>
-            {props.links.map((link) => {
-              return link.text !== "Projects" ? (
-                <li>
-                  <NavLink
-                    activeClassName={classes.activelink}
-                    exact={true}
-                    to={link.linkto}
-                    style={link.style || {}}
-                  >
-                    <div className={classes.navdivinternal}>{link.text}</div>
-                  </NavLink>
-                </li>
-              ) : (
-                <ul>
-                {link.missions.map((mission) => {
-                  return (
-                    <li>
-                      <NavLink
-                        activeClassName={classes.activelink}
-                        exact={true}
-                        to={mission.linkto}
-                        style={mission.style || {}}
-                      >
-                        <div className={classes.navdivinternal}>
-                          {mission.text}
-                        </div>
-                      </NavLink>
-                    </li>
-                  );
-                })}
-                </ul>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
+        <Dropdown
+          isMedia={true}
+          dropbtncontent={
+            <button style={{ backgroundImage: `url(${hamburger})` }} />
+          }
+          links={props.links}
+          exception= "Projects"
+          innerlinks="missions"
+        />
     </div>
   );
 };

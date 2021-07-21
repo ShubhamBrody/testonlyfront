@@ -29,9 +29,12 @@ a:hover {
   color: darkorange;
 }
 
+.links .listInline {
+  display: inline-block;
+}
+
 .links li {
   padding: 1rem;
-  display: inline-block;
 }
 
 .links .activelink {
@@ -58,75 +61,6 @@ a:hover {
   border-bottom: 4px solid #ffb302;
 }
 
-.select {
-  display: none;
-}
-
-.dropdown {
-  display: none;
-  position: relative;
-}
-
-.dropdowncontent {
-  position: absolute;
-  z-index: 1;
-  right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0px 0px 5px #ccc;
-  background-color: #ccc;
-  width: 30vw;
-  justify-content: center;
-  opacity: 0;
-  display: none;
-  animation: ddcrev 0.5s ease-in-out;
-  word-wrap: none;
-  overflow: hidden;
-}
-
-.dropbtn {
-  cursor: pointer;
-  padding: 20px;
-  height: auto;
-}
-
-.dropbtn button {
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  width: 3rem;
-  height: 3rem;
-}
-
-.dropdowncontent a:hover {
-  background-color: #f1f1f1;
-}
-
-.dropdowncontent li {
-  padding-bottom: 0.5rem;
-  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
-}
-
-.dropdowncontent ul {
-  padding: 0 10px;
-}
-
-.dropdowncontent .activelink {
-  color: #ffb302;
-}
-/* media Querries */
-
-.projects_dropdown {
-  position: relative;
-}
-
-.projects_dropdown:hover .dropdowncontent {
-  display: block;
-  width: 20vw;
-  opacity: 1;
-  animation: ddc_projects 0.5s ease-in-out;
-}
-
 @media (max-width: 1000px) {
   * {
     font-size: 1.5rem;
@@ -134,38 +68,9 @@ a:hover {
   .links {
     display: none;
   }
-  .dropdown {
-    display: block;
-  }
-  .dropdown:hover .dropdowncontent {
-    display: block;
-    width: 50vw;
-    opacity: 1;
-    animation: ddc 0.5s ease-in-out;
-  }
 }
 
-@keyframes ddc {
-  from {
-    opacity: 0;
-    width: 30vw;
-  }
-  to {
-    width: 50vw;
-    opacity: 1;
-  }
-}
 
-@keyframes ddc_projects {
-  from {
-    opacity: 0;
-    width: 12vw;
-  }
-  to {
-    width: 20vw;
-    opacity: 1;
-  }
-}
 /* 
 Need to fix the outro animation for the main menu options. It just snaps.
 Ideas elimination : 
