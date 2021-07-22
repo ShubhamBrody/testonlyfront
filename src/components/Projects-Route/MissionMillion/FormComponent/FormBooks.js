@@ -17,6 +17,8 @@ export default () => {
     },
   });
 
+  const [isFormFilled, setIsFormFilled] = useState(false);
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     console.log(dbdata);
@@ -24,20 +26,21 @@ export default () => {
       .post("http://localhost:5000/books/createorupdate", dbdata)
       .then((res) => {
         console.log(res.data);
+        setIsFormFilled(true);
       })
       .catch((err) => {
         console.error(err);
       });
   };
 
-//Axios get ref
-//   const getAllHandler = async (e) => {
-//     await axios.get("http://localhost:5000/books/getall").then((res) => {
-//         console.log(res.data);
-//     }).catch((err) => {
-//         console.error(err);
-//     });
-//   }
+  //Axios get ref
+  //   const getAllHandler = async (e) => {
+  //     await axios.get("http://localhost:5000/books/getall").then((res) => {
+  //         console.log(res.data);
+  //     }).catch((err) => {
+  //         console.error(err);
+  //     });
+  //   }
 
   const dataValidator = (data) => {
     if (data.label === "Contact number") {
@@ -101,7 +104,7 @@ export default () => {
     console.log(dbdata);
   };
 
-  return (
+  return !isFormFilled ? (
     <div className={classes.background}>
       <div className={classes.formConatiner}>
         <div className={classes.formTitle}>
@@ -151,6 +154,21 @@ export default () => {
             Submit
           </button>
         </form>
+      </div>
+      <div className={classes.formConatiner} style={{marginTop: '50px'}}>
+          <p style={{color: 'white', textAlign: 'center'}}>Below are the details to contact us</p>
+      </div>
+    </div>
+  ) : (
+    <div className={classes.background}>
+      <div className={classes.formConatiner} style={{width: '90vw', textAlign: 'center'}}>
+        <h1 style={{ color: "#ffb302", fontSize: "6rem" }}>THANK YOU</h1>
+        <button
+          className={classes.submitbtn}
+          onClick={() => setIsFormFilled(false)}
+        >
+          Fill the form Again
+        </button>
       </div>
     </div>
   );

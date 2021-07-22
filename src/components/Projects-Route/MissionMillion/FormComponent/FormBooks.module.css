@@ -1,13 +1,14 @@
 .formConatiner {
     display: flex;
     flex-direction: column;
-    margin: 1rem auto;
-    background-color: #141414;
+    margin: 0 auto;
+    background-color: #191919;
     width: 400px;
     justify-content: center;
     align-items: center;
     border-radius: 6px;
     padding: 20px 0;
+    box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.2);
 }
 
 .formConatiner * {
@@ -33,7 +34,7 @@
     background-image: url('../../../../resources/images/form-bg-books.png');
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 300px 0;
+    padding: 150px 0;
 }
 
 .submitbtn {

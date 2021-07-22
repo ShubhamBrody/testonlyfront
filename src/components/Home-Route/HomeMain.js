@@ -5,6 +5,7 @@ import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import links from "../Navbar/Navbar.initial";
 import logo from "../../resources/images/logo.png";
+import Checkbox from '../UI/Checkbox';
 // import fs from 'fs';
 
 export default () => {
@@ -113,6 +114,10 @@ export default () => {
   //   return pass.length >= 8;
   // }
 
+  const getCheck = (val) => {
+    console.log(val);
+  }
+
   return (
     <Fragment>
       <Navbar links={links} imgSrc={logo} />
@@ -129,6 +134,8 @@ export default () => {
       <button onClick={newsSubmitHandler3}>Get The News Data</button>
       <p>{newsObj.date}</p>
       <p>{newsObj.news}</p>
+      <br/><br/>
+      <Checkbox inputChanged={getCheck} label={'JK'} items={['q1', 'q2', 'q3']}/>
     </Fragment>
   );
 };

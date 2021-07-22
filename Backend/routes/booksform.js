@@ -2,6 +2,17 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const Books = require("../models/booksform.model");
+const nodemailer = require("nodemailer");
+
+require('dotenv').config();
+
+var transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
 
 const app = express();
 app.use(express.json());
@@ -17,7 +28,6 @@ router.post("/get", (req, res) => {
     if (err) {
       res.send("error :");
     } else {
-      console.log(results);
       if (results.length > 0) res.send(results);
       else res.send("Not Found");
     }
@@ -30,7 +40,6 @@ router.get("/getall", (req, res) => {
     if (err) {
       res.send("error :");
     } else {
-      console.log(results);
       if (results.length > 0) res.send(results);
       else res.send("Not Found");
     }
@@ -51,6 +60,35 @@ router.post("/createorupdate", (req, res) => {
       if (err) {
         res.send("error :" + err);
       } else {
+        var mailOptions = {
+          from: "st8896464352@gmail.com",
+          to: "st8896464352@outlook.com",
+          subject: "Books Donations",
+          text:
+            "This is to inform you that a new donation is recieved. The details are as follows :\n\nName : " +
+            results.name +
+            "\nContact : " +
+            results.contact +
+            "\nEmail : " +
+            results.email +
+            "\nGenre : " +
+            results.genre +
+            "\nNumber of books : " +
+            results.number_of_books +
+            "\nCondition : " +
+            results.condition +
+            "\n\nThank you",
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log("Email sent: " + info.response);
+          }
+        });
+
+        console.log("The res after creating : ", results);
         res.send("CREATED THE DATA!!!");
       }
     }

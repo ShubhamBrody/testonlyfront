@@ -84,25 +84,3 @@
     opacity: 1;
   }
 }
-
-@keyframes ddc {
-  from {
-    opacity: 0;
-    width: 30vw;
-  }
-  to {
-    width: 50vw;
-    opacity: 1;
-  }
-}
-
-@keyframes ddc_projects {
-  from {
-    opacity: 0;
-    width: 15vw;
-  }
-  to {
-    width: 20vw;
-    opacity: 1;
-  }
-}
