@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 
 import { useState, Fragment } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Navbar/Navbar";
 import links from "../Navbar/Navbar.initial";
@@ -118,6 +119,20 @@ export default () => {
     console.log(val);
   }
 
+  const location = useLocation();
+  // if(location === null)
+  // {
+  //   console.log("Location is null");
+  // }
+  // else if(location.state === null)
+  // {
+  //   console.log("State is null");
+  // }
+  // else if(location.state.admin === null)
+  // {
+  //   console.log("Admin is null");
+  // }
+
   return (
     <Fragment>
       <Navbar links={links} imgSrc={logo} />
@@ -136,6 +151,7 @@ export default () => {
       <p>{newsObj.news}</p>
       <br/><br/>
       <Checkbox inputChanged={getCheck} label={'JK'} items={['q1', 'q2', 'q3']}/>
+      <p>{location.state && location.state.admin ? "ADMIN JUST SIGNED IN" : "YOU AINT ADMIN"}</p>
     </Fragment>
   );
 };

@@ -36,9 +36,9 @@ router.post("/login", (req, res) => {
       console.log(results);
       if (results) {
         if (bcrypt.compareSync(req.body.password, results.password)) {
-          res.send("PassMatched!!");
+          res.send("PassMatched");
         } else {
-          res.send("PassNotMatched!!");
+          res.send("PassNotMatched");
         }
       } else {
         res.send("Not Found");
@@ -49,14 +49,14 @@ router.post("/login", (req, res) => {
 
 router.post("/updatepassword", (req, res) => {
   Admin.findOneAndUpdate(
-    { username: req.body.username },
+    { },
     { password: bcrypt.hashSync(req.body.password, salt) },
     null,
     (err, results) => {
       if (err) {
         res.send("error :" + err);
       } else {
-        res.send("DONE THE CHANGES!!!");
+        res.send("Updated");
       }
     }
   );
@@ -68,7 +68,7 @@ router.post("/securitykeyvalidation", (req, res) => {
     if (err) {
       res.send("error :");
     } else {
-      if(result.length == 0)
+      if(result.length === 0)
         res.send("Not Found");
       else if (bcrypt.compareSync(req.body.securitykey, result.securitykey)) {
         res.send("SecurityKeyMatched");
