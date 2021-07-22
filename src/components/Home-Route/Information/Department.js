@@ -5,13 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const sectionStyle = {
     "background-color": '#191919',
-    "opacity": 0.8,
+    "opacity": "0.8",
     "width": '32rem',
     "height": '20rem',
     "border-radius": "6px",
     "position": "relative",
     "text-align": "center",
-    "paddingTop": '1.5rem',
+    "paddingBottom": '56.25%',
     "color": 'white'
 }
 
@@ -55,6 +55,7 @@ function Department(props) {
 
     return (
         <Card style={sectionStyle}>
+            <br/>
             <Dropdown onMouseEnter={() => updateIsOpen(true)}
             onMouseLeave={() => updateIsOpen(false)} show={isOpen}>
                 <Dropdown.Toggle caret variant="dark" id="dropdown-basic" style={{ color:"white", fontSize:"calc(1.275rem + .3vw)", backgroundColor:"#191919", opacity:"1" }}>
@@ -70,6 +71,7 @@ function Department(props) {
                     <Dropdown.Item onClick={() => { setContent(departmentContent["Content Development"]); updateIsOpen(false) } } style={itemStyle}>Content Development</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
+            <br/>
             { displayContent() }
         </Card>
     );
