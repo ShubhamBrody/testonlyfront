@@ -7,29 +7,28 @@ import React from "react";
 
 var sectionStyle = {
     "background-color": '#191919',
-    "opacity": 0.8,
+    "opacity": "0.8",
     "width": '32rem',
     "height": '20rem',
     "border-radius": "6px",
     "position": "relative",
     "text-align": "center",
+    "paddingBottom": '56.25%',
     "color": 'white'
 }
 
 const Team = (props) => {
     let settings = {
         dots: true,
-        infinite: true,
-        speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
         centerMode: true,
         centerPadding: '30px',
-        arrows: true
+        arrows: true,
     };
 
     return (
-                <Card style={sectionStyle}>
+        <Card style={sectionStyle}>
             <br/>
             <CardTitle style={{color: 'white'}}>Our Team</CardTitle><br/>
             <Carousel {...settings}>
@@ -93,6 +92,10 @@ const Team = (props) => {
     );
 };
 
+const pfake = styled.p`
+    color: black;
+`;
+
 const Carousel = styled(Slider)`
   .slick-slide > div {
     transform: scale(.5);
@@ -113,14 +116,13 @@ const Carousel = styled(Slider)`
     transform: scale(1);
 
     h6 {
-      padding-top: 3px;
-      font-size: 13px;
+      font-size: 9px;
       transform: scale(1);
     }
 
     p {
-      padding-top: 12px;
-      font-size: 16px;
+      padding-top: 10px;
+      font-size: 12px;
       transform: scale(1);
     }
   }
@@ -128,7 +130,8 @@ const Carousel = styled(Slider)`
     width: 160px;
     height: 160px;
     border-radius: 8000px;
-    border: 5px solid #e0aa3e;
+    border: 4px solid transparent;
+    border-color: #ffb83d;
     height: auto;
   }
 
@@ -158,25 +161,26 @@ const Carousel = styled(Slider)`
 
   p
   {
-    color: white;
-    margin-bottom: 0;
+      color: white;
   }
 
   h6 {
-    font-size: 13px;
-    margin-bottom: 0;
+    font-size: 13px
   }
 
   .slick-prev,
   .slick-next {
     position: absolute;
     right: @gutters;
-    background: transparent;
+    background: #191919;
     border: none;
+    // color: transparent;
     width: 30px;
     height: 30px;
     margin-top: 75px;
     margin-right: 160px;
+    padding-bottom: 10px;
+    
    
     &:before { 
       content: ">"; 
@@ -191,6 +195,7 @@ const Carousel = styled(Slider)`
     z-index: 9999;
     &:before { content: "<"; }
   }
+
 `;
 
 export default Team;
