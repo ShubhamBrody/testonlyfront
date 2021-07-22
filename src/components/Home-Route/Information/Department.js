@@ -1,10 +1,11 @@
+import { React, useState } from 'react';
 import { Card, CardText } from "react-bootstrap-card";
 import Dropdown from "react-bootstrap/Dropdown";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-var sectionStyle = {
-    "background-color": 'black',
-    "opacity": 0.4,
+const sectionStyle = {
+    "background-color": '#191919',
+    "opacity": 0.8,
     "width": '32rem',
     "height": '20rem',
     "border-radius": "6px",
@@ -14,22 +15,62 @@ var sectionStyle = {
     "color": 'white'
 }
 
-const Department = (props) => {
+const itemStyle = {
+    "backgroundColor": "#191919",
+    "opacity": "1",
+    "color": "white", 
+    "text-align": "center",
+    "border": "solid #ffffff",
+    "borderRadius": "8px",
+    "font-size":'15px'
+}
+
+const departmentContent = {
+    "Human Resources": "We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​",
+    "Design": "",
+    "Social Media": "",
+    "Public Relations": "",
+    "Sessions Management": "",
+    "Content Development": ""
+}
+
+function Department(props) {
+    const [isOpen, updateIsOpen] = useState(false);
+    const [content, setContent] = useState("Please Select the Department")
+
+    const displayContent = () => {
+        if(content === "Please Select the Department") {
+            return (
+                <CardText visible={false} style={{ color:"gray", paddingTop: '5rem', justifyContent: "center" }}>
+                    {content}
+                </CardText>
+            )
+        }
+        return (
+            <CardText visible={false} style={{ paddingTop: '1.5rem', paddingLeft: "2rem", paddingRight: "2rem", position: "relative", justifyContent: "center" }}>
+                {content}
+            </CardText>
+        )
+    }
+
     return (
         <Card style={sectionStyle}>
-            {/* &#5121; */}
-            <Dropdown>
-                <Dropdown.Toggle variant="Secondary" id="dropdown-basic" style={{ color:"white", backgroundColor:"black", fontSize:"calc(1.275rem + .3vw)" }}>
+            <Dropdown onMouseEnter={() => updateIsOpen(true)}
+            onMouseLeave={() => updateIsOpen(false)} show={isOpen}>
+                <Dropdown.Toggle caret variant="dark" id="dropdown-basic" style={{ color:"white", fontSize:"calc(1.275rem + .3vw)", backgroundColor:"#191919", opacity:"1" }}>
                     Department
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1" font-weight="500">Sessions Department</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Design Department</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">HR Department</Dropdown.Item>
+                <Dropdown.Menu style={{ backgroundColor:"#191919", fontSize:"500", color:"white", opacity:"1" }}>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Human Resources"]); updateIsOpen(false) } } style={itemStyle}>Human Resources</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Design"]); updateIsOpen(false) } } style={itemStyle}>Design</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Social Media"]); updateIsOpen(false) } } style={itemStyle}>Social Media</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Public Relations"]); updateIsOpen(false) } } style={itemStyle}>Public Relations</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Sessions Management"]); updateIsOpen(false) } } style={itemStyle}>Sessions Management</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Content Development"]); updateIsOpen(false) } } style={itemStyle}>Content Development</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
-            <CardText style={{ top: "30%", position: "relative", justifyContent: "center" }}>Please Select the Department</CardText>
+            { displayContent() }
         </Card>
     );
 };

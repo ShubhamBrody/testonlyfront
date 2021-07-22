@@ -6,8 +6,8 @@ import Slider from "react-slick";
 import React from "react";
 
 var sectionStyle = {
-    "background-color": 'black',
-    "opacity": 0.4,
+    "background-color": '#191919',
+    "opacity": 0.8,
     "width": '32rem',
     "height": '20rem',
     "border-radius": "6px",
@@ -17,28 +17,6 @@ var sectionStyle = {
 }
 
 const Team = (props) => {
-    function SampleNextArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-          <div
-            className={className}
-            style={{ ...style, marginTop: '80px', marginRight: '180px'}}
-            onClick={onClick}
-          />
-        );
-    }
-      
-    function SamplePrevArrow(props) {
-        const { className, style, onClick } = props;
-        return (
-          <div
-            className={className}
-            style={{ ...style, marginTop: '80px', marginLeft: '180px'}}
-            onClick={onClick}
-          />
-        );
-    }
-
     let settings = {
         dots: true,
         infinite: true,
@@ -47,9 +25,7 @@ const Team = (props) => {
         slidesToScroll: 1,
         centerMode: true,
         centerPadding: '30px',
-        arrows: true,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />,
+        arrows: true
     };
 
     return (
@@ -58,24 +34,34 @@ const Team = (props) => {
             <CardTitle style={{color: 'white'}}>Our Team</CardTitle>
             <Carousel {...settings}>
                 <div class="slider__item">
-                    <img src="https://www.pngitem.com/pimgs/m/22-220721_circled-user-male-type-user-colorful-icon-png.png" alt=""/>
-                    <p><b>LeBron James</b></p>
-                    <p>Founder & Director</p>
+                    <img src="/team_members/nidhi.jpg" alt=""/>
+                    <p><b>Nidhi Lahoti</b></p>
+                    <h6>Founder & Director</h6>
                 </div>
                 <div class="slider__item">
-                    <img src="https://www.clipartmax.com/png/middle/258-2582267_circled-user-male-skin-type-1-2-icon-male-user-icon.png" alt=""/>
-                    <p><b>Savannah James</b></p>
-                    <p>Technical Head</p>
+                    <img src="/team_members/vedanti.jpeg" alt=""/>
+                    <p><b>Vedanti Kshirsagar</b></p>
+                    <h6>Administrative Director</h6>
                 </div>
                 <div class="slider__item">
                     <img src="https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png" alt=""/>
-                    <p><b>Damian Lillard</b></p>
-                    <p>General Manager</p>
+                    <p><b>Monisha Kulkarni</b></p>
+                    <h6>Head- Sessions Department</h6>
                 </div>
                 <div class="slider__item">
-                    <img src="https://www.clipartmax.com/png/middle/277-2772117_user-profile-avatar-woman-icon-avatar-png-profile-icon.png" alt=""/>
-                    <p><b>Anthony Davis</b></p>
-                    <p>Coach</p>
+                    <img src="https://www.clipartmax.com/png/middle/258-2582267_circled-user-male-skin-type-1-2-icon-male-user-icon.png" alt=""/>
+                    <p><b>Ishan Kabra</b></p>
+                    <h6>Head- Design Department</h6>
+                </div>
+                <div class="slider__item">
+                    <img src="https://www.clipartmax.com/png/middle/258-2582267_circled-user-male-skin-type-1-2-icon-male-user-icon.png" alt=""/>
+                    <p><b>Yash Lahoti</b></p>
+                    <h6>Head- HR External Affairs</h6>
+                </div>
+                <div class="slider__item">
+                    <img src="/team_members/pranitha.jpeg" alt=""/>
+                    <p><b>G Pranitha</b></p>
+                    <h6>Head- HR Internal Affairs</h6>
                 </div>
             </Carousel>
         </Card>
@@ -86,23 +72,99 @@ const Carousel = styled(Slider)`
   .slick-slide > div {
     transform: scale(.5);
     transition: transform .3s cubic-bezier(.4,0,.2,1);
+
+    h6 {
+      font-size: 0px;
+      transform: scale(0);
+    }
+
+    p {
+      font-size: 0px;
+      transform: scale(0);
+    }
   }
 
   .slick-center > div {
     transform: scale(1);
+
+    h6 {
+      padding-top: 3px;
+      font-size: 13px;
+      transform: scale(1);
+    }
+
+    p {
+      padding-top: 12px;
+      font-size: 16px;
+      transform: scale(1);
+    }
   }
   .slider__item > img {
-    width: 100%;
-    height: 100%;
+    width: 160px;
+    height: 160px;
     border-radius: 8000px;
-    border: 4px solid transparent;
-    border-color: yellow;
+    border: 5px solid #e0aa3e;
     height: auto;
+  }
+
+  .slick-list {
+    margin: 0px -10px;
+  }
+    
+  .slick-dots li button:before {
+    opacity: 1;
+    color: white;
+    margin-right: -50px;
+  }
+
+  .slick-dots li.slick-active button:before {
+    opacity: 1;
+    color: #e0aa3e;
+  }
+
+  .slick-dots {
+    margin-left: -7px;
+
+    li {
+      margin-right: -15px;
+      margin-top: 40px;
+    }
   }
 
   p
   {
-      color: white;
+    color: white;
+    margin-bottom: 0;
+  }
+
+  h6 {
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+
+  .slick-prev,
+  .slick-next {
+    position: absolute;
+    right: @gutters;
+    background: transparent;
+    border: none;
+    width: 30px;
+    height: 30px;
+    margin-top: 75px;
+    margin-right: 160px;
+   
+    &:before { 
+      content: ">"; 
+      color: #ffffff; 
+      font-size: 25px;
+    }
+  }
+  
+  .slick-prev { 
+    left: @gutters; 
+    margin-left: 160px;
+    z-index: 9999;
+    &:before { content: "<"; }
   }
 `;
 

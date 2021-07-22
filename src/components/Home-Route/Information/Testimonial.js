@@ -1,4 +1,4 @@
-import Video from './Video';
+import Video from '../Video';
 
 const Testimonial = (props) => {
     return (

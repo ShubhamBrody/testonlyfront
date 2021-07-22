@@ -16,15 +16,17 @@ const Information = (props) => {
 };
 
 const Container = styled.div`
+  font-family: Corbel, Verdana, "Bitstream Vera Sans", sans-serif;
   padding-top: 15vh;
   padding-left: 5%;
   padding-bottom: 15vh;
   justify-content: center;
+  overflow:hidden;
   display: grid;
   grid-gap: 50px;
   gap: 50px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  background-color: #bfbfbf;
+
   @media (max-width: 768px) {
     padding-left: 6rem;
     grid-template-columns: repeat(1, minmax(0, 1fr));
