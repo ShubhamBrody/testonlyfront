@@ -29,39 +29,64 @@ const Team = (props) => {
     };
 
     return (
-        <Card style={sectionStyle}>
+                <Card style={sectionStyle}>
             <br/>
-            <CardTitle style={{color: 'white'}}>Our Team</CardTitle>
+            <CardTitle style={{color: 'white'}}>Our Team</CardTitle><br/>
             <Carousel {...settings}>
                 <div class="slider__item">
-                    <img src="/team_members/nidhi.jpg" alt=""/>
-                    <p><b>Nidhi Lahoti</b></p>
-                    <h6>Founder & Director</h6>
+                    <img style={{opacity: 1}} src="/team_members/gauri.jpg" alt=""/>
+                    <p><b>Gauri Krishnamoorthy</b></p>
+                    <h6 style={{marginBottom: "14px"}}>Sessions Department</h6>
                 </div>
                 <div class="slider__item">
-                    <img src="/team_members/vedanti.jpeg" alt=""/>
-                    <p><b>Vedanti Kshirsagar</b></p>
-                    <h6>Administrative Director</h6>
-                </div>
-                <div class="slider__item">
-                    <img src="https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png" alt=""/>
-                    <p><b>Monisha Kulkarni</b></p>
-                    <h6>Head- Sessions Department</h6>
-                </div>
-                <div class="slider__item">
-                    <img src="https://www.clipartmax.com/png/middle/258-2582267_circled-user-male-skin-type-1-2-icon-male-user-icon.png" alt=""/>
-                    <p><b>Ishan Kabra</b></p>
-                    <h6>Head- Design Department</h6>
-                </div>
-                <div class="slider__item">
-                    <img src="https://www.clipartmax.com/png/middle/258-2582267_circled-user-male-skin-type-1-2-icon-male-user-icon.png" alt=""/>
-                    <p><b>Yash Lahoti</b></p>
-                    <h6>Head- HR External Affairs</h6>
-                </div>
-                <div class="slider__item">
-                    <img src="/team_members/pranitha.jpeg" alt=""/>
+                <img src="/team_members/pranitha.jpeg" alt=""/>
                     <p><b>G Pranitha</b></p>
-                    <h6>Head- HR Internal Affairs</h6>
+                    <h6 style={{marginBottom: "14px"}}>HR - HOD</h6>
+                </div>
+                <div class="slider__item">
+                <img src="/team_members/sohan.jpg" alt=""/>
+                    <p><b>MC Sohan</b></p>
+                    <h6 style={{marginBottom: "14px"}}>Sessions Department</h6>
+                </div>
+                <div class="slider__item">
+                <img src="/team_members/mandapaka.jpg" alt=""/>
+                    <p><b>Mandapaka Rakshitha</b></p>
+                    <h6 style={{marginBottom: "14px"}}>Social Media Head</h6>
+                </div> 
+                <div class="slider__item">
+                <img src="/team_members/mayuri.jpg" alt=""/>
+                    <p><b>Mayuri Moroti Gaikwad</b></p>
+                    <h6 style={{marginBottom: "14px"}}>Sessions Department</h6>
+                </div>
+                <div class="slider__item">
+                <img src="/team_members/nidhi.jpg" alt=""/>
+                    <p><b>Nidhi Lahoti</b></p>
+                    <h6 style={{marginBottom: "14px"}}>Founder & Director</h6>
+                </div>
+                <div class="slider__item">
+                <img src="/team_members/nipun.jpeg" alt=""/>
+                    <p><b>Nipun Manghi</b></p>
+                    <h6 style={{marginBottom: "14px"}}>Sessions Department</h6>
+                </div>
+                <div class="slider__item">
+                <img src="/team_members/jahnavi.jpg" alt=""/>
+                    <p><b>S Jahnavi</b></p>
+                    <h6 style={{marginBottom: "14px"}}>PR Head</h6>
+                </div>
+               <div class="slider__item">
+                <img src="/team_members/sakshi.jpg" alt=""/>
+                    <p><b>Sakshi Mishra</b></p>
+                    <h6 style={{marginBottom: "14px"}}>Design Department</h6>
+                </div>
+                <div class="slider__item">
+                <img src="/team_members/tanvi.jpg" alt=""/>
+                    <p><b>Tanvi Pansare</b></p>
+                    <h6 style={{marginBottom: "14px"}}>Sessions Department</h6>
+                </div>
+                <div class="slider__item">
+                <img src="/team_members/vedanti.jpeg" alt=""/>
+                    <p><b>Vedanti Anil Kshirsagar</b></p>
+                    <h6 style={{marginBottom: "-45px"}}>Administrative & Technical Department Head</h6>
                 </div>
             </Carousel>
         </Card>
