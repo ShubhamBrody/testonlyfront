@@ -27,18 +27,17 @@ input[type=checkbox] {
 }
 
 .containerLabel input:checked ~ .mark {
-    /* background-color: #ffb302; */
     background-image: url('../../resources/images/checkmark.png');
     background-size: contain;
     background-color: #ffb302;
 }
 
-.mark:after {
+/* .mark::after {
     content: "";
     position: absolute;
     display: none;
 }
 
-.containerLabel input:checked ~ .mark:after {
+.containerLabel input:checked ~ .mark::after {
     display: block;
-}
+} */
