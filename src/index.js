@@ -9,7 +9,7 @@ var bgcont = document.getElementById('parallaxContainer');
 window.addEventListener('scroll', () => {
     var val = window.scrollY;
     if(bg)
-    bg.style.top = val*(-0.5) + 'px';
+    bg.style.top = val*(-0.3) + 'px';
     if(bgcont)
     bgcont.style.top = val + 'px';
 });
