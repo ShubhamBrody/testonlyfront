@@ -9,10 +9,14 @@
 
 .background {
     width: 100vw;
+    position: absolute;
     height: 100vh;
     background-image: url('../../resources/images/backgroundSignIn.png');
     background-repeat: no-repeat;
     background-size: cover;
+}
+#parallaxBG {
+    height: 100%;
 }
 
 .warning {
