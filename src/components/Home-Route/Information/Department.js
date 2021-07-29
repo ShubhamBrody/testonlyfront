@@ -35,7 +35,7 @@ const departmentContent = {
 }
 
 function Department(props) {
-    const [isOpen, updateIsOpen] = useState(false);
+    const [isOpen, updateIsOpen] = useState(false)
     const [content, setContent] = useState("Please Select the Department")
 
     const displayContent = () => {

@@ -12,6 +12,7 @@
     "react-bootstrap": "^1.6.1",
     "react-bootstrap-card": "^0.2.1",
     "react-bootstrap-dropdown-menu": "^1.1.23",
+    "react-bootstrap-tabs": "^2.0.0",
     "react-dom": "^17.0.2",
     "react-dropdown": "^1.9.2",
     "react-editext": "^4.1.5",

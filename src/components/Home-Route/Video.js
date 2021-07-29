@@ -8,7 +8,8 @@ const Video = ({ youtubeId }) => {
         position: 'relative',
         paddingBottom: '56.25%',
         paddingTop: 20,
-        height: 0,
+        width: "100%",
+        height: "auto",
       }}
     >
       <iframe

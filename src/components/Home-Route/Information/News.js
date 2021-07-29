@@ -18,9 +18,9 @@ const News = (props) => {
     return (
         <Card style={sectionStyle}>
             <CardTitle style={{color: '#ffffff, z-index: -1'}}>News</CardTitle>
-            <CardSubtitle style={{ color: '#e0aa3e', fontSize: '15px', paddingTop: '1.5rem' }}>MAY 2021</CardSubtitle><br/>
 
         <Container>
+        <CardSubtitle style={{ color: '#e0aa3e', fontSize: '15px', paddingTop: '1.5rem' }}>MAY 2021</CardSubtitle><br/>
         <StyledEdiText
             viewContainerClassName='my-custom-view-wrapper'
             type='textarea'
@@ -82,6 +82,7 @@ const StyledEdiText = styled(EdiText)`
       color: #fff;
       background-color: transparent;
       border: transparent;
+      cursor: pointer;
     }
   }
   button[editext="cancel-button"] {
@@ -97,6 +98,7 @@ const StyledEdiText = styled(EdiText)`
       color: #fff;
       background-color: transparent;
       border: transparent;
+      cursor: pointer;
     }
   }
 
