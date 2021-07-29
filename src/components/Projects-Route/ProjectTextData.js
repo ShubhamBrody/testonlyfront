@@ -1,6 +1,6 @@
 import missionmillionsimg from '../../resources/images/booksheader.png';
 import missionreddotimg from '../../resources/images/booksheader.png';//to be changed
-import missionomegaimg from '../../resources/images/booksheader.png';//to be changed
+import missionomegaimg from '../../resources/images/digitalomega_cropped.png';//to be changed
 
 const data = {
     missionmillions : {
@@ -10,20 +10,20 @@ const data = {
         imgSrc: missionmillionsimg
     },
     missionreddot : {
-        text: String.raw`Only 57.6 % of Indian women use sanitary napkins which means the rest 42.4 % of the female population is completely vulnerable. Menstruation and any aid associated with it have always been subjected to a taboo. The lack of sensitivity compels women to suffer silently. This mainly stems from the lack of education. We at the geo life youth club aim to work towards an end to this struggle of "period poverty" many women face. Our purpose here is to help people understand how the menstrual cycle works and teach them how to maintain personal hygiene. Irrespective of gender one should know how to take care of themselves and others, so it is of utmost necessity that everyone is educated. We also hope to encourage women to seek the help of a gynecologist when needed and not shy away from the interaction.
-        Any education always involves a curriculum, we plan to have five lessons each, for the boys and the girls. The first four involve an introduction, myths about menstruation, puberty and menstruation, and consequences of poor menstrual hygiene. These form the common ground for both boys and girls as they need to be educated similarly. The fifth lesson however is specific to each gender, Menstrual hygiene management – what products to use, how to use? And pain management for girls and Menstrual hygiene management, how does it affect you ? for boys. Our targeted audience for the primary need would be around 100 women. We also hope the donation count for bio-degradable sanitary pads to be around 10,000. Our training sessions would be through online platforms or offline only if the situation permits and we hope to raise funds of about 60,000 INR to make this work.       
-        To break the social stigma and do our best to help the socioeconomically challenged people in society, we have collaborated with Saathi pads where for every pad bought one will be given free. With the help of this project Red Dot, we envision ending the struggle for women and establish safe and hygienic menstrual practices. The last but not least, we encourage you all to support and buy pads from Saathi pads so that our joint goal of donating pads and raising funds to those in need can reach the zenith.`,
+        text: [String.raw`Only 57.6 % of Indian women use sanitary napkins which means the rest 42.4 % of the female population is completely vulnerable. Menstruation and any aid associated with it have always been subjected to a taboo. The lack of sensitivity compels women to suffer silently. This mainly stems from the lack of education. We at the geo life youth club aim to work towards an end to this struggle of "period poverty" many women face. Our purpose here is to help people understand how the menstrual cycle works and teach them how to maintain personal hygiene. Irrespective of gender one should know how to take care of themselves and others, so it is of utmost necessity that everyone is educated. We also hope to encourage women to seek the help of a gynecologist when needed and not shy away from the interaction.`,
+        String.raw`Any education always involves a curriculum, we plan to have five lessons each, for the boys and the girls. The first four involve an introduction, myths about menstruation, puberty and menstruation, and consequences of poor menstrual hygiene. These form the common ground for both boys and girls as they need to be educated similarly. The fifth lesson however is specific to each gender, Menstrual hygiene management – what products to use, how to use? And pain management for girls and Menstrual hygiene management, how does it affect you ? for boys. Our targeted audience for the primary need would be around 100 women. We also hope the donation count for bio-degradable sanitary pads to be around 10,000. Our training sessions would be through online platforms or offline only if the situation permits and we hope to raise funds of about 60,000 INR to make this work.`,
+        String.raw`To break the social stigma and do our best to help the socioeconomically challenged people in society, we have collaborated with Saathi pads where for every pad bought one will be given free. With the help of this project Red Dot, we envision ending the struggle for women and establish safe and hygienic menstrual practices. The last but not least, we encourage you all to support and buy pads from Saathi pads so that our joint goal of donating pads and raising funds to those in need can reach the zenith.`],
         imgSrc: missionreddotimg
     },
     missionomega : {
-        text: String.raw`Since the massive hit of the covid-19 pandemic, a lot of students across the country are unable to attend school due to the lack of digital infrastructure. Most of these students have no access to smartphones/laptops due to which online lectures cannot be conducted for them. Geolife Youth Club has come up with
-        DIGITAL OMEGA campaign to pillar education for such students through donation of devices. This campaign will help us collect second hand devices (in working condition) and raise funds to refurbish these devices as well as buy new ones.
-        • Devices will be donated through trustworthy agencies likes schools/colleges or other NGOs.
-        • All devices will be made student-friendly to avoid misuse.
-        • Periodic reports will be made about the usage of the donated devices.
-        • Teachers will be trained to use the devices and various available digital tools.
-        • Digital platforms will be established for the students through which we will conduct development and skill-enhancement sessions along with career counselling and mentoring.
-        • Workshops, activities and competitions will also be held for these students which will help them explore and learn.`,
+        text: [String.raw`Since the massive hit of the covid-19 pandemic, a lot of students across the country are unable to attend school due to the lack of digital infrastructure. Most of these students have no access to smartphones/laptops due to which online lectures cannot be conducted for them. Geolife Youth Club has come up with
+        DIGITAL OMEGA campaign to pillar education for such students through donation of devices. This campaign will help us collect second hand devices (in working condition) and raise funds to refurbish these devices as well as buy new ones.`,
+        String.raw`• Devices will be donated through trustworthy agencies likes schools/colleges or other NGOs.`,
+        String.raw`• All devices will be made student-friendly to avoid misuse.`,
+        String.raw`• Periodic reports will be made about the usage of the donated devices.`,
+        String.raw`• Teachers will be trained to use the devices and various available digital tools.`,
+        String.raw`• Digital platforms will be established for the students through which we will conduct development and skill-enhancement sessions along with career counselling and mentoring.`,
+        String.raw`• Workshops, activities and competitions will also be held for these students which will help them explore and learn.`],
         imgSrc: missionomegaimg
     }
 }

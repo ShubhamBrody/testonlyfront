@@ -41,15 +41,13 @@ a:hover {
   color: #ffb302;
 }
 
-/* .logo {
-  width: 180px;
+.logo {
   height: 100px;
-  margin: 10px;
-  background-size: contain;
-} */
+  margin: auto 0;
+}
 
 .logo img {
-  height: 70%;
+  height: 100%;
   padding: 10px;
 }
 

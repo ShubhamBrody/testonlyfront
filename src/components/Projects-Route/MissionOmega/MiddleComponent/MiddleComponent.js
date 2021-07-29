@@ -1,20 +1,17 @@
 /* eslint-disable import/no-anonymous-default-export */
-
+import classes from "./MiddleComponent.module.css";
 import Form from "../../../UI/Form";
 import { useState } from "react";
-import axios from "axios";
-import formBg from "../../../../resources/images/form-bg-books.png";
+import axios from 'axios';
+import FormBackground from "../../../UI/FormBackground";
+import qrcode from "../../../../resources/images/qrcode.png";
 
 export default () => {
   const [dbdata, setDbData] = useState({
     name: "",
     email: "",
     contact: 0,
-    data: {
-      genre: "",
-      number_of_books: 0,
-      condition: "",
-    },
+    amount: 0,
   });
 
   const [isFormFilled, setIsFormFilled] = useState(false);
@@ -23,7 +20,7 @@ export default () => {
     e.preventDefault();
     console.log(dbdata);
     await axios
-      .post("http://localhost:5000/books/createorupdate", dbdata)
+      .post("http://localhost:5000/fundraising/createorupdate", dbdata)
       .then((res) => {
         console.log(res.data);
         setIsFormFilled(true);
@@ -62,29 +59,10 @@ export default () => {
               ...prevData,
               contact: data.value,
             };
-          case "Genre of book/books":
+          case "Please mention the amount here":
             return {
               ...prevData,
-              data: {
-                ...prevData.data,
-                genre: data.value,
-              },
-            };
-          case "Number of books":
-            return {
-              ...prevData,
-              data: {
-                ...prevData.data,
-                number_of_books: data.value,
-              },
-            };
-          case "Condition of the books":
-            return {
-              ...prevData,
-              data: {
-                ...prevData.data,
-                condition: data.value,
-              },
+              amount: data.value,
             };
           default:
             return prevData;
@@ -122,49 +100,48 @@ export default () => {
     },
     {
       fieldType: "input",
-      id: "genre",
-      label: "Genre of book/books",
-      type: "text",
-      required: true,
-      inputChanged: inputRecieved,
-    },
-    {
-      fieldType: "input",
-      id: "number_of_books",
-      label: "Number of books",
+      id: "amount",
+      label: "Please mention the amount here",
       type: "number",
+      min: 1,
       required: true,
-      isNumber: true,
-      step: 1,
-      min: 0,
       inputChanged: inputRecieved,
     },
-    {
-      fieldType: "input",
-      id: "condition",
-      label: "Condition of the books",
-      type: "text",
-      required: true,
-      inputChanged: inputRecieved,
-    }
   ];
 
   const changeBackToNormal = () => {
     setIsFormFilled(false);
   };
-
-  return (
-    <Form
-      hasBG={true}
-      title="MISSION MILLION BOOKS"
-      imgSrc={formBg}
-      fillAgain={changeBackToNormal}
-      isFormFilled={isFormFilled}
-      fields={fields}
-      onSubmitHandler={onSubmitHandler}
-      contactDetailsTag={true}
-      bottomTabText="Below are the details to contact us"
-      customStyle={{width: '30%'}}
-    />
-  );
-};
+    return (
+      <div className={classes.headerContainer}>
+        <div className={classes.leftContainer}>
+          <Form
+            hasBG={false}
+            title="FUND RAISING FORM"
+            fillAgain={changeBackToNormal}
+            isFormFilled={isFormFilled}
+            fields={fields}
+            onSubmitHandler={onSubmitHandler}
+            contactDetailsTag={true}
+            bottomTabText={<div>Use this link to pay via Razor Pay <a href='https://rzp.io/l/lr45TLs' style={{textDecoration: 'underline', color: 'dodgerblue'}}>https://rzp.io/l/lr45TLs</a></div>}
+            customStyle={{width: '100%'}}
+          />
+        </div>
+        <div className={classes.rightContainer}>
+          <FormBackground style={{backgroundColor: 'rgba(50, 50, 50, 0.7)', width: '80%', height: '40%', textAlign: 'center'}}>
+            <p>Scan the QR code below to pay via</p>
+            <h4 style={{fontWeight: 'bold', marginTop: '0'}}>GPAY, BHIM UPI, PAYPAL and PAYTM</h4>
+            <img src={qrcode} alt="QR CODE" style={{width: '70%'}}/>
+          </FormBackground>
+          <FormBackground style={{width: '80%', height: '40%'}}>
+            <h3 style={{color: '#ffb302', textAlign: 'center'}}>Below are the details for Net Banking</h3>
+            <p style={{color: 'white'}}>Name - Geolife Foundation</p>
+            <p style={{color: 'white'}}>Account No. - 622011006511</p>
+            <p style={{color: 'white'}}>IFSC - KKBK0000642</p>
+            <p style={{color: 'white'}}>Kotak Mahindra Bank</p>
+            <p style={{color: 'white'}}>Branch - Mumbai - Mulund West</p>
+          </FormBackground>
+        </div>
+      </div>
+    );
+  };

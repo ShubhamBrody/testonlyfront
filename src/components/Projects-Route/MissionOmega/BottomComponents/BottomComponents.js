@@ -1,20 +1,22 @@
 /* eslint-disable import/no-anonymous-default-export */
-
 import Form from "../../../UI/Form";
-import { useState } from "react";
+import formBg from "../../../../resources/images/formBGforOmega.png";
 import axios from "axios";
-import formBg from "../../../../resources/images/form-bg-books.png";
+import { useState } from "react";
 
 export default () => {
   const [dbdata, setDbData] = useState({
     name: "",
     email: "",
     contact: 0,
-    data: {
-      genre: "",
-      number_of_books: 0,
-      condition: "",
-    },
+    address: "",
+    devicescount: 0,
+    smartphone: false,
+    laptop: false,
+    tablet: false,
+    model: "",
+    age: 0,
+    condition: "",
   });
 
   const [isFormFilled, setIsFormFilled] = useState(false);
@@ -23,7 +25,7 @@ export default () => {
     e.preventDefault();
     console.log(dbdata);
     await axios
-      .post("http://localhost:5000/books/createorupdate", dbdata)
+      .post("http://localhost:5000/devicedonationform/createorupdate", dbdata)
       .then((res) => {
         console.log(res.data);
         setIsFormFilled(true);
@@ -62,29 +64,37 @@ export default () => {
               ...prevData,
               contact: data.value,
             };
-          case "Genre of book/books":
+          case "Address":
             return {
               ...prevData,
-              data: {
-                ...prevData.data,
-                genre: data.value,
-              },
+              address: data.value,
             };
-          case "Number of books":
+          case "Number of devices you wish to donate":
             return {
               ...prevData,
-              data: {
-                ...prevData.data,
-                number_of_books: data.value,
-              },
+              devicescount: data.value,
             };
-          case "Condition of the books":
+          case "Device Type":
             return {
               ...prevData,
-              data: {
-                ...prevData.data,
-                condition: data.value,
-              },
+              smartphone: data.value === "on",
+              laptop: data.value === "on",
+              tablet: data.value === "on",
+            };
+          case "Model of device":
+            return {
+              ...prevData,
+              model: data.value,
+            };
+          case "Age":
+            return {
+              ...prevData,
+              age: data.value,
+            };
+          case "Condition":
+            return {
+              ...prevData,
+              condition: data.value,
             };
           default:
             return prevData;
@@ -121,32 +131,54 @@ export default () => {
       inputChanged: inputRecieved,
     },
     {
-      fieldType: "input",
-      id: "genre",
-      label: "Genre of book/books",
-      type: "text",
+      fieldType: "textarea",
+      id: "address",
+      label: "Address",
       required: true,
+      height: "100px",
       inputChanged: inputRecieved,
     },
     {
       fieldType: "input",
-      id: "number_of_books",
-      label: "Number of books",
+      id: "numberdevices",
+      label: "Number of devices you wish to donate",
       type: "number",
-      required: true,
-      isNumber: true,
-      step: 1,
+      required: false,
       min: 0,
       inputChanged: inputRecieved,
     },
     {
+      fieldType: "checkbox",
+      id: "devicetype",
+      label: "Device Type",
+      items: ["Smart Phone", "Laptop", "Tablet"],
+      required: true,
+      inputChanged: inputRecieved,
+    },
+    {
       fieldType: "input",
-      id: "condition",
-      label: "Condition of the books",
+      id: "model",
+      label: "Model of device",
       type: "text",
       required: true,
       inputChanged: inputRecieved,
-    }
+    },
+    {
+      fieldType: "input",
+      id: "deviceage",
+      label: "How old is the device?",
+      type: "text",
+      required: true,
+      inputChanged: inputRecieved,
+    },
+    {
+      fieldType: "textarea",
+      id: "condition",
+      label: "Please explain the condition of the device",
+      required: false,
+      height: "100px",
+      inputChanged: inputRecieved,
+    },
   ];
 
   const changeBackToNormal = () => {
@@ -156,15 +188,14 @@ export default () => {
   return (
     <Form
       hasBG={true}
-      title="MISSION MILLION BOOKS"
+      title="DEVICE DONATION FORM"
       imgSrc={formBg}
       fillAgain={changeBackToNormal}
       isFormFilled={isFormFilled}
       fields={fields}
       onSubmitHandler={onSubmitHandler}
-      contactDetailsTag={true}
-      bottomTabText="Below are the details to contact us"
-      customStyle={{width: '30%'}}
+      contactDetailsTag={false}
+      customStyle={{width: 'auto'}}
     />
   );
 };
