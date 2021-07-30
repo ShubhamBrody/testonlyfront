@@ -1,0 +1,38 @@
+.headerContainer {
+    display: flex;
+    padding: 0;
+    margin: 2rem 0;
+    width: 100%;
+}
+
+.leftContainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    margin: 0 50px;
+}
+
+.rightContainer * {
+    margin: 1rem;
+}
+
+@media only screen and (max-width: 1000px) {
+    .headerContainer {
+        flex-direction: column;
+    }
+
+    .rightContainer * {
+        width: 88% !important;
+        padding: 1rem;
+    }
+}

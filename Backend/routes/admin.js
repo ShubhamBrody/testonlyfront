@@ -2,56 +2,109 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const Admin = require("../models/admin.model");
-const bodyParser = require("body-parser");
+const bcrypt = require("bcryptjs");
+const salt = bcrypt.genSaltSync(10);
 
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-mongoose.connect(
-  process.env.MONGO_DB,
-  { useNewUrlParser: true },
-  { useUnifiedTopology: true }
-);
-
+mongoose.connect(process.env.MONGO_DB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 router.post("/find", (req, res) => {
-  Admin.find({username: req.body.username}, (err, results) => {
-      if(err)
-      {
-          res.send('error :');
-      }
-      else
-      {
-          console.log(results);
-          if(results.length > 0)
-          res.send('Found');
-          else
-          res.send('Not Found');
-      }
+  Admin.find({ username: req.body.username }, (err, results) => {
+    if (err) {
+      res.send("error :");
+    } else {
+      console.log(results);
+      if (results.length > 0) res.send("Found");
+      else res.send("Not Found");
+    }
   });
-//   res.send('Not Found');
+  //   res.send('Not Found');
+});
+
+//bcrypt compare password
+router.post("/login", (req, res) => {
+  Admin.findOne({ username: req.body.username }, (err, results) => {
+    if (err) {
+      res.send("error :");
+    } else {
+      console.log(results);
+      if (results) {
+        if (bcrypt.compareSync(req.body.password, results.password)) {
+          res.send("PassMatched");
+        } else {
+          res.send("PassNotMatched");
+        }
+      } else {
+        res.send("Not Found");
+      }
+    }
+  });
 });
 
 router.post("/updatepassword", (req, res) => {
-    Admin.findOneAndUpdate({username: req.body.username}, {password: req.body.password}, null, (err, results) => {
-        if(err)
-        {
-            res.send('error :' + err);
-        }
-        else
-        {
-            res.send('DONE THE CHANGES!!!');
-        }
-    });
-//   res.send("admin/add was called");
+  Admin.findOneAndUpdate(
+    { },
+    { password: bcrypt.hashSync(req.body.password, salt) },
+    null,
+    (err, results) => {
+      if (err) {
+        res.send("error :" + err);
+      } else {
+        res.send("Updated");
+      }
+    }
+  );
+  //   res.send("admin/add was called");
 });
 
-router.post('/add', (req, res) => {
-    new Admin({
-        username: req.body.username,
-        password: req.body.password,
-    }).save().then(resp => {res.send('Admin Created / Updated')});
-})
+router.post("/securitykeyvalidation", (req, res) => {
+  Admin.findOne({}, (err, result) => {
+    if (err) {
+      res.send("error :");
+    } else {
+      if(result.length === 0)
+        res.send("Not Found");
+      else if (bcrypt.compareSync(req.body.securitykey, result.securitykey)) {
+        res.send("SecurityKeyMatched");
+      } else {
+        res.send("SecurityKeyNotMatched");
+      }
+    }
+  });
+});
+
+
+router.post("/add", (req, res) => {
+  Admin.find({}, (err, results) => {
+    if (err) {
+      console.log("error :");
+      return false;
+    } else {
+      if (results.length === 0) {
+        if (req.body.username.includes(" ")) {
+          res.send("UsernameWrong");
+        } else {
+          new Admin({
+            username: req.body.username,
+            password: bcrypt.hashSync(req.body.password, salt),
+            securitykey: bcrypt.hashSync(req.body.securitykey, salt),
+          })
+            .save()
+            .then((resp) => {
+              res.send("Admin Created / Updated");
+            });
+        }
+      } else {
+        res.send("Admin Already Exists");
+      }
+    }
+  });
+});
 
 module.exports = router;

@@ -1,13 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800;900&display=swap');
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-size: cover;
+}
+
+#parallaxContainer {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
+}
+
+* {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+}
+
+#parallaxBG {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500%;
+  /* overflow: auto; */
+  margin: 0;
+  padding: 0;
+  background-image: url('resources/images/background.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  /* overflow: hidden; */
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: grey; 
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(179, 179, 179); 
+}
+
+.root {
+  position: relative;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* @media (prefers-color-scheme: dark) {
+  button {
+    color: #fff;
+    background-color: #323232;
+  }
+
+  input {
+    background-color: #ccc;
+  }
+
+  *{
+    color: #000;
+  }
+} */

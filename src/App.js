@@ -5,7 +5,9 @@ import HomeRoute from './components/Home-Route/HomeMain';
 import SignInRoute from './components/AdminSignIn-Route/SignInMain';
 import PartnersRoute from './components/Partners-Route/PartnersMain';
 import EventsRoute from './components/Events-Route/EventsMain'
-import ProjectsRoute from './components/Projects-Route/ProjectsMain';
+import MissionMillion from './components/Projects-Route/MissionMillion/MissionMillion';
+import MissionRedDot from './components/Projects-Route/MissionRedDot/MissionRedDot'
+import MissionOmega from './components/Projects-Route/MissionOmega/MissionOmega'
 import {BrowserRouter, Route} from 'react-router-dom';
 
 
@@ -16,7 +18,9 @@ export default () => (
         <Route exact path='/' component={HomeRoute} />
         <Route path='/signin' component={SignInRoute} />
         <Route path='/partners' component={PartnersRoute} />
-        <Route path='/projects' component={ProjectsRoute} />
+        <Route path='/projects/missionmillion' component={MissionMillion} />
+        <Route path='/projects/missionreddot' component={MissionRedDot} />
+        <Route path='/projects/missionomega' component={MissionOmega} />
         <Route path='/events' component={EventsRoute} />
     </div>
     </BrowserRouter>
