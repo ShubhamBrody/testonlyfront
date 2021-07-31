@@ -4,6 +4,17 @@ import './index.css';
 import App from './App';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+var bg = document.getElementById('parallaxBG');
+var bgcont = document.getElementById('parallaxContainer');
+
+window.addEventListener('scroll', () => {
+    var val = window.scrollY;
+    if(bg)
+    bg.style.top = val*(-0.5) + 'px';
+    if(bgcont)
+    bgcont.style.top = val + 'px';
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

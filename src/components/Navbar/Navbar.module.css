@@ -22,11 +22,11 @@ a {
 }
 
 li:hover {
-  color: darkorange;
+  color: #e0aa3e;
 }
 
 a:hover {
-  color: darkorange;
+  color: #e0aa3e;
 }
 
 .links .listInline {
@@ -38,7 +38,7 @@ a:hover {
 }
 
 .links .activelink {
-  color: #ffb302;
+  color: #e0aa3e;
 }
 
 /* .logo {
@@ -58,7 +58,7 @@ a:hover {
 }
 
 .activelink .navdivinternal {
-  border-bottom: 4px solid #ffb302;
+  border-bottom: 4px solid #e0aa3e;
 }
 
 @media (max-width: 1000px) {

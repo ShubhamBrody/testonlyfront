@@ -1,11 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500;600;700;800;900&display=swap');
 
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
 body {
   margin: 0;
+  height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('resources/images/background.png');
   background-size: cover;
+}
+
+#parallaxContainer {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: -1;
+  overflow: hidden;
 }
 
 * {
@@ -13,8 +28,40 @@ body {
   font-weight: 500;
 }
 
-p {
-  
+#parallaxBG {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500%;
+  /* overflow: auto; */
+  margin: 0;
+  padding: 0;
+  background-image: url('resources/images/background.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  /* overflow: hidden; */
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: grey; 
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(179, 179, 179); 
+}
+
+.root {
+  position: relative;
 }
 
 code {

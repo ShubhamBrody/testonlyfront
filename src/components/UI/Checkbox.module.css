@@ -41,3 +41,14 @@ input[type=checkbox] {
 .containerLabel input:checked ~ .mark::after {
     display: block;
 } */
+
+@media only screen and (max-width: 1000px) {
+    .mark {
+        height: 26px !important;
+        width: 26px !important;
+    }
+
+    .containerLabel {
+        padding-left: 50px
+    }
+}

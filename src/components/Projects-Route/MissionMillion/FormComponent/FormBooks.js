@@ -4,6 +4,8 @@ import classes from "./FormBooks.module.css";
 import Input from "../../../UI/Input";
 import { useState } from "react";
 import axios from "axios";
+import Form from "../../../UI/Form";
+import formBg from "../../../../resources/images/form-bg-books.png";
 
 export default () => {
   const [dbdata, setDbData] = useState({
