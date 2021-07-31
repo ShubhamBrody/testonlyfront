@@ -1,0 +1,50 @@
+.top
+{
+    background-image: url("../../resources/images/p background.png");
+    background-repeat: no-repeat;
+    background-size:contain;
+    height: 500px;
+    text-align: center;
+    margin: 50px 250px 40px 250px;
+}
+.top img
+{
+    height: 350px;;
+}
+.message
+{
+    text-align: justify;
+    background-color: rgb(58, 55, 55);
+    font-size: 15px;
+    margin: 10px 90px 10px 90px;
+    color: white;
+    word-spacing: 7px;
+    height: 100px;
+    padding:20px 20px 20px 20px;
+    border-radius: 7px;
+}
+.societree
+{
+    font-size: 20px;
+    text-align: justify;
+    display: flex;
+    justify-content: space-around;
+    margin:80px;
+    padding: 30px;
+    
+}
+.societree img
+{
+    height: 300px;
+    margin-right: 50px;
+    
+}
+.societree p
+{
+    text-align: center;
+    background-color: black;
+    color: goldenrod;
+    background-size: 10px;
+    font-size: 30px;
+
+}

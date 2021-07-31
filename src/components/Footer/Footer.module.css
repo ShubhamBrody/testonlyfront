@@ -1,8 +1,10 @@
 .bg   
  {
      background-image: url('../../resources/images/footer-background.png');
-     background-size: contain;
+     background-size: cover;
      height: auto;
+     background-repeat: no-repeat;
+     margin : 0%;
  }
  .contact
  {
@@ -52,7 +54,7 @@
  .insta
  {
     color: goldenrod;
-    display: inline;
+    display: inline; 
     font-size: 50px;
  }
 .background

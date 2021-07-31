@@ -7,6 +7,7 @@ import Navbar from "../Navbar/Navbar";
 import links from "../Navbar/Navbar.initial";
 import logo from "../../resources/images/logo.png";
 import Checkbox from '../UI/Checkbox';
+import classes from "./HomeMain.module.css";
 // import fs from 'fs';
 
 export default () => {
@@ -136,6 +137,8 @@ export default () => {
   return (
     <Fragment>
       <Navbar links={links} imgSrc={logo} />
+      <div className={classes.topimage}>
+       <div className={classes.logo}/></div>
       <input type='text' onChange={inputChangeHandler} />
       <button onClick={adminSubmitHandler1}>Login</button>
       <button onClick={adminSubmitHandler2}>Update</button>
@@ -152,6 +155,7 @@ export default () => {
       <br/><br/>
       <Checkbox inputChanged={getCheck} label={'JK'} items={['q1', 'q2', 'q3']}/>
       <p>{location.state && location.state.admin ? "ADMIN JUST SIGNED IN" : "YOU AINT ADMIN"}</p>
+      <div className={classes.bottomimage}/>
     </Fragment>
   );
 };
