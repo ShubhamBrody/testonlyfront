@@ -20,7 +20,7 @@ const itemStyle = {
     "opacity": "1",
     "color": "white", 
     "text-align": "center",
-    "border": "solid #ffffff",
+    "border": "1px solid #ffffff",
     "borderRadius": "8px",
     "font-size":'15px'
 }
@@ -47,7 +47,7 @@ function Department(props) {
             )
         }
         return (
-            <CardText visible={false} style={{ paddingTop: '1.5rem', paddingLeft: "2rem", paddingRight: "2rem", position: "relative", justifyContent: "center" }}>
+            <CardText visible={false} style={{ paddingTop: '10px', marginLeft: "5%", marginRight: "5%", position: "relative", justifyContent: "center" }}>
                 {content}
             </CardText>
         )

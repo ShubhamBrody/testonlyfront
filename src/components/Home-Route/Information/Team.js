@@ -40,7 +40,7 @@ const Team = (props) => {
                 </div>
                 <div class="slider__item">
                     <img style={{opacity: 1}} src="/team_members/gauri.jpg" alt=""/>
-                    <p><b>Gauri Krishnamoorthy</b></p>
+                    <p style={{ fontSize: "15px" }}><b>Gauri Krishnamoorthy</b></p>
                     <h6 style={{marginBottom: "14px"}}>Sessions Department</h6>
                 </div>
                 <div class="slider__item">
@@ -55,7 +55,7 @@ const Team = (props) => {
                 </div>
                 <div class="slider__item">
                 <img src="/team_members/mandapaka.jpg" alt=""/>
-                    <p><b>Mandapaka Rakshitha</b></p>
+                    <p style={{ fontSize: "15px" }}><b>Mandapaka Rakshitha</b></p>
                     <h6 style={{marginBottom: "14px"}}>Head - Social Media</h6>
                 </div> 
                 <div class="slider__item">
@@ -132,8 +132,7 @@ const Carousel = styled(Slider)`
   }
 
   .slick-list {
-    marginTop: -10px;
-    margin: 0px -10px;
+    margin: 0px 0px;
   }
     
   .slick-dots li button:before {

@@ -3,15 +3,18 @@ import Department from './Department';
 import Team from './Team';
 import News from './News';
 import Testimonial from "./Testimonial";
+// import NewsProvider from "../NewsProvider";
 
 const Information = (props) => {   
   return (
+    // <NewsProvider>
     <Container>
         <Department />
         <Team />
         <News />
         <Testimonial /> 
     </Container>
+    // </NewsProvider>
   );
 };
 

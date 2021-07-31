@@ -8,7 +8,9 @@ const AboutUs = (props) => {
         <img src="/aboutus.png" alt="" style={{ width:"100%", height:"auto", float:"right", paddingRight:"30%", position:"relative", zIndex:0 }} />
         <Container>
           <CardTabs />
-          <Video youtubeId="mmRim3ssqN4" />    
+          <div style={{ position: "relative", paddingTop: "20px", paddingLeft: "50px", paddingRight: "15px", width:"600px", height:"450px" }}>
+            <Video youtubeId="nJJp7R77NYo" /> 
+          </div>   
         </Container>
       </div>
     );
@@ -17,17 +19,16 @@ const AboutUs = (props) => {
 const Container = styled.div`
   font-family: Corbel, Verdana, "Bitstream Vera Sans", sans-serif;
   padding-top: 15vh;
-  padding-left: 5%;
+  padding-left: 25px;
   padding-bottom: 15vh;
+  padding-right: 0px;
   justify-content: center;
   position: absolute;
-  overflow: hidden;
   display: grid;  
   gap: 20px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 
   @media (max-width: 768px) {
-    padding-left: 6rem;
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 `;
