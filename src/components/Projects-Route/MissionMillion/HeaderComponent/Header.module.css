@@ -4,8 +4,8 @@
 }
 .header p {
     text-align: justify;
-    line-height: 2.2rem;
-    font-size: 1.25rem;
+    line-height: 2.2rem !important;
+    font-size: 1.25rem !important;
     word-spacing: 7px;
     animation: text 0.7s ease-in-out;
 }

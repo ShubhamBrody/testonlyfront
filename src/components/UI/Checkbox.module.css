@@ -4,7 +4,7 @@
     padding-left: 45px;
     margin-bottom: 15px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 20px !important;
 }
 
 input[type=checkbox] {
@@ -13,10 +13,10 @@ input[type=checkbox] {
 
 .mark {
     position: absolute;
-    bottom: 0;
+    bottom: 60%;
     left: 0;
-    height: 13px;
-    width: 13px;
+    height: 15px !important;
+    width: 15px !important;
     background-color: black;
     border: 2px solid #ffb302;
     border-radius: 4px;

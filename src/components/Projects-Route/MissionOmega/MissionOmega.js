@@ -6,6 +6,7 @@ import BottomComponent from './BottomComponents/BottomComponents';
 import Navbar from '../../Navbar/Navbar';
 import links from '../../Navbar/Navbar.initial';
 import logo from '../../../resources/images/logo.png';
+import Footer from '../../Footer/Footer';
 
 export default () => {
     return (
@@ -14,6 +15,7 @@ export default () => {
             <HeaderContent />
             <MiddleComponent />
             <BottomComponent />
+            <Footer />
         </Fragment>
     );
 }

@@ -5,6 +5,7 @@ import links from '../../Navbar/Navbar.initial';
 import logo from '../../../resources/images/logo.png';
 import textData from '../ProjectTextData';
 import classes from './MissionRedDot.module.css';
+import Footer from '../../Footer/Footer';
 
 export default () => {
     return (
@@ -18,7 +19,8 @@ export default () => {
             </div>
             <div className={classes.videobackground}>
                <iframe width="560" height="315" src="https://www.youtube.com/embed/tjPZS6Icjsk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
+            </div>
+            <Footer />
         </Fragment>
     );
 }

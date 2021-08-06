@@ -7,8 +7,8 @@
 
 .headerContainer p {
     text-align: justify;
-    line-height: 2.2rem;
-    font-size: 1.25rem;
+    line-height: 3rem !important;
+    font-size: 1.25rem !important;
     animation: text 0.7s ease-in-out;
 }
 

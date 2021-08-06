@@ -5,6 +5,7 @@ import HeaderContent from './HeaderComponent/Header';
 import Navbar from '../../Navbar/Navbar';
 import links from '../../Navbar/Navbar.initial';
 import logo from '../../../resources/images/logo.png';
+import Footer from '../../Footer/Footer';
 
 export default () => {
     return (
@@ -12,6 +13,7 @@ export default () => {
             <Navbar links={links} imgSrc={logo}/>
             <HeaderContent />
             <Form />
+            <Footer />
         </Fragment>
     );
 }

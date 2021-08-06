@@ -8,7 +8,7 @@ import classes from './Footer.module.css';
 
 class Footer extends React.Component {
     render() {
-        return <div className="container-fluid">
+        return <div className="container-fluid" style={{marginTop: "1.5rem"}}>
             <div className={classes.bg}>
                 <p className={classes.contact}> CONTACT US </p>
                     <div className="row">
@@ -25,7 +25,7 @@ class Footer extends React.Component {
                         <div className="col-md-1 col-2">
                             <a href="https://twitter.com/GYC_mumbai?s=08" target="_blank" className={classes.twitter}><FaTwitter /></a>
                         </div>
-                        <div className="col-md-4 col-2"></div>
+                        <div className="col-md-4 col-2" style={{padding: '0'}}></div>
                     </div>
                 <p className={classes.number}> Whatsapp:+91 9136091369 </p>
                 <div className={classes.c1}> 

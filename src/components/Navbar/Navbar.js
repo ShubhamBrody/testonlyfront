@@ -31,7 +31,7 @@ export default (props) => {
                 <Dropdown
                   isMedia={false}
                   extraClass = "projects_dropdown"
-                  dropbtncontent="Projects V"
+                  dropbtncontent={<div className={classes.dropdownHeader}>Projects&nbsp;<div style={{display:'inline-block'}} className={classes.triangle}></div></div>}
                   links={link.missions}
                   exception={null}
                 />

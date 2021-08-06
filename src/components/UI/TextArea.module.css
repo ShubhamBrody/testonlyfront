@@ -12,7 +12,7 @@
     width: 100%;
     border: 1px solid #fff;
     border-radius: 4px;
-    height: 1.5rem;
+    height: 100px !important;
     background-color: #000;
     color: white;
 }
