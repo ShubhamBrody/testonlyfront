@@ -32,14 +32,14 @@ class MaintenanceForm extends Component {
                 form={form_id}
                 style={{marginTop: "-90px", marginLeft: "420px", zIndex: "10", backgroundColor: "transparent", borderColor: "transparent"}}
               >
-                <img src="tick.png" style={{width: "15px", height: "15px"}} />
+                <img src="tick.png" style={{width: "15px", height: "15px"}} alt="tick"/>
               </button>
               <button
                 className="btn btn-danger btn-sm"
                 onClick={this.cancelOnClick}
                 style={{marginTop: "-139px", marginLeft: "530px", zIndex: "10", backgroundColor: "transparent", borderColor: "transparent"}}
               >
-                <img src="cross.png" style={{width: "15px", height: "15px"}} />
+                <img src="cross.png" style={{width: "15px", height: "15px"}} alt="cross"/>
               </button>
             </React.Fragment>
           ) : (
@@ -48,7 +48,7 @@ class MaintenanceForm extends Component {
               onClick={this.editOnClick}
               style={{marginTop: "-90px", marginLeft: "515px", zIndex: "10", backgroundColor: "transparent", borderColor: "transparent"}}
             >
-              <img src="pencil-alt-solid.svg" style={{width: "20px", height: "20px"}} />
+              <img src="pencil-alt-solid.svg" style={{width: "20px", height: "20px"}} alt="pencil"/>
             </button>
           )}
         </div>
