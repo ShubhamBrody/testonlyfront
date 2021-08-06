@@ -1,37 +1,16 @@
-import React from "react";
-import Select from 'react-select';
+/* eslint-disable import/no-anonymous-default-export */
+import {Fragment} from 'react';
+import links from '../Navbar/Navbar.initial';
+import Navbar from '../Navbar/Navbar'
+import MissionMillions from './MissionMillion/MissionMillion';
+import logo from '../../resources/images/logo.png';
 
-const options = [
-    { value: 'hr', label: 'HR' },
-    { value: 'technical', label: 'Technical' },
-    { value: 'timepass', label: 'Timepass' },
-  ];
-
-class App extends React.Component {
-    state = {
-        selectedOption: null,
-      };
-      handleChange = selectedOption => {
-        this.setState({ selectedOption });
-        alert(selectedOption["value"]);
-
-        
-      };
-      render() {
-        const { selectedOption } = this.state;
-    
-        return (
-            <div>
-                <Select
-                    value={selectedOption}
-                    onChange={this.handleChange}
-                    options={options}
-                />
-                <p id="bruh"></p> 
-            </div>
-          
-        );
-      }
-}
-
-export default App;
+export default () => {
+  return (
+    <Fragment>
+      <Navbar links={links} imgSrc={logo}/>
+      <MissionMillions />
+      <p>I am projects page</p>
+    </Fragment>
+  );
+};

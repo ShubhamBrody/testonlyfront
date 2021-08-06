@@ -9,6 +9,8 @@
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
     "formik": "^2.2.9",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-bootstrap-card": "^0.2.1",
@@ -23,6 +25,10 @@
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.0",
+    "react-icons": "^4.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "rellax": "^1.12.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

@@ -1,0 +1,78 @@
+.Navbar {
+  font-size: 1.125rem;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.links ul {
+  margin: 0;
+  margin-top: 2em;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+li:hover {
+  color: darkorange;
+}
+
+a:hover {
+  color: darkorange;
+}
+
+.links .listInline {
+  display: inline-block;
+}
+
+.links li {
+  padding: 1rem;
+}
+
+.links .activelink {
+  color: #ffb302;
+}
+
+.logo {
+  height: 100px;
+  margin: auto 0;
+}
+
+.logo img {
+  height: 100%;
+  padding: 10px;
+}
+
+.navdivinternal {
+  padding-bottom: 0.4rem;
+}
+
+.activelink .navdivinternal {
+  border-bottom: 4px solid #ffb302;
+}
+
+@media (max-width: 1000px) {
+  * {
+    font-size: 1.5rem;
+  }
+  .links {
+    display: none;
+  }
+}
+
+
+/* 
+Need to fix the outro animation for the main menu options. It just snaps.
+Ideas elimination : 
+-> keyframes--not working
+-> transitions--not working
+-> 
+*/

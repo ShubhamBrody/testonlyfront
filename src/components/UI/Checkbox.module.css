@@ -1,0 +1,45 @@
+.containerLabel {
+    display: block;
+    position: relative;
+    padding-left: 45px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+input[type=checkbox] {
+    visibility: hidden;
+}
+
+.mark {
+    position: absolute;
+    bottom: 50%;
+    transition: translateY(-50%);
+    left: 0;
+    height: 13px !important;
+    width: 13px !important;
+    background-color: black;
+    border: 2px solid #ffb302;
+    border-radius: 4px;
+}
+
+.containerLabel:hover input ~ .mark {
+    background-color: #555;
+}
+
+.containerLabel input:checked ~ .mark {
+    background-image: url('../../resources/images/checkmark.png');
+    background-size: contain;
+    background-color: #ffb302;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .mark {
+        height: 26px !important;
+        width: 26px !important;
+    }
+
+    .containerLabel {
+        padding-left: 50px
+    }
+}

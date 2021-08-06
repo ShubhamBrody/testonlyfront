@@ -1,30 +1,14 @@
-import Department from './Department';
-import Team from './Team';
-import News from './News';
-import Testimonial from "./Testimonial";
-import styled from "styled-components";
+/* eslint-disable import/no-anonymous-default-export */
+import {Fragment} from 'react';
+import links from '../Navbar/Navbar.initial';
+import Navbar from '../Navbar/Navbar'
+import logo from '../../resources/images/logo.png';
 
-const Cards = (props) => {
+export default () => {
   return (
-    <Container>
-      <div><Department/></div>
-      <div><Team/></div>
-      <div><News/></div>
-      <div><Testimonial/></div>
-    </Container>
+    <Fragment>
+      <Navbar links={links} imgSrc={logo}/>
+      <p>I am Partners page</p>
+    </Fragment>
   );
 };
-
-const Container = styled.section`
-  display: grid;
-  gap: 40px;
-  align-items: center;
-  justify-items: center;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  @media (max-width: 1100px) {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-  margin-bottom: 12px; 
-`;
-
-export default Cards;
