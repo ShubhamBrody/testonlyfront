@@ -2,91 +2,16 @@ import { Card, CardTitle, CardSubtitle } from "react-bootstrap-card";
 import EdiText from 'react-editext';
 import styled from 'styled-components';
 import NewsEditForm from "./NewsEditForm";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 const News = (props) => {
 
-  const [dummy, setDummy] = useState("No value");
   const [newsObj, setNewsObj] = useState({
-    date: "??",
-    news: "No News...",
+    date: "",
+      news: "",
   });
-  const [passwordEntered, setPasswordEntered] = useState("");
-
-  const adminSubmitHandler1 = async () => {
-    console.log("Works!!");
-    await axios
-      .post("http://localhost:5000/admin/login", {
-        username: "ShubhamTiwari",
-        password: passwordEntered,
-      })
-      .then((res) => {
-        setDummy(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const adminSubmitHandler2 = async () => {
-    console.log("Works!!");
-    await axios
-      .post("http://localhost:5000/admin/updatepassword", {
-        username: "ShubhamTiwari",
-        password: passwordEntered,
-      })
-      .then((res) => {
-        setDummy(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const adminSubmitHandler3 = async () => {
-    console.log("Works!!");
-    await axios
-      .post("http://localhost:5000/admin/add", {
-        username: "ShubhamTiwari",
-        password: passwordEntered,
-        securitykey: "12345",
-      })
-      .then((res) => {
-        setDummy(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const adminSubmitHandler4 = async () => {
-    console.log("Works!!");
-    await axios
-      .post("http://localhost:5000/admin/securitykeyvalidation", {
-        securitykey: passwordEntered,
-      })
-      .then((res) => {
-        setDummy(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const newsSubmitHandler1 = async () => {
-    await axios
-      .post("http://localhost:5000/news/create", {
-        header: "News",
-        date: "MAY 2021",
-        news: "Geolife Youth Club has comeup with the PROJECT RED DOT campaign to raise awareness about menstruation and sanitary menstruation practices. This campaign focusses on period positivity and eco-friendly sustainable practices for the same.",
-      })
-      .then((res) => console.log(res))
-      .catch((err) => {
-        console.error(err);
-      });
-  };
 
   const newsSubmitHandler2 = async () => {
     await axios
@@ -101,7 +26,12 @@ const News = (props) => {
       });
   };
 
-  const newsSubmitHandler3 = async () => {
+  useEffect(() => {
+    console.log("This useeffect ran");
+    newsGetter();
+  }, []);
+
+  const newsGetter = async () => {
     await axios
       .post("http://localhost:5000/news/get", {
         header: "News",
@@ -117,21 +47,14 @@ const News = (props) => {
       });
   };
 
-  const inputChangeHandler = (e) => {
-    setPasswordEntered(e.target.value);
-  };
-
-  const getCheck = (val) => {
-    console.log(val);
-  };
+  const updateFields = (date, news) => { 
+    setNewsObj({
+      date: date,
+      news: news,
+    });
+  }
 
   const location = useLocation();
-
-
-    const [fields, updateFields] = useState({
-      date: "MAY 2021",
-      news: "GeoLife Youth Club has come up with the PROJECT RED DOT campaign to raise awareness about menstruation and sanitary menstruation practices. This campaign focuses on period positivity and eco-friendly sustainable practices for the same."
-    });
 
     return (
         <Grid>
@@ -141,11 +64,11 @@ const News = (props) => {
           <Container>
 
           {location.state && location.state.admin
-          ? (<NewsEditForm fields={fields} updateFields={updateFields} />)
+          ? (<NewsEditForm fields={newsObj} updateFields={updateFields} />)
           :  (<>
             <br/>
-            <Date type="text" value="MAY 2021"/><br/>
-            <TextArea rows="6" cols="68" value="GeoLife Youth Club has come up with the PROJECT RED DOT campaign to raise awareness about menstruation and sanitary menstruation practices. This campaign focuses on period positivity and eco-friendly sustainable practices for the same."/>
+            <Date type="text" value={newsObj.date}/><br/>
+            <TextArea rows="6" cols="68" value={newsObj.news}/>
             </>)}
           </Container>
         </Grid>
