@@ -12,7 +12,7 @@ export default () => {
         </div>
         <div className={classes.video}>
           <Video
-            vidSrc={"https://www.youtube.com/embed/_lEkD8IGkwo"}
+            vidSrc={"https://www.youtube.com/embed/HII0i2kvGTY"}
             height="100%"
             width="100%"
           />

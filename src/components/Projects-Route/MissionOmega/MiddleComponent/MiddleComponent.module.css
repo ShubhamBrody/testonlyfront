@@ -35,4 +35,8 @@
         width: 88% !important;
         padding: 1rem;
     }
+
+    .leftContainer {
+        width: 100% !important;
+    }
 }

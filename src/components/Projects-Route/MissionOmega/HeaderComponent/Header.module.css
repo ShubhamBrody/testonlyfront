@@ -67,7 +67,8 @@
     }
 
     .leftContainer {
-        flex: 1;
+        flex: 1 !important;
+        flex-direction: row;
     }
 
     .rightContainer {

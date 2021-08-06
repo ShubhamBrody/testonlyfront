@@ -86,6 +86,8 @@
 @media only screen and (max-width: 1000px) 
 {
     .signInContainer input {
-        width: 70vw;
+        width: 70vw !important;
+        height: 4rem !important;
+        font-size: 2rem !important;
     }
 }
