@@ -1,0 +1,57 @@
+.top
+{
+    background-image: url("../../resources/images/p background.png");
+    background-repeat: no-repeat;
+    background-size:790px;
+     height: 500px; 
+    margin: 25px  140px ;
+    text-align: center;
+}
+.top img
+{
+    height: 330px;
+}
+.message
+{
+    text-align: justify ;
+    background-color: rgb(71, 69, 69);
+    font-size: 15px;
+    margin:0px 100px;
+    color: white;
+    word-spacing: 10px;
+    height: 120px;
+    padding:20px 60px;
+    border-radius: 7px;
+}
+.contentWrapper
+{
+    font-size: 20px;
+    text-align: justify;
+    justify-content: space-around;
+    display: flex;
+    margin:50px;
+    
+}
+.contentWrapper img
+{
+    height: 250px;
+    margin:50px;
+}
+.heading
+{
+    text-align: center;
+    background-color: black;
+    color: goldenrod;
+    font-size: 25px;
+    margin: 20px 50px 50px 50px;
+    border-radius: 5px;
+}
+.bgimage
+{
+    background-image: url("../../resources/images/p bottom image.png");
+    background-size: cover; 
+    height: auto;
+    background-repeat: no-repeat;
+}
+
+

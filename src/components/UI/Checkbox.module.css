@@ -4,6 +4,7 @@
     padding-left: 45px;
     margin-bottom: 15px;
     cursor: pointer;
+    font-size: 20px;
 }
 
 input[type=checkbox] {
@@ -12,11 +13,10 @@ input[type=checkbox] {
 
 .mark {
     position: absolute;
-    bottom: 50%;
-    transition: translateY(-50%);
+    bottom: 0;
     left: 0;
-    height: 13px !important;
-    width: 13px !important;
+    height: 13px;
+    width: 13px;
     background-color: black;
     border: 2px solid #ffb302;
     border-radius: 4px;
@@ -32,6 +32,15 @@ input[type=checkbox] {
     background-color: #ffb302;
 }
 
+/* .mark::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.containerLabel input:checked ~ .mark::after {
+    display: block;
+} */
 
 @media only screen and (max-width: 1000px) {
     .mark {

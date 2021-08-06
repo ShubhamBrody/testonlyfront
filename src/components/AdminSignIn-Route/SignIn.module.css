@@ -31,7 +31,7 @@
 
 .signInButton {
     background: transparent;
-    border: 3px solid #ffb302;
+    border: 3px solid #e0aa3e;
     font-size: 20px;
     border-radius: 25px;
     padding: 10px 15px;
@@ -79,7 +79,7 @@
 }
 
 .forgot:hover {
-    color: #ffb302;
+    color: #e0aa3e;
 }
 
 @media only screen and (max-width: 1000px) 

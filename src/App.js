@@ -9,6 +9,7 @@ import MissionMillion from './components/Projects-Route/MissionMillion/MissionMi
 import MissionRedDot from './components/Projects-Route/MissionRedDot/MissionRedDot'
 import MissionOmega from './components/Projects-Route/MissionOmega/MissionOmega'
 import {BrowserRouter, Route} from 'react-router-dom';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -22,6 +23,7 @@ export default () => (
         <Route path='/projects/missionreddot' component={MissionRedDot} />
         <Route path='/projects/missionomega' component={MissionOmega} />
         <Route path='/events' component={EventsRoute} />
+        <Footer />
     </div>
     </BrowserRouter>
 )

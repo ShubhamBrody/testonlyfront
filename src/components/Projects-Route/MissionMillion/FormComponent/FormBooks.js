@@ -1,8 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
 
-import Form from "../../../UI/Form";
+import classes from "./FormBooks.module.css";
+import Input from "../../../UI/Input";
 import { useState } from "react";
 import axios from "axios";
+import Form from "../../../UI/Form";
 import formBg from "../../../../resources/images/form-bg-books.png";
 
 export default () => {
@@ -32,6 +34,15 @@ export default () => {
         console.error(err);
       });
   };
+
+  //Axios get ref
+  //   const getAllHandler = async (e) => {
+  //     await axios.get("http://localhost:5000/books/getall").then((res) => {
+  //         console.log(res.data);
+  //     }).catch((err) => {
+  //         console.error(err);
+  //     });
+  //   }
 
   const dataValidator = (data) => {
     if (data.label === "Contact number") {
@@ -95,76 +106,72 @@ export default () => {
     console.log(dbdata);
   };
 
-  const fields = [
-    {
-      fieldType: "input",
-      id: "name",
-      label: "Full Name",
-      type: "text",
-      required: true,
-      inputChanged: inputRecieved,
-    },
-    {
-      fieldType: "input",
-      id: "email",
-      label: "Email Id",
-      type: "email",
-      required: true,
-      inputChanged: inputRecieved,
-    },
-    {
-      fieldType: "input",
-      id: "contact",
-      label: "Contact number",
-      type: "text",
-      required: true,
-      inputChanged: inputRecieved,
-    },
-    {
-      fieldType: "input",
-      id: "genre",
-      label: "Genre of book/books",
-      type: "text",
-      required: true,
-      inputChanged: inputRecieved,
-    },
-    {
-      fieldType: "input",
-      id: "number_of_books",
-      label: "Number of books",
-      type: "number",
-      required: true,
-      isNumber: true,
-      step: 1,
-      min: 0,
-      inputChanged: inputRecieved,
-    },
-    {
-      fieldType: "input",
-      id: "condition",
-      label: "Condition of the books",
-      type: "text",
-      required: true,
-      inputChanged: inputRecieved,
-    }
-  ];
-
-  const changeBackToNormal = () => {
-    setIsFormFilled(false);
-  };
-
-  return (
-    <Form
-      hasBG={true}
-      title="MISSION MILLION BOOKS"
-      imgSrc={formBg}
-      fillAgain={changeBackToNormal}
-      isFormFilled={isFormFilled}
-      fields={fields}
-      onSubmitHandler={onSubmitHandler}
-      contactDetailsTag={true}
-      bottomTabText="Below are the details to contact us"
-      customStyle={{width: '30%'}}
-    />
+  return !isFormFilled ? (
+    <div className={classes.background}>
+      <div className={classes.formConatiner}>
+        <div className={classes.formTitle}>
+          <h3>MISSION MILLION BOOKS</h3>
+        </div>
+        <form onSubmit={onSubmitHandler}>
+          <Input
+            label="Full Name"
+            type="text"
+            required={true}
+            inputChanged={inputRecieved}
+          />
+          <Input
+            label="Email Id"
+            type="email"
+            required={true}
+            inputChanged={inputRecieved}
+          />
+          <Input
+            label="Contact number"
+            type="number"
+            required={true}
+            inputChanged={inputRecieved}
+          />
+          <Input
+            label="Genre of book/books"
+            type="text"
+            required={true}
+            isNumber={true}
+            step={1}
+            min={0}
+            inputChanged={inputRecieved}
+          />
+          <Input
+            label="Number of books"
+            type="number"
+            required={true}
+            inputChanged={inputRecieved}
+          />
+          <Input
+            label="Condition of the books"
+            type="text"
+            required={true}
+            inputChanged={inputRecieved}
+          />
+          <button className={classes.submitbtn} type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
+      <div className={classes.formConatiner} style={{marginTop: '50px'}}>
+          <p style={{color: 'white', textAlign: 'center'}}>Below are the details to contact us</p>
+      </div>
+    </div>
+  ) : (
+    <div className={classes.background}>
+      <div className={classes.formConatiner} style={{width: '90vw', textAlign: 'center'}}>
+        <h1 style={{ color: "#ffb302", fontSize: "6rem" }}>THANK YOU</h1>
+        <button
+          className={classes.submitbtn}
+          onClick={() => setIsFormFilled(false)}
+        >
+          Fill the form Again
+        </button>
+      </div>
+    </div>
   );
 };

@@ -1,0 +1,25 @@
+
+.bottomimage
+{
+    background-image: url('../../resources/images/bottom-image.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 850px;
+    margin: 50px 0px;
+}
+.logo
+{
+    background-image: url('../../resources/images/geolife-youth-club.png');
+    height: 700px;
+    width: 500px;
+    background-repeat: no-repeat;
+    margin-right: 20px;
+}
+.topimage
+{
+    background-image: url('../../resources/images/top-image.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 700px;
+    
+}   

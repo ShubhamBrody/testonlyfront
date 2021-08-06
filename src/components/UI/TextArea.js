@@ -20,10 +20,14 @@ export default (props) => {
       </label>
       <textarea
         id="inp"
+        type={props.type}
         required={props.required}
         value={value}
         onChange={inputChangeHandler}
-        style={{height: props.height, resize: 'none'}}
+        step={props.isNumber ? props.step : null}
+        min={props.isNumber ? props.min : null}
+        cols={props.cols}
+        rows={props.rows}
       />
     </div>
   );

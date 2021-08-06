@@ -1,0 +1,79 @@
+.bg   
+ {
+     background-image: url('../../resources/images/footer-background.png');
+     background-size: cover;
+     height: auto;
+     background-repeat: no-repeat;
+     margin: 0px -15px;
+ }
+ .contact
+ {
+     text-align: center;
+     color: white ;
+     font-size: 20px;
+     padding-top: 20px;
+ }
+ .number
+ {
+     text-align: center;
+     color: white;
+     font-size: 15px;
+ } 
+ .copyright
+ {
+     color: white;
+     display: inline;
+     
+ }
+ .by
+ {
+    color:goldenrod;
+    margin-bottom: 100px;
+    display: inline;
+    
+ }
+ .twitter
+ {
+    
+    color: goldenrod;
+    display: inline;
+    font-size:50px ;
+    align-self: visited;
+}
+.twitter:hover{
+    color: white !important;
+}
+ .youtube
+ {
+    color: goldenrod;
+    display: inline;
+    font-size: 50px;
+}
+.youtube:hover{
+    color: white !important;
+}
+ .fb
+ {
+     color: goldenrod ;
+     display: inline;
+     font-size: 50px;
+     }
+     .fb:hover{
+          color: white !important;
+     }
+ .insta
+ {
+    color: goldenrod;
+    display: inline; 
+    font-size: 50px;
+ }
+ .insta:hover{
+    color: white !important;
+}
+.c1
+{
+    text-align: center;
+    padding: 25px;
+    font-size: 15px;
+}
+
