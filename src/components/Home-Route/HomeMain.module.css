@@ -10,11 +10,10 @@
 .logo
 {
     background-image: url('../../resources/images/geolife-youth-club.png');
-    background-position: left;
-    margin-left: 50px;
     height: 700px;
-    width: 600px;
+    width: 500px;
     background-repeat: no-repeat;
+    margin-right: 20px;
 }
 .topimage
 {

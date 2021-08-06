@@ -136,7 +136,7 @@ export default () => {
 
   return (
     <Fragment>
-      <Navbar links={links} imgSrc={logo} />
+      <Navbar links={links} imgSrc={logo}/>
       <div className={classes.topimage}>
        <div className={classes.logo}/></div>
       <input type='text' onChange={inputChangeHandler} />
