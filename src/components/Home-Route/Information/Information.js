@@ -1,39 +1,41 @@
-import styled from 'styled-components';
 import Department from './Department';
 import Team from './Team';
 import News from './News';
 import Testimonial from "./Testimonial";
-// import NewsProvider from "../NewsProvider";
+import styled from "styled-components";
 
-const Information = (props) => {   
+const Cards = (props) => {
   return (
-    // <NewsProvider>
     <Container>
-        <Department />
-        <Team />
-        <News />
-        <Testimonial /> 
+      <div><Department/></div>
+      <div><Team/></div>
+      <div><News/></div>
+      <div><Testimonial/></div>
     </Container>
-    // </NewsProvider>
   );
 };
 
-const Container = styled.div`
-  font-family: Corbel, Verdana, "Bitstream Vera Sans", sans-serif;
-  padding-top: 35vh;
-  padding-left: 5%;
-  padding-bottom: 15vh;
-  justify-content: center;
-  overflow:hidden;
+const Container = styled.section`
   display: grid;
-  grid-gap: 60px;
-  gap: 60px;
+  grid-column-gap: 40px;
+  grid-row-gap: 100px;
+  align-items: center;
+  justify-items: center;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  @media (max-width: 768px) {
-    padding-left: 6rem;
+  @media (max-width: 1400px) {
     grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  margin-top: 180px;
+  margin-bottom: 12px; 
+
+  &:after {
+    background: url("background.png") center center / cover no-repeat fixed;
+    content: "";
+    position: absolute;
+    inset: 0px;
+    opacity: 1;
+    z-index: -1;
   }
 `;
 
-export default Information;
+export default Cards;

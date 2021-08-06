@@ -2,7 +2,22 @@ import { React, useState } from 'react';
 import { Card, CardText } from "react-bootstrap-card";
 import Dropdown from "react-bootstrap/Dropdown";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import styled from "styled-components";
+
+const sectionStyle = {
+    "background-color": '#191919',
+    // "background": 'url("aboutus.png")',
+    "background-size": 'cover',
+    "opacity": "0.8",
+    "width": '32rem',
+    "height": '23rem',
+    "border-radius": "6px",
+    "position": "relative",
+    "text-align": "center",
+    // "paddingTop": '56.25%',
+    "color": 'white',
+    // "height": '200px', 
+    // "overflow": "scroll"
+}
 
 const itemStyle = {
     "backgroundColor": "#191919",
@@ -30,20 +45,20 @@ function Department(props) {
     const displayContent = () => {
         if(content === "Please Select the Department") {
             return (
-                <CardText visible={false} style={{ color:"gray", paddingTop: '5rem', textAlign: "center", height: '200px' }}>
+                <CardText visible={false} style={{ color:"gray", paddingTop: '5rem', justifyContent: "center", height: '200px', overflow: "scroll" }}>
                     {content}
                 </CardText>
             )
         }
         return (
-            <CardText visible={false} style={{ paddingTop: '1.5rem', paddingLeft: "2rem", paddingRight: "2rem", position: "relative", textAlign: "center", height: '500px', overflowY: "auto", paddingBottom: '150px', marginTop: '20px' }}>
+            <CardText visible={false} style={{ paddingTop: '1.5rem', paddingLeft: "2rem", paddingRight: "2rem", position: "relative", justifyContent: "center", height: '500px', overflow: "scroll", paddingBottom: '150px', marginTop: '20px' }}>
                 {content}
             </CardText>
         )
     }
 
     return (
-        <Grid>
+        <Card style={sectionStyle}>
             <br/>
             <Dropdown onMouseEnter={() => updateIsOpen(true)}
             onMouseLeave={() => updateIsOpen(false)} show={isOpen}>
@@ -60,27 +75,10 @@ function Department(props) {
                     <Dropdown.Item onClick={() => { setContent(departmentContent["Content Development"]); updateIsOpen(false) } } style={itemStyle}>Content Development</Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
-            { displayContent() }
             <br/>
-        </Grid>
+            { displayContent() }
+        </Card>
     );
 };
-
-const Grid = styled(Card)`
-    background-color: #191919;
-    opacity: 0.8;
-    width: 40rem;
-    height: 22.5rem;
-    border-radius: 6px;
-    position: relative;
-    text-align: center;
-    color: white;
-    overflow: hidden;
-
-    @media (max-width: 1400px) {
-        width: 56rem;
-        height: 31.5rem;
-    }
-`;
 
 export default Department;

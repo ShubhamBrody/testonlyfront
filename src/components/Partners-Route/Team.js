@@ -5,6 +5,18 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import React from "react";
 
+var sectionStyle = {
+    "background-color": '#191919',
+    "opacity": "0.8",
+    "width": '32rem',
+    "height": '23rem',
+    "border-radius": "6px",
+    "position": "relative",
+    "text-align": "center",
+    // "paddingBottom": '56.25%',
+    "color": 'white'
+}
+
 const Team = (props) => {
     let settings = {
         dots: true,
@@ -16,16 +28,10 @@ const Team = (props) => {
     };
 
     return (
-
-        <Grid>
+        <Card style={sectionStyle}>
             <br/>
             <CardTitle style={{color: 'white'}}>Our Team</CardTitle><br/>
             <Carousel {...settings}>
-              <div class="slider__item">
-                  <img src="/team_members/nidhi.jpg" alt=""/>
-                    <p><b>Nidhi Lahoti</b></p>
-                    <h6 style={{marginBottom: "14px"}}>Founder & Director</h6>
-                </div>
                 <div class="slider__item">
                     <img style={{opacity: 1}} src="/team_members/gauri.jpg" alt=""/>
                     <p><b>Gauri Krishnamoorthy</b></p>
@@ -34,7 +40,7 @@ const Team = (props) => {
                 <div class="slider__item">
                 <img src="/team_members/pranitha.jpeg" alt=""/>
                     <p><b>G Pranitha</b></p>
-                    <h6 style={{marginBottom: "14px"}}>Head - Human Resources</h6>
+                    <h6 style={{marginBottom: "14px"}}>HR - HOD</h6>
                 </div>
                 <div class="slider__item">
                 <img src="/team_members/sohan.jpg" alt=""/>
@@ -43,13 +49,18 @@ const Team = (props) => {
                 </div>
                 <div class="slider__item">
                 <img src="/team_members/mandapaka.jpg" alt=""/>
-                    <p style={{ fontSize: "15px" }}><b>Mandapaka Rakshitha</b></p>
-                    <h6 style={{marginBottom: "14px"}}>Head - Social Media</h6>
+                    <p><b>Mandapaka Rakshitha</b></p>
+                    <h6 style={{marginBottom: "14px"}}>Social Media Head</h6>
                 </div> 
                 <div class="slider__item">
                 <img src="/team_members/mayuri.jpg" alt=""/>
-                    <p><b>Mayuri Gaikwad</b></p>
+                    <p><b>Mayuri Moroti Gaikwad</b></p>
                     <h6 style={{marginBottom: "14px"}}>Sessions Department</h6>
+                </div>
+                <div class="slider__item">
+                <img src="/team_members/nidhi.jpg" alt=""/>
+                    <p><b>Nidhi Lahoti</b></p>
+                    <h6 style={{marginBottom: "14px"}}>Founder & Director</h6>
                 </div>
                 <div class="slider__item">
                 <img src="/team_members/nipun.jpeg" alt=""/>
@@ -59,7 +70,7 @@ const Team = (props) => {
                 <div class="slider__item">
                 <img src="/team_members/jahnavi.jpg" alt=""/>
                     <p><b>S Jahnavi</b></p>
-                    <h6 style={{marginBottom: "14px"}}>Head - Public Relations</h6>
+                    <h6 style={{marginBottom: "14px"}}>PR Head</h6>
                 </div>
                <div class="slider__item">
                 <img src="/team_members/sakshi.jpg" alt=""/>
@@ -73,37 +84,18 @@ const Team = (props) => {
                 </div>
                 <div class="slider__item">
                 <img src="/team_members/vedanti.jpeg" alt=""/>
-                    <p><b>Vedanti Kshirsagar</b></p>
-                    <h6 style={{ marginBottom: "-45px", marginTop:"-5px" }}>Head - Administrative & Technical Department</h6>
+                    <p><b>Vedanti Anil Kshirsagar</b></p>
+                    <h6 style={{marginBottom: "-45px"}}>Administrative & Technical Department Head</h6>
                 </div>
             </Carousel>
-        </Grid>
+        </Card>
     );
 };
-
-const Grid = styled(Card)`
-    background-color: #191919;
-    opacity: 0.8;
-    width: 40rem;
-    height: 22.5rem;
-    border-radius: 6px;
-    position: relative;
-    text-align: center;
-    color: white;
-    // overflow: scroll;
-
-    @media (max-width: 1400px) {
-      width: 56rem;
-      height: 31.5rem;
-  }
-`;
 
 const Carousel = styled(Slider)`
   .slick-slide > div {
     transform: scale(.5);
     transition: transform .3s cubic-bezier(.4,0,.2,1);
-    justify-content: center;
-    text-align: center;
 
     h6 {
       font-size: 0px;
@@ -118,40 +110,25 @@ const Carousel = styled(Slider)`
 
   .slick-center > div {
     transform: scale(1);
-    justify-content: center;
-    text-align: center;
 
     h6 {
-      padding-top: 3px;
-      font-size: 13px;
+      font-size: 9px;
       transform: scale(1);
     }
 
     p {
-      margin-bottom: 0;
-      padding-top: 15px;
-      font-size: 16px;
+      padding-top: 10px;
+      font-size: 12px;
       transform: scale(1);
-
-      @media (max-width: 1400px) {
-        font-size: 15px;
-        padding-top: 40px;
-      }
-      
     }
   }
   .slider__item > img {
     width: 160px;
     height: 160px;
     border-radius: 8000px;
-    border: 5px solid #e0aa3e;
+    border: 4px solid transparent;
+    border-color: #ffb83d;
     height: auto;
-    display: initial;
-
-    @media (max-width: 1400px) {
-      width: 280px;
-      height: 280px;
-    }
   }
 
   .slick-list {
@@ -199,11 +176,6 @@ const Carousel = styled(Slider)`
     margin-top: 75px;
     margin-right: 160px;
     padding-bottom: 10px;
-
-    @media (max-width: 1400px) {
-      margin-top: 160px;
-      margin-right: 300px;
-    }
     
    
     &:before { 
@@ -218,10 +190,6 @@ const Carousel = styled(Slider)`
     margin-left: 160px;
     z-index: 9999;
     &:before { content: "<"; }
-
-    @media (max-width: 1400px) {
-      margin-left: 300px;
-    }
   }
 
 `;
