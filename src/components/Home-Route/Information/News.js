@@ -1,5 +1,5 @@
-import { Card, CardTitle, CardSubtitle } from "react-bootstrap-card";
-import EdiText from 'react-editext';
+import { Card, CardTitle } from "react-bootstrap-card";
+// import EdiText from 'react-editext';
 import styled from 'styled-components';
 import NewsEditForm from "./NewsEditForm";
 import React, { useState, useEffect } from "react";
@@ -12,19 +12,6 @@ const News = (props) => {
     date: "",
       news: "",
   });
-
-  const newsSubmitHandler2 = async () => {
-    await axios
-      .post("http://localhost:5000/news/update", {
-        header: "News",
-        date: "JULY 2021",
-        news: "The campaign was successful and we plan to organise more campaigns.",
-      })
-      .then((res) => console.log(res))
-      .catch((err) => {
-        console.error(err);
-      });
-  };
 
   useEffect(() => {
     console.log("This useeffect ran");
@@ -127,82 +114,82 @@ const Container = styled.div`
   z-index: -2;
 `;
 
-const StyledEdiText = styled(EdiText)`
-  button {
-    border-radius: 5px;
-    width: 50px;
-    height: 35px;
-    margin-top: -210px;
-    margin-left: 480px;
-    padding-top: 10px;
-    z-index: 300;
-    font-size: 15px;
-    color: white;
-  }
-  button[editext="edit-button"] {
-    border-radius: 50%;
-    color: white;
-    background-color: transparent;
-    border: transparent;
-    // font-size: large;
+// const StyledEdiText = styled(EdiText)`
+//   button {
+//     border-radius: 5px;
+//     width: 50px;
+//     height: 35px;
+//     margin-top: -210px;
+//     margin-left: 480px;
+//     padding-top: 10px;
+//     z-index: 300;
+//     font-size: 15px;
+//     color: white;
+//   }
+//   button[editext="edit-button"] {
+//     border-radius: 50%;
+//     color: white;
+//     background-color: transparent;
+//     border: transparent;
+//     // font-size: large;
     
-    &:before { 
-      content: url("pencil-alt-solid.svg"); 
-      font-size: 30px;
-      padding-left: 20px;
-    }
-  }
-  button[editext="save-button"] {
-    width: 45px;
-    height: 40px;
-    margin-top: -270px;
-    margin-left: 390px;
-    background-color: transparent;
-    border: transparent;
-    &:hover {
-      color: #fff;
-      background-color: transparent;
-      border: transparent;
-    }
-  }
-  button[editext="cancel-button"] {
-    width: 45px;
-    height: 40px;
-    margin-top: -270px;
-    margin-left: 0px;
-    background-color: transparent;
-    border: transparent;
-    &:hover {
-      color: #fff;
-      background-color: transparent;
-      border: transparent;
-    }
-  }
-  input, textarea {
-    background: transparent;
-    color: #fff;
-    resize: none;
-    scrollable: true;
-    text-align: justify;
-    // font-weight: bold;
-    // border-radius: 5px;
-    // margin-top: 0px;
-    // width: 300px;
-    // height: 300px;
-  }
-  .my-custom-view-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
+//     &:before { 
+//       content: url("pencil-alt-solid.svg"); 
+//       font-size: 30px;
+//       padding-left: 20px;
+//     }
+//   }
+//   button[editext="save-button"] {
+//     width: 45px;
+//     height: 40px;
+//     margin-top: -270px;
+//     margin-left: 390px;
+//     background-color: transparent;
+//     border: transparent;
+//     &:hover {
+//       color: #fff;
+//       background-color: transparent;
+//       border: transparent;
+//     }
+//   }
+//   button[editext="cancel-button"] {
+//     width: 45px;
+//     height: 40px;
+//     margin-top: -270px;
+//     margin-left: 0px;
+//     background-color: transparent;
+//     border: transparent;
+//     &:hover {
+//       color: #fff;
+//       background-color: transparent;
+//       border: transparent;
+//     }
+//   }
+//   input, textarea {
+//     background: transparent;
+//     color: #fff;
+//     resize: none;
+//     scrollable: true;
+//     text-align: justify;
+//     // font-weight: bold;
+//     // border-radius: 5px;
+//     // margin-top: 0px;
+//     // width: 300px;
+//     // height: 300px;
+//   }
+//   .my-custom-view-wrapper {
+//     display: flex;
+//     flex-direction: column;
+//   }
   
-  .my-custom-view-wrapper div:last-child {
-    /* Here we are styling the button container. */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: right;
-    color: #191919;
-  }
-;`
+//   .my-custom-view-wrapper div:last-child {
+//     /* Here we are styling the button container. */
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     align-items: right;
+//     color: #191919;
+//   }
+// ;`
 
 export default News;
