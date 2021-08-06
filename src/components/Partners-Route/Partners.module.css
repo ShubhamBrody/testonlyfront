@@ -2,49 +2,56 @@
 {
     background-image: url("../../resources/images/p background.png");
     background-repeat: no-repeat;
-    background-size:contain;
-    height: 500px;
+    background-size:790px;
+     height: 500px; 
+    margin: 25px  140px ;
     text-align: center;
-    margin: 50px 250px 40px 250px;
 }
 .top img
 {
-    height: 350px;;
+    height: 330px;
 }
 .message
 {
-    text-align: justify;
-    background-color: rgb(58, 55, 55);
+    text-align: justify ;
+    background-color: rgb(71, 69, 69);
     font-size: 15px;
-    margin: 10px 90px 10px 90px;
+    margin:0px 100px;
     color: white;
-    word-spacing: 7px;
-    height: 100px;
-    padding:20px 20px 20px 20px;
+    word-spacing: 10px;
+    height: 120px;
+    padding:20px 60px;
     border-radius: 7px;
 }
-.societree
+.contentWrapper
 {
     font-size: 20px;
     text-align: justify;
-    display: flex;
     justify-content: space-around;
-    margin:80px;
-    padding: 30px;
+    display: flex;
+    margin:50px;
     
 }
-.societree img
+.contentWrapper img
 {
-    height: 300px;
-    margin-right: 50px;
-    
+    height: 250px;
+    margin:50px;
 }
-.societree p
+.heading
 {
     text-align: center;
     background-color: black;
     color: goldenrod;
-    background-size: 10px;
-    font-size: 30px;
-
+    font-size: 25px;
+    margin: 20px 50px 50px 50px;
+    border-radius: 5px;
 }
+.bgimage
+{
+    background-image: url("../../resources/images/p bottom image.png");
+    background-size: cover; 
+    height: auto;
+    background-repeat: no-repeat;
+}
+
+

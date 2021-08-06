@@ -23,7 +23,7 @@ export default () => (
         <Route path='/projects/missionreddot' component={MissionRedDot} />
         <Route path='/projects/missionomega' component={MissionOmega} />
         <Route path='/events' component={EventsRoute} />
+        <Footer />
     </div>
-         <Footer />
     </BrowserRouter>
 )

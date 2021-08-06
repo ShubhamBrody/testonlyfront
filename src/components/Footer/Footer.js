@@ -14,22 +14,22 @@ class Footer extends React.Component {
                     <div className="row">
                         <div className="col-md-4 col-2"></div>
                         <div className="col-md-1 col-2">
-                            <div className={classes.fb} ><FaFacebookSquare /></div>
+                            <a href="https://www.facebook.com/geolifeyouthclub/" target="_blank" className={classes.fb} ><FaFacebookSquare /></a>
                         </div>
                         <div className="col-md-1 col-2">
-                            <div className={classes.insta}><FaInstagram /></div>
+                            <a href="https://www.instagram.com/geolifeyouthclub/" target="_blank" className={classes.insta}><FaInstagram /></a>
                         </div>
                         <div className="col-md-1 col-2">
-                            <div className={classes.youtube}><FaYoutube /></div>
+                            <a href="https://www.youtube.com/channel/UCdiFM3sTqJ45w4czkmK-tiA" target="_blank" className={classes.youtube}><FaYoutube /></a>
                         </div>
                         <div className="col-md-1 col-2">
-                            <div className={classes.twitter}><FaTwitter /></div>
+                            <a href="https://twitter.com/GYC_mumbai?s=08" target="_blank" className={classes.twitter}><FaTwitter /></a>
                         </div>
                         <div className="col-md-4 col-2"></div>
                     </div>
                 <p className={classes.number}> Whatsapp:+91 9136091369 </p>
                 <div className={classes.c1}> 
-                    <span className={classes.copyright}>Copyright @ 2021 Geolife Youth Club |</span>
+                    <span className={classes.copyright}>Copyright @ 2021 Geolife Youth Club | </span>
                     <span  className={classes.by}>Designed by Bugata Abhiram</span>
                 </div>
             </div>
