@@ -24,6 +24,7 @@ const departmentContent = {
 }
 
 function Department(props) {
+    const [title, setTitle] = useState("Department");
     const [isOpen, updateIsOpen] = useState(false);
     const [content, setContent] = useState("Please Select the Department")
 
@@ -45,26 +46,36 @@ function Department(props) {
     return (
         <Grid>
             <br/>
-            <Dropdown onMouseEnter={() => updateIsOpen(true)}
+            <XDropdown onMouseEnter={() => updateIsOpen(true)}
             onMouseLeave={() => updateIsOpen(false)} show={isOpen}>
-                <Dropdown.Toggle caret variant="dark" id="dropdown-basic" style={{ color:"white", fontSize:"calc(1.275rem + .3vw)", backgroundColor:"#191919", opacity:"1" }}>
-                    Department
-                </Dropdown.Toggle>
+                <Toggle variant="dark" style={{ color:"white", fontSize:"calc(1.275rem + .3vw)", backgroundColor:"#191919", opacity:"1" }}>
+                    {title} &nbsp;<div style={{display:'inline-block', width: 0, height: 0, borderLeft: "5px solid transparent", borderRight: "5px solid transparent", borderTop: "8px solid #e0aa3e" }} > </div>
+                </Toggle>
 
-                <Dropdown.Menu style={{ backgroundColor:"#191919", fontSize:"500", color:"white", opacity:"1" }}>
-                    <Dropdown.Item onClick={() => { setContent(departmentContent["Human Resources"]); updateIsOpen(false) } } style={itemStyle}>Human Resources</Dropdown.Item>
-                    <Dropdown.Item onClick={() => { setContent(departmentContent["Design"]); updateIsOpen(false) } } style={itemStyle}>Design</Dropdown.Item>
-                    <Dropdown.Item onClick={() => { setContent(departmentContent["Social Media"]); updateIsOpen(false) } } style={itemStyle}>Social Media</Dropdown.Item>
-                    <Dropdown.Item onClick={() => { setContent(departmentContent["Public Relations"]); updateIsOpen(false) } } style={itemStyle}>Public Relations</Dropdown.Item>
-                    <Dropdown.Item onClick={() => { setContent(departmentContent["Sessions Management"]); updateIsOpen(false) } } style={itemStyle}>Sessions Management</Dropdown.Item>
-                    <Dropdown.Item onClick={() => { setContent(departmentContent["Content Development"]); updateIsOpen(false) } } style={itemStyle}>Content Development</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
+                <XDropdown.Menu style={{ backgroundColor:"#191919", fontSize:"500", color:"white", opacity:"1" }}>
+                    <XDropdown.Item onClick={() => { setContent(departmentContent["Human Resources"]); updateIsOpen(false); setTitle("Human Resources") } } style={itemStyle}>Human Resources</XDropdown.Item>
+                    <XDropdown.Item onClick={() => { setContent(departmentContent["Design"]); updateIsOpen(false); setTitle("Design") } } style={itemStyle}>Design</XDropdown.Item>
+                    <XDropdown.Item onClick={() => { setContent(departmentContent["Social Media"]); updateIsOpen(false); setTitle("Social Media") } } style={itemStyle}>Social Media</XDropdown.Item>
+                    <XDropdown.Item onClick={() => { setContent(departmentContent["Public Relations"]); updateIsOpen(false); setTitle("Public Relations") } } style={itemStyle}>Public Relations</XDropdown.Item>
+                    <XDropdown.Item onClick={() => { setContent(departmentContent["Sessions Management"]); updateIsOpen(false); setTitle("Sessions Management") } } style={itemStyle}>Sessions Management</XDropdown.Item>
+                    <XDropdown.Item onClick={() => { setContent(departmentContent["Content Development"]); updateIsOpen(false); setTitle("Content Development") } } style={itemStyle}>Content Development</XDropdown.Item>
+                </XDropdown.Menu>
+            </XDropdown>
             { displayContent() }
             <br/>
         </Grid>
     );
 };
+
+const XDropdown = styled(Dropdown)`
+    margin: 0px auto;
+`;
+
+const Toggle = styled(XDropdown.Toggle)`
+    :after {
+        display: none;
+    }
+`;
 
 const Grid = styled(Card)`
     background-color: #191919;

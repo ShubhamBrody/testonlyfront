@@ -88,7 +88,6 @@ const TextArea = styled.textarea`
 `;
 
 const Grid = styled(Card)`
-    margin-top: -300px;
     background-color: #191919;
     opacity: 0.8;
     width: 40rem;

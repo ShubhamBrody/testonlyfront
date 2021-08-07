@@ -6,12 +6,15 @@ import styled from "styled-components";
 
 const Cards = (props) => {
   return (
+    <>
     <Container>
       <div><Department/></div>
       <div><Team/></div>
       <div><News/></div>
       <div><Testimonial/></div>
     </Container>
+    <br/>
+    </>
   );
 };
 
@@ -26,16 +29,11 @@ const Container = styled.section`
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
   margin-top: 180px;
-  margin-bottom: 12px; 
-
-  &:after {
-    background: url("background.png") center center / cover no-repeat fixed;
-    content: "";
-    position: absolute;
-    inset: 0px;
-    opacity: 1;
-    z-index: -1;
-  }
+  margin-bottom: 0px;
+  background-image: url(bottom-image.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 `;
 
 export default Cards;
