@@ -1,18 +1,22 @@
 /* eslint-disable import/no-anonymous-default-export */
 
-import classes from './Dropdown.module.css';
+import classes from "./Dropdown.module.css";
 import { NavLink } from "react-router-dom";
 
 export default (props) => {
   return (
-    <div className={`${classes.dropdown} ${!props.isMedia ? classes.projects_dropdown : ''}`}>
-      <div className={classes.dropbtn}>
-        {props.dropbtncontent}
-      </div>
+    <div
+      className={`${classes.dropdown} ${
+        !props.isMedia ? classes.projects_dropdown : ""
+      }`}
+    >
+      <div className={classes.dropbtn}>{props.dropbtncontent}</div>
       <div className={classes.dropdowncontent}>
         <ul>
           {props.links.map((link) => {
-            return link.text !== props.exception ? (
+            return link.text === "ADMIN" ? (
+              link.div
+            ) : link.text !== props.exception ? (
               <li>
                 <NavLink
                   activeClassName={classes.activelink}

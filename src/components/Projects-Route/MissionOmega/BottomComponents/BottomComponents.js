@@ -25,7 +25,7 @@ export default () => {
     e.preventDefault();
     console.log(dbdata);
     await axios
-      .post("http://localhost:5000/devicedonationform/createorupdate", dbdata)
+      .post("http://localhost:5000/devicedonation/createorupdate", dbdata)
       .then((res) => {
         console.log(res.data);
         setIsFormFilled(true);

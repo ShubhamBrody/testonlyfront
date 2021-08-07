@@ -15,6 +15,19 @@ export default (props) => {
     dispatch({ type: 'SIGNED_OUT' });
   }
 
+  const newList = [
+    ...props.links,
+    {
+      text : "ADMIN",
+      div : <SignInorOut 
+      signIn = {signedInToken}
+      linkto = "/signin"
+      style= {{fontWeight: 'bold'}}
+      signOutHandler = {signOutTokenHandler}
+     />
+    }
+  ]
+
   return (
     <div className={classes.Navbar}>
       <div className={classes.logo}>
@@ -61,7 +74,7 @@ export default (props) => {
           dropbtncontent={
             <button style={{ backgroundImage: `url(${hamburger})` }} />
           }
-          links={props.links}
+          links={newList}
           exception= "Projects"
           innerlinks="missions"
         />
