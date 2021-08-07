@@ -13,9 +13,9 @@
 }
 .message
 {
-    text-align: justify ;
+    text-align: center ;
     background-color: rgb(71, 69, 69);
-    font-size: 15px;
+    font-size: 18px;
     margin:0px 100px;
     color: white;
     word-spacing: 10px;
