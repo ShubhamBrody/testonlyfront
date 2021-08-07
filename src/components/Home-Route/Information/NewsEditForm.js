@@ -52,7 +52,7 @@ class MaintenanceForm extends Component {
           {this?.props?.status?.edit ? (
             <React.Fragment>
               <button
-                className="btn btn-primary btn-sm"
+                className="btn btn-light"
                 type="submit"
                 form={form_id}
                 onClick={this.databaseUpdate}
@@ -62,16 +62,13 @@ class MaintenanceForm extends Component {
                   zIndex: "10",
                   backgroundColor: "transparent",
                   borderColor: "transparent",
+                  color: '#ffb302',
                 }}
               >
-                <img
-                  src="tick.png"
-                  style={{ width: "15px", height: "15px" }}
-                  alt="tick"
-                />
+                Save
               </button>
               <button
-                className="btn btn-danger btn-sm"
+              className="btn btn-light"
                 onClick={this.cancelOnClick}
                 style={{
                   marginTop: "-139px",
@@ -79,30 +76,27 @@ class MaintenanceForm extends Component {
                   zIndex: "10",
                   backgroundColor: "transparent",
                   borderColor: "transparent",
+                  color: '#ffb302',
                 }}
               >
-                <img
-                  src="cross.png"
-                  style={{ width: "15px", height: "15px" }}
-                  alt="cross"
-                />
+                Cancel
               </button>
             </React.Fragment>
           ) : (
             <button
-              className="btn btn-primary btn-sm"
+              className="btn btn-light btn-sm"
               onClick={this.editOnClick}
               style={{
                 marginTop: "-90px",
                 marginLeft: "515px",
                 zIndex: "10",
                 backgroundColor: "transparent",
-                borderColor: "transparent",
+                border: "2px solid #ffb302"
               }}
             >
               <img
                 src="pencil-alt-solid.svg"
-                style={{ width: "20px", height: "20px" }}
+                style={{ width: "20px", height: "20px", color: "#ffb302"}}
                 alt="pencil"
               />
             </button>
