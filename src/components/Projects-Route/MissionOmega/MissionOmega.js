@@ -15,6 +15,7 @@ export default () => {
             <HeaderContent />
             <MiddleComponent />
             <BottomComponent />
+            <br /><br />
             <Footer />
         </Fragment>
     );
