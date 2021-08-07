@@ -3,12 +3,15 @@ import {Fragment} from 'react';
 import links from '../Navbar/Navbar.initial';
 import Navbar from '../Navbar/Navbar'
 import logo from '../../resources/images/logo.png';
+import Events from './Events';
+import Footer from '../Footer/Footer';
 
 export default () => {
   return (
     <Fragment>
       <Navbar links={links} imgSrc={logo}/>
-      <p>I am Events page</p>
+      <Events />
+      <Footer />
     </Fragment>
   );
 };

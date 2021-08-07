@@ -8,16 +8,16 @@ const links = [
       text: 'Projects',
       missions: [
         {
-          linkto: "/projects/missionmillion",
-          text: 'Mission Million Books',
-        },
-        {
           linkto: "/projects/missionreddot",
-          text: 'Mission Red Dot',
+          text: 'Project Red Dot',
         },
         {
           linkto: "/projects/missionomega",
-          text: 'Mission Digital Omega',
+          text: 'Digital Omega',
+        },
+        {
+          linkto: "/projects/missionmillion",
+          text: 'Mission Million Books',
         }
       ]
     },
