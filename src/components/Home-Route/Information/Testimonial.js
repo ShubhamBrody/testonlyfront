@@ -4,7 +4,7 @@ import Video from '../Video';
 const Testimonial = (props) => {
     return (
         <div >
-            <h4 style={{ height: '0.5rem', paddingTop: '5%', color: 'black', textAlign: 'center' }}>Testimonials</h4>
+            <h4 style={{ height: '0.5rem', paddingTop: '5%', color: '#fff', textAlign: 'center' }}>Testimonials</h4>
             <Wrap>
                 <Video youtubeId="mmRim3ssqN4" />
             </Wrap>
@@ -14,12 +14,11 @@ const Testimonial = (props) => {
 
 const Wrap = styled.div`
     position: relative; 
-    padding-bottom: 56.25%; 
     padding-top: 2rem; 
     padding-left: 0; 
     padding-right: 0;
     width: 500px;
-    height: 650px;
+    height: 400px;
 
   @media (max-width: 1000px) {
     margin: 0px auto;
