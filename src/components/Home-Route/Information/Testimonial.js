@@ -21,8 +21,9 @@ const Wrap = styled.div`
     width: 500px;
     height: 650px;
 
-  @media (max-width: 1300px) {
+  @media (max-width: 1000px) {
     margin: 0px auto;
+    width: 90vw;
   }
 `;
 

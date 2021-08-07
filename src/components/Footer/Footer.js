@@ -8,7 +8,7 @@ import classes from './Footer.module.css';
 
 class Footer extends React.Component {
     render() {
-        return <div className="container-fluid">
+        return <div className="container-fluid" style={{marginTop: '40px'}}>
             <div className={classes.bg}>
                 <p className={classes.contact}> CONTACT US </p>
                     <div className="row">
