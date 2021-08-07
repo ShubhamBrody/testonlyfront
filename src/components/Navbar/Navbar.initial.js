@@ -29,11 +29,6 @@ const links = [
       linkto: "/events",
       text: 'Events',
     },
-    {
-      linkto: "/signin",
-      text: 'SignIn',
-      style: {fontWeight: 'bold'}
-    },
   ];
 
   export default links;

@@ -2,9 +2,11 @@
 import classes from "./SignIn.module.css";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 export default (props) => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const [credsEntered, setCredsEntered] = useState({
     username: "",
     password: "",
@@ -39,7 +41,10 @@ export default (props) => {
       .then((res) => {
         if (res.data === "PassMatched") {
           console.log(res.data);
-          history.push({ pathname: "/", state: { admin: true } });
+          dispatch({
+            type: "SIGNED_IN",
+          });
+          history.push({ pathname: "/"});
         } else {
           var error = document.getElementById("userPassWrong");
           error.style.visibility = "visible";

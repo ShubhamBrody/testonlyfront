@@ -1,10 +1,20 @@
 /* eslint-disable import/no-anonymous-default-export */
 import classes from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 import hamburger from "../../resources/images/hamburger.svg";
 import Dropdown from "../UI/Dropdown";
+import SignInorOut from './SignInorOut';
 
 export default (props) => {
+
+  const signedInToken = useSelector(state => state.signedIn);
+  const dispatch = useDispatch();
+
+  const signOutTokenHandler = () => {
+    dispatch({ type: 'SIGNED_OUT' });
+  }
+
   return (
     <div className={classes.Navbar}>
       <div className={classes.logo}>
@@ -38,6 +48,12 @@ export default (props) => {
               </li>
             );
           })}
+          <SignInorOut 
+           signIn = {signedInToken}
+           linkto = "/signin"
+           style= {{fontWeight: 'bold'}}
+           signOutHandler = {signOutTokenHandler}
+          />
         </ul>
       </div>
         <Dropdown

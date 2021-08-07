@@ -3,10 +3,12 @@ import { Card, CardTitle } from "react-bootstrap-card";
 import styled from 'styled-components';
 import NewsEditForm from "./NewsEditForm";
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from 'react-redux';
 
 const News = (props) => {
+
+  const signedInToken = useSelector(state => state.signedIn);
 
   const [newsObj, setNewsObj] = useState({
     date: "",
@@ -41,8 +43,6 @@ const News = (props) => {
     });
   }
 
-  const location = useLocation();
-
     return (
         <Grid>
           <br/>
@@ -50,7 +50,7 @@ const News = (props) => {
             
           <Container>
 
-          {location.state && location.state.admin
+          {signedInToken
           ? (<NewsEditForm fields={newsObj} updateFields={updateFields} />)
           :  (<>
             <br/>
