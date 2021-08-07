@@ -12,16 +12,15 @@
 
 .header img {
     float: left;
-    width: 172px;
-    height: 172px;
-    margin-right: 10px;
+    width: 30vw;
+    margin: 1rem 2rem;
     animation: image 0.7s ease-in-out;
 }
 
 @keyframes image {
     from {
         opacity: 0;
-        transform: translateX(300px);
+        transform: translateX(-200px);
     }
     to {
         opacity: 1;
