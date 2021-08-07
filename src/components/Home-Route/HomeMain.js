@@ -16,6 +16,7 @@ export default () => {
             <Welcome/>
             <AboutUs/>
             <Information/>
+            <br /><br />
             <Footer/>
         </Fragment>
     )

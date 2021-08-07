@@ -5,9 +5,9 @@ const Welcome = (props) => {
   return (
     <Container>
       <VerticalButton>
-        <a href="/" target="_blank">Join Us</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScQprARSH57vG5dFy25GOgMryPUniSL7dU6KAA-0oRZo0TDLA/viewform" target="_blank" rel="noreferrer">Join Us</a>
       </VerticalButton>
-      <img src="geolife-youth-club.png" alt="GYC"/>
+      <img src="geolife-youth-club.png" alt="GYC" style={{ float: "left", width: "40vw", marginTop: "10rem", marginLeft: "2rem", animation: "image 0.7s ease-in-out" }}/>
       <SecondDiv />
     </Container>
   );
@@ -20,6 +20,12 @@ const SecondDiv = styled.div`
   padding: 500px 0px ;
   text-align: center;
   margin-bottom:0px;
+
+  @media (max-width: 1200px) {
+    margin-bottom:70px;
+    margin-top:70px;
+    padding: 350px 0px ;
+}
 `;
 
 const VerticalButton = styled.div`
@@ -38,7 +44,7 @@ const VerticalButton = styled.div`
     transform-origin: bottom right;
     position: fixed;
     right: 0px;
-    margin-top: -90px;    
+    margin-top: 0px;    
 
     a {
         color:#e0aa3e;

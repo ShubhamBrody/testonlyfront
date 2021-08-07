@@ -29,12 +29,12 @@ export default (props) => {
                   to={props.linkto}
                   style={props.style || {}}
                 >
-                  <div className={classes.navdivinternal}>SignIn</div>
+                  <div className={classes.navdivinternal}>Sign In</div>
                 </NavLink>
               </li>
               :
               <li className={classes.listInline}>
-                  <div onClick={signOutHandler} className={classes.navdivinternal} style={style}>SignOut</div>
+                  <div onClick={signOutHandler} className={classes.navdivinternal} style={style}>Sign Out</div>
               </li>
     )
 }

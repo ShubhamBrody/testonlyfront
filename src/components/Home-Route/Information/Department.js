@@ -5,13 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
 
 const itemStyle = {
-    "backgroundColor": "#191919",
-    "opacity": "1",
+    "backgroundColor": "rgba(25, 25, 25, 0,8)",
     "color": "white", 
     "text-align": "center",
     "border": "1px solid #ffffff",
     "borderRadius": "8px",
-    "font-size":'13px'
+    "font-size":'14.4px'
 }
 
 const departmentContent = {
@@ -78,8 +77,7 @@ const Toggle = styled(XDropdown.Toggle)`
 `;
 
 const Grid = styled(Card)`
-    background-color: #191919;
-    opacity: 0.8;
+    background-color: rgba(25, 25, 25, 0.8);
     width: 40rem;
     height: 22.5rem;
     border-radius: 6px;

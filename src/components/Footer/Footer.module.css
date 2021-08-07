@@ -27,16 +27,16 @@
  }
  .by
  {
-    color:goldenrod;
+    color:#e0aa3e;
     margin-bottom: 100px;
     display: inline;
     
  }
  .twitter
  {
-    color: goldenrod;
+    color: #e0aa3e;
     display: inline;
-    font-size:50px ;
+    font-size:50px !important;
     align-self: visited;
 }
 .twitter:hover{
@@ -44,27 +44,27 @@
 }
  .youtube
  {
-    color: goldenrod;
+    color: #e0aa3e;
     display: inline;
-    font-size: 50px;
+    font-size: 50px !important;
 }
 .youtube:hover{
     color: white !important;
 }
  .fb
  {
-     color: goldenrod ;
+     color: #e0aa3e;
      display: inline;
-     font-size: 50px;
+     font-size: 50px !important;
      }
      .fb:hover{
           color: white !important;
      }
  .insta
  {
-    color: goldenrod;
+    color: #e0aa3e;
     display: inline; 
-    font-size: 50px;
+    font-size: 50px !important;
  }
  .insta:hover{
     color: white !important;
@@ -75,4 +75,3 @@
     padding: 25px;
     font-size: 15px;
 }
-

@@ -27,9 +27,10 @@ const Container = styled.section`
   grid-template-columns: repeat(2, minmax(0, 1fr));
   @media (max-width: 1400px) {
     grid-template-columns: repeat(1, minmax(0, 1fr));
+    margin-bottom: 0px;
   }
   margin-top: 180px;
-  margin-bottom: 0px;
+  margin-bottom: 180px;
   background-image: url(bottom-image.png);
   background-repeat: no-repeat;
   background-size: cover;

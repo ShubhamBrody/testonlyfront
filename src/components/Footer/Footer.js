@@ -12,7 +12,7 @@ class Footer extends React.Component {
             <div className={classes.bg}>
                 <p className={classes.contact}> CONTACT US </p>
                     <div className="row">
-                        <div className="col-md-4 col-2"></div>
+                        <div className="col-md-4 col-2" style={{marginRight: '30px'}}></div>
                         <div className="col-md-1 col-2">
                             <a href="https://www.facebook.com/geolifeyouthclub/" target="_blank" className={classes.fb} ><FaFacebookSquare /></a>
                         </div>
@@ -27,7 +27,7 @@ class Footer extends React.Component {
                         </div>
                         <div className="col-md-4 col-2" style={{padding: '0'}}></div>
                     </div>
-                <p className={classes.number}> Whatsapp:+91 9136091369 </p>
+                <p className={classes.number}> Whatsapp: +91 9136091369 </p>
                 <div className={classes.c1}> 
                     <span className={classes.copyright}>Copyright @ 2021 Geolife Youth Club | </span>
                     <span  className={classes.by}>Designed by Bugata Abhiram</span>

@@ -82,8 +82,7 @@ const Team = (props) => {
 };
 
 const Grid = styled(Card)`
-    background-color: #191919;
-    opacity: 0.8;
+    background-color: rgba(25, 25, 25, 0.8);
     width: 40rem;
     height: 22.5rem;
     border-radius: 6px;
@@ -191,7 +190,7 @@ const Carousel = styled(Slider)`
   .slick-next {
     position: absolute;
     right: @gutters;
-    background: #191919;
+    background: transparent;
     border: none;
     // color: transparent;
     width: 30px;

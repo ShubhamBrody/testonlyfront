@@ -22,6 +22,8 @@ const Wrap = styled.div`
 
   @media (max-width: 1300px) {
     margin: 0px auto;
+    width: 700px;
+    height: 500px;
   }
 `;
 
