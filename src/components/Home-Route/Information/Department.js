@@ -1,16 +1,17 @@
 import { React, useState } from 'react';
 import { Card, CardText } from "react-bootstrap-card";
 import Dropdown from "react-bootstrap/Dropdown";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import styled from "styled-components";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const itemStyle = {
-    "backgroundColor": "rgba(25, 25, 25, 0,8)",
+    "backgroundColor": "rgba(25,25,25,0.8)",
     "color": "white", 
     "text-align": "center",
-    "border": "1px solid #ffffff",
+    "border": "0.5px solid #ffffff",
     "borderRadius": "8px",
-    "font-size":'14.4px'
+    "font-size":'18px',
+    "justify-content": "justify"
 }
 
 const departmentContent = {
@@ -48,17 +49,17 @@ function Department(props) {
             <XDropdown onMouseEnter={() => updateIsOpen(true)}
             onMouseLeave={() => updateIsOpen(false)} show={isOpen}>
                 <Toggle variant="dark" style={{ color:"white", fontSize:"calc(1.275rem + .3vw)", backgroundColor:"#191919", opacity:"1" }}>
-                    {title} &nbsp;<div style={{display:'inline-block', width: 0, height: 0, borderLeft: "5px solid transparent", borderRight: "5px solid transparent", borderTop: "8px solid #e0aa3e" }} > </div>
+                    {title} &nbsp; <div style={{display:'inline-block', width: 0, height: 0, borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderTop: "15px solid #e0aa3e" }} > </div>
                 </Toggle>
 
-                <XDropdown.Menu style={{ backgroundColor:"#191919", fontSize:"500", color:"white", opacity:"1" }}>
-                    <XDropdown.Item onClick={() => { setContent(departmentContent["Human Resources"]); updateIsOpen(false); setTitle("Human Resources") } } style={itemStyle}>Human Resources</XDropdown.Item>
-                    <XDropdown.Item onClick={() => { setContent(departmentContent["Design"]); updateIsOpen(false); setTitle("Design") } } style={itemStyle}>Design</XDropdown.Item>
-                    <XDropdown.Item onClick={() => { setContent(departmentContent["Social Media"]); updateIsOpen(false); setTitle("Social Media") } } style={itemStyle}>Social Media</XDropdown.Item>
-                    <XDropdown.Item onClick={() => { setContent(departmentContent["Public Relations"]); updateIsOpen(false); setTitle("Public Relations") } } style={itemStyle}>Public Relations</XDropdown.Item>
-                    <XDropdown.Item onClick={() => { setContent(departmentContent["Sessions Management"]); updateIsOpen(false); setTitle("Sessions Management") } } style={itemStyle}>Sessions Management</XDropdown.Item>
-                    <XDropdown.Item onClick={() => { setContent(departmentContent["Content Development"]); updateIsOpen(false); setTitle("Content Development") } } style={itemStyle}>Content Development</XDropdown.Item>
-                </XDropdown.Menu>
+                <Dropdown.Menu style={{ backgroundColor:"#191919" , color:"white", opacity:"1", border: "0px", borderRadius: "6px", width: "320px", marginBottom: "0px"}}>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Human Resources"]); updateIsOpen(false); setTitle("Human Resources") } } style={itemStyle}>Human Resources</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Design"]); updateIsOpen(false); setTitle("Design") } } style={itemStyle}>Design</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Social Media"]); updateIsOpen(false); setTitle("Social Media") } } style={itemStyle}>Social Media</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Public Relations"]); updateIsOpen(false); setTitle("Public Relations") } } style={itemStyle}>Public Relations</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Sessions Management"]); updateIsOpen(false); setTitle("Sessions Management") } } style={itemStyle}>Sessions Management</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Content Development"]); updateIsOpen(false); setTitle("Content Development") } } style={itemStyle}>Content Development</Dropdown.Item>
+                </Dropdown.Menu>
             </XDropdown>
             { displayContent() }
             <br/>
@@ -71,13 +72,14 @@ const XDropdown = styled(Dropdown)`
 `;
 
 const Toggle = styled(XDropdown.Toggle)`
+    width: 320px;
     :after {
         display: none;
     }
 `;
 
 const Grid = styled(Card)`
-    background-color: rgba(25, 25, 25, 0.8);
+    background-color: rgba(25,25,25,0.8);
     width: 40rem;
     height: 22.5rem;
     border-radius: 6px;
@@ -85,7 +87,6 @@ const Grid = styled(Card)`
     text-align: center;
     color: white;
     overflow: hidden;
-
     @media (max-width: 1400px) {
         width: 56rem;
         height: 31.5rem;

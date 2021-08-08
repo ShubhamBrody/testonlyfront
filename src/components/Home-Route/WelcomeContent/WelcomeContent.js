@@ -7,7 +7,7 @@ const Welcome = (props) => {
       <VerticalButton>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScQprARSH57vG5dFy25GOgMryPUniSL7dU6KAA-0oRZo0TDLA/viewform" target="_blank" rel="noreferrer">Join Us</a>
       </VerticalButton>
-      <img src="geolife-youth-club.png" alt="GYC" style={{ float: "left", width: "40vw", marginTop: "10rem", marginLeft: "2rem", animation: "image 0.7s ease-in-out" }}/>
+      <img src="geolife-youth-club.png" alt="GYC" style={{ float: "left", width: "40vw", marginTop: "10rem", marginLeft: "2rem", animation: "image 1s ease-in-out" }}/>
       <SecondDiv />
     </Container>
   );
@@ -78,6 +78,17 @@ const Container = styled.div`
     img {
       margin-bottom: -900px;
     }
+
+    @keyframes image {
+      from {
+          opacity: 0;
+          transform: translateX(-200px);
+      }
+      to {
+          opacity: 1;
+          transform: translateX(0px);
+      }
+  }
 `;
 
 export default Welcome;

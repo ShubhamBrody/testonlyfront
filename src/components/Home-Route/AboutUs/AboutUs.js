@@ -10,7 +10,6 @@ const details = {
 }
 
 const Viewers = (props) => {
-  const [isOpen, updateIsOpen] = useState(false);
   const [content, setContent] = useState("GYC is organised into seven structured departments namely- Public relations, HR external affairs, HR internal affairs, Sessions management, Social media, Content development, Design. We work inter-departmentally as well as intra-departmentally in a well-coordinated fashion. Volunteers are recruited based on their skill post interview. Their work is assessed every week. Weekly meetings are conducted to discuss the progress as well as new assignments. We conduct competitions and deliver presentations to inculcate import skills for their overall development.​")
 
   const displayContent = () => {
@@ -66,18 +65,18 @@ const Viewers = (props) => {
       <Wrap1>
               <Nav>
                 <NavMenu>
-                    <a onClick={() => { setContent(details["About Us"]); updateIsOpen(false); changeColour1()} } style={{color: "black"}}>
+                    <button onClick={() => { setContent(details["About Us"]); changeColour1()} } style={{color: "black"}}>
                         <span style={{color: "#c5a240"}} id={"aboutus"}>About Us</span>
-                    </a>
-                    <a onClick={() => { setContent(details["Mission"]); updateIsOpen(false); changeColour2()} } style={{color: "black"}}>
+                    </button>
+                    <button onClick={() => { setContent(details["Mission"]);changeColour2()} } style={{color: "black"}}>
                         <span id={"mission"}>Mission</span>
-                    </a>
-                    <a onClick={() => { setContent(details["Vision"]); updateIsOpen(false); changeColour3()} } style={{color: "black"}}>
+                    </button>
+                    <button onClick={() => { setContent(details["Vision"]);changeColour3()} } style={{color: "black"}}>
                         <span id={"vision"}>Vision</span>
-                    </a>
-                    <a onClick={() => { setContent(details["History"]); updateIsOpen(false); changeColour4()} } style={{color: "black"}}>
+                    </button>
+                    <button onClick={() => { setContent(details["History"]); changeColour4()} } style={{color: "black"}}>
                         <span id={"history"}>History</span>
-                    </a>
+                    </button>
                 </NavMenu>
               </Nav>
             <Pfake>{ displayContent() }</Pfake>
@@ -123,12 +122,9 @@ const Container = styled.div`
 `;
 
 const Wrap1 = styled.div`
-  //   padding-top: 100px;
-
   width: 860px;
   height: 450px;
   cursor: pointer;
-  //   overflow: hidden;
   position: relative;
 
   padding-left: 40px;
@@ -139,11 +135,8 @@ const Wrap1 = styled.div`
     margin: 0px auto;
   }
 
-  
   background: url('aboutus.png');
   background-size: cover;
-
-  // opacity: 0.8;
 `;
 
 const Wrap2 = styled.div`
@@ -164,7 +157,6 @@ const Wrap2 = styled.div`
 `;
 
 const Nav = styled.div`
-  //   position: fixed;
   left: 0;
   right: 0;
   height: 70px;
@@ -175,11 +167,8 @@ const Nav = styled.div`
   letter-spacing: 14px;
   z-index: 3;
   margin-top: 70px;
-
   padding-right: 20px;
-
   border-right: 2px solid #c5a240;
-
 
   p {
     margin: 0px auto;
@@ -204,11 +193,14 @@ const NavMenu = styled.div`
   margin-right: auto;
   margin-left: -40px;
   
-  a {
+  button {
     display: flex;
     align-items: center;
     padding: 0 48px;
     text-decoration: none;
+    background-color: transparent;
+    border-color: transparent;
+    border: none;
 
     @media (max-width: 1300px) {
       padding: 0 80px;
@@ -249,9 +241,6 @@ const NavMenu = styled.div`
       }
     }
   }
-  /* @media (max-width: 768px) {
-    display: none;
-  } */
 `;
 
 
