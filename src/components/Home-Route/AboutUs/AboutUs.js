@@ -15,14 +15,14 @@ const Viewers = (props) => {
   const displayContent = () => {
         if(content === "GYC is organised into seven structured departments namely- Public relations, HR external affairs, HR internal affairs, Sessions management, Social media, Content development, Design. We work inter-departmentally as well as intra-departmentally in a well-coordinated fashion. Volunteers are recruited based on their skill post interview. Their work is assessed every week. Weekly meetings are conducted to discuss the progress as well as new assignments. We conduct competitions and deliver presentations to inculcate import skills for their overall development.​") {
             return (
-                <p visible={false} style={{ color:"#ffffff", paddingTop: '50px', textAlign: "center" }}>
+                <p visible={false} style={{ color:"#ffffff", paddingTop: '10px', textAlign: "center", lineHeight: '30px', animation: 'text 0.7s ease-in-out' }}>
                     {content}
                 </p>
             )
         }
 
         return (
-            <p visible={false} style={{ color:"#ffffff", paddingTop: '60px', position: "relative", textAlign: "center" }}>
+            <p visible={false} style={{ color:"#ffffff", paddingTop: '50px', position: "relative", textAlign: "center", lineHeight: '35px', animation: 'text 0.7s ease-in-out' }}>
                 {content}
             </p>
         )
@@ -93,15 +93,27 @@ const Pfake = styled.p`
   text-align: justify;
 
   padding-right: 100px;
-  height: 260px;
+  height: 250px;
 
   border-right: 2px solid #c5a240;
+  animation: text 0.7s ease-in-out;
 
   @media (max-width: 1300px) {
     width: 100%;
     margin: 0px auto;
     border-right: 0px;
     padding-right: 0px;
+  }
+
+  @keyframes text {
+    from {
+        opacity: 0;
+        transform: scale3d(1.02, 1.02, 1.02);
+    }
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
   }
 `;
 
@@ -123,27 +135,31 @@ const Container = styled.div`
 
 const Wrap1 = styled.div`
   width: 860px;
-  height: 450px;
+  height: 550px;
   cursor: pointer;
   position: relative;
 
   padding-left: 40px;
-  padding-right: 200px;
+  padding-right: 180px;
 
   @media (max-width: 1300px) {
+    height: 450px;
+    padding-top: 40px;
+    background-size: cover;
     padding-right: 40px;
     margin: 0px auto;
   }
 
   background: url('aboutus.png');
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-size: contain;
 `;
 
 const Wrap2 = styled.div`
   padding-top: 8%;
   padding-left: 0px;
-  width: 600px;
-  height: 500px;
+  width: 650px;
+  height: 600px;
 
   cursor: pointer;
   position: relative;
@@ -159,14 +175,15 @@ const Wrap2 = styled.div`
 const Nav = styled.div`
   left: 0;
   right: 0;
-  height: 70px;
+  height: 120px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 0px;
   letter-spacing: 14px;
   z-index: 3;
-  margin-top: 70px;
+  margin-top: 80px;
+  padding-top: -20px;
   padding-right: 20px;
   border-right: 2px solid #c5a240;
 

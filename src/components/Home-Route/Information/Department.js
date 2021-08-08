@@ -2,10 +2,11 @@ import { React, useState } from 'react';
 import { Card, CardText } from "react-bootstrap-card";
 import Dropdown from "react-bootstrap/Dropdown";
 import styled from "styled-components";
+import departmentContent from './DepartmentTextData';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const itemStyle = {
-    "backgroundColor": "rgba(25,25,25,0.8)",
+    "backgroundColor": "rgba(25,25,25,1)",
     "color": "white", 
     "text-align": "center",
     "border": "0.5px solid #ffffff",
@@ -14,14 +15,15 @@ const itemStyle = {
     "justify-content": "justify"
 }
 
-const departmentContent = {
-    "Human Resources": "We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​ We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​ We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​ We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​",
-    "Design": "",
-    "Social Media": "",
-    "Public Relations": "",
-    "Sessions Management": "",
-    "Content Development": ""
-}
+// const departmentContent = {
+//     "Human Resources": "We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​ We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​ We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​ We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​",
+//     "Design": "",
+//     "Social Media": "",
+//     "Public Relations": "",
+//     "Sessions Management": "",
+//     "Content Development": "",
+//     "Marketing": ""
+// }
 
 function Department(props) {
     const [title, setTitle] = useState("Department");
@@ -36,9 +38,14 @@ function Department(props) {
                 </CardText>
             )
         }
+
+        const listItems = content.map((data) => {
+            return <li>{data}</li> //style={{ color: '#fff }}
+        })
+
         return (
-            <CardText visible={false} style={{ paddingTop: '1.5rem', paddingLeft: "2rem", paddingRight: "2rem", position: "relative", textAlign: "center", height: '500px', overflowY: "auto", paddingBottom: '150px', marginTop: '20px' }}>
-                {content}
+            <CardText visible={false} style={{ paddingTop: '1.5rem', paddingLeft: "2rem", paddingRight: "2rem", position: "relative", textAlign: "center", lineHeight: '32px', height: '500px', overflowY: "auto", paddingBottom: '0px', marginBottom: '0px', marginTop: '20px' }}>
+                <ul style={{ listStyleType: "circle", listStylePosition: "inside" }}> {listItems} </ul>
             </CardText>
         )
     }
@@ -53,12 +60,13 @@ function Department(props) {
                 </Toggle>
 
                 <Dropdown.Menu style={{ backgroundColor:"#191919" , color:"white", opacity:"1", border: "0px", borderRadius: "6px", width: "320px", marginBottom: "0px"}}>
-                    <Dropdown.Item onClick={() => { setContent(departmentContent["Human Resources"]); updateIsOpen(false); setTitle("Human Resources") } } style={itemStyle}>Human Resources</Dropdown.Item>
-                    <Dropdown.Item onClick={() => { setContent(departmentContent["Design"]); updateIsOpen(false); setTitle("Design") } } style={itemStyle}>Design</Dropdown.Item>
-                    <Dropdown.Item onClick={() => { setContent(departmentContent["Social Media"]); updateIsOpen(false); setTitle("Social Media") } } style={itemStyle}>Social Media</Dropdown.Item>
                     <Dropdown.Item onClick={() => { setContent(departmentContent["Public Relations"]); updateIsOpen(false); setTitle("Public Relations") } } style={itemStyle}>Public Relations</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Marketing"]); updateIsOpen(false); setTitle("Marketing") } } style={itemStyle}>Marketing</Dropdown.Item>
                     <Dropdown.Item onClick={() => { setContent(departmentContent["Sessions Management"]); updateIsOpen(false); setTitle("Sessions Management") } } style={itemStyle}>Sessions Management</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Human Resources"]); updateIsOpen(false); setTitle("Human Resources") } } style={itemStyle}>Human Resources</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Social Media"]); updateIsOpen(false); setTitle("Social Media") } } style={itemStyle}>Social Media</Dropdown.Item>
                     <Dropdown.Item onClick={() => { setContent(departmentContent["Content Development"]); updateIsOpen(false); setTitle("Content Development") } } style={itemStyle}>Content Development</Dropdown.Item>
+                    <Dropdown.Item onClick={() => { setContent(departmentContent["Design"]); updateIsOpen(false); setTitle("Design") } } style={itemStyle}>Design</Dropdown.Item>
                 </Dropdown.Menu>
             </XDropdown>
             { displayContent() }

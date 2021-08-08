@@ -43,7 +43,7 @@ const Team = (props) => {
                 </div>
                 <div class="slider__item">
                 <img src="/team_members/mandapaka.jpg" alt=""/>
-                    <p style={{ fontSize: "15px" }}><b>Mandapaka Rakshitha</b></p>
+                    <p><b>Mandapaka Rakshitha</b></p>
                     <h6 style={{marginBottom: "14px"}}>Head - Social Media</h6>
                 </div> 
                 <div class="slider__item">
@@ -160,7 +160,6 @@ const Carousel = styled(Slider)`
   .slick-dots li button:before {
     opacity: 1;
     color: white;
-    margin-right: -50px;
   }
 
   .slick-dots li.slick-active button:before {
@@ -172,7 +171,7 @@ const Carousel = styled(Slider)`
     margin-left: -7px;
 
     li {
-      margin-right: -15px;
+      width: 2px;
       margin-top: 40px;
     }
   }
