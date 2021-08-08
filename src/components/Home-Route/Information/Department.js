@@ -40,11 +40,11 @@ function Department(props) {
         }
 
         const listItems = content.map((data) => {
-            return <li>{data}</li> //style={{ color: '#fff }}
+            return <li style={{ color: '#fff', pointerEvents: 'none' }}>{data}</li>
         })
 
         return (
-            <CardText visible={false} style={{ paddingTop: '1.5rem', paddingLeft: "2rem", paddingRight: "2rem", position: "relative", textAlign: "center", lineHeight: '32px', height: '500px', overflowY: "auto", paddingBottom: '0px', marginBottom: '0px', marginTop: '20px' }}>
+            <CardText visible={false} style={{ paddingTop: '1.5rem', paddingLeft: "4rem", paddingRight: "2rem", position: "relative", textAlign: "left", lineHeight: '32px', height: '500px', overflowY: "auto", paddingBottom: '0px', marginBottom: '0px', marginTop: '20px' }}>
                 <ul style={{ listStyleType: "circle", listStylePosition: "inside" }}> {listItems} </ul>
             </CardText>
         )

@@ -2,9 +2,11 @@
 {
     background-image: url("../../resources/images/p background.png");
     background-repeat: no-repeat;
-    background-size:790px;
-     height: 500px; 
-    margin: 25px  140px ;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: center;
+    height: 500px; 
+    margin: 25px  320px ;
     text-align: center;
 }
 .top img
@@ -54,4 +56,10 @@
     background-repeat: no-repeat;
 }
 
-
+@media (max-width: 1200px) {
+    .top {
+        height: 450px;
+        margin: 25px  140px ;
+        background-position-x: center;
+    }
+}
