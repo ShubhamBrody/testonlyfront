@@ -19,7 +19,7 @@ const Events = (props) => {
 
     return (
         <Container>     
-            <img src="events-title.png" style={{marginTop: "120px", animation: "image 1s ease-in-out"}}></img>
+            <img src="events-title.png" style={{marginTop: "50px", animation: "image 1s ease-in-out"}}></img>
             <p style={{marginTop: "120px", marginBottom: "6px"}}>We have started with our own digital sessions every sunday for rural youth</p>
             <img src="online-sessions.png" alt="Refresh for image" style={{marginTop: "50px", marginBottom: "20px"}}></img>
             
