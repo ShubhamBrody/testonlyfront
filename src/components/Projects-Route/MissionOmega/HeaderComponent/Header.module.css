@@ -14,8 +14,8 @@
 
 .headerContainer ul, li {
     text-align: justify;
-    line-height: 3rem !important;
-    font-size: 1.25rem !important;
+    line-height: 3rem;
+    font-size: 1.25rem;
     animation: text 0.7s ease-in-out;
 }
 

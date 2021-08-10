@@ -89,7 +89,7 @@ export default (props) => {
               <p
                 id="secKeyWrong"
                 style={{
-                  color: "yellow",
+                  color: "#e0aa3e",
                   fontSize: "1rem",
                   textAlign: "center",
                   visibility: "hidden"
@@ -120,7 +120,7 @@ export default (props) => {
             <p
               id="newPassWrong"
               style={{
-                color: "yellow",
+                color: "#e0aa3e",
                 fontSize: "1rem",
                 textAlign: "center",
                 visibility: "hidden"

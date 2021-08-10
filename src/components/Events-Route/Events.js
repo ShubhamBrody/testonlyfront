@@ -55,7 +55,7 @@ const Description = styled.div`
 
 const Heading = styled.div`
     text-align: center;
-    color: #c5a240;
+    color: #e0aa3e;
     font-size: 35px;
     // margin: 20px 50px 50px 50px;
     border-radius: 5px;
@@ -97,7 +97,7 @@ const Container = styled(Card)`
     h2
     {
         text-align: center;
-        color: #c5a240;
+        color: #e0aa3e;
     }
 
     @keyframes image {

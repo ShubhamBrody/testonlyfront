@@ -4,8 +4,6 @@ import textData from './PartnersTextData';
 import image from '../../resources/images/our-partners.png';
 import { Fragment } from 'react';
 import { BiUpArrow, BiDownArrow } from 'react-icons/bi';
-import { useState, useEffect } from 'react';
-import { extend } from 'jquery';
 import React from 'react';
 
 class Partnercomponent extends React.Component {

@@ -134,7 +134,7 @@ export default () => {
             <img src={qrcode} alt="QR CODE" style={{width: '70%'}}/>
           </FormBackground>
           <FormBackground style={{width: '80%', height: '40%'}}>
-            <h3 style={{color: '#ffb302', textAlign: 'center'}}>Below are the details for Net Banking</h3>
+            <h3 style={{color: '#e0aa3e', textAlign: 'center'}}>Below are the details for Net Banking</h3>
             <p style={{color: 'white'}}>Name - Geolife Foundation</p>
             <p style={{color: 'white'}}>Account No. - 622011006511</p>
             <p style={{color: 'white'}}>IFSC - KKBK0000642</p>

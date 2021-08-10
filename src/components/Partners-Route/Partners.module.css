@@ -57,7 +57,7 @@
 {
     text-align: left;
     background-color: black;
-    color: goldenrod;
+    color: #e0aa3e;
     font-size: 25px;
     margin: 20px 0px;
     border-radius: 5px;
@@ -82,7 +82,7 @@
 }
 .arrow svg {
     font-size: 35px;
-    color: goldenrod;
+    color: #e0aa3e;
 }
 .arrow
 {

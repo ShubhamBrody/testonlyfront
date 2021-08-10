@@ -25,7 +25,7 @@
     width: 80%;
     margin: 0 auto;
     padding: 1rem 2rem;
-    background-color: #f8c3749c;
+    background-color: #e0aa3e;
     text-align: center;
     margin-top: 0;
     border-radius: 10px;
@@ -45,7 +45,7 @@
 }
 
 .signInButton:hover {
-    color: #ffb302;
+    color: #e0aa3e;
 }
 
 .signInContainer input {

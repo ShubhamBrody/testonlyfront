@@ -18,7 +18,7 @@ input[type=checkbox] {
     height: 15px !important;
     width: 15px !important;
     background-color: black;
-    border: 2px solid #ffb302;
+    border: 2px solid #e0aa3e;
     border-radius: 4px;
 }
 
@@ -29,7 +29,7 @@ input[type=checkbox] {
 .containerLabel input:checked ~ .mark {
     background-image: url('../../resources/images/checkmark.png');
     background-size: contain;
-    background-color: #ffb302;
+    background-color: #e0aa3e;
 }
 
 /* .mark::after {

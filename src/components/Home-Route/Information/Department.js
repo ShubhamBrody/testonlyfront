@@ -15,16 +15,6 @@ const itemStyle = {
     "justify-content": "justify"
 }
 
-// const departmentContent = {
-//     "Human Resources": "We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​ We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​ We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​ We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​",
-//     "Design": "",
-//     "Social Media": "",
-//     "Public Relations": "",
-//     "Sessions Management": "",
-//     "Content Development": "",
-//     "Marketing": ""
-// }
-
 function Department(props) {
     const [title, setTitle] = useState("Department");
     const [isOpen, updateIsOpen] = useState(false);
@@ -40,11 +30,11 @@ function Department(props) {
         }
 
         const listItems = content.map((data) => {
-            return <li style={{ color: '#fff', pointerEvents: 'none' }}>{data}</li>
+            return <li style={{ color: '#fff', pointerEvents: 'none', fontSize: '18px', textAlign: "left", lineHeight: '33px' }}>{data}</li>
         })
 
         return (
-            <CardText visible={false} style={{ paddingTop: '1.5rem', paddingLeft: "4rem", paddingRight: "2rem", position: "relative", textAlign: "left", lineHeight: '32px', height: '500px', overflowY: "auto", paddingBottom: '0px', marginBottom: '0px', marginTop: '20px' }}>
+            <CardText visible={false} style={{ paddingLeft: "3.5rem", paddingRight: "2rem", position: "relative", textAlign: "left", height: '450px', overflowY: "auto", paddingBottom: '0px', marginBottom: '0px', marginTop: '20px' }}>
                 <ul style={{ listStyleType: "circle", listStylePosition: "inside" }}> {listItems} </ul>
             </CardText>
         )

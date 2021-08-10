@@ -18,7 +18,7 @@ export default (props) => {
     <div className={classes.formPair}>
       <label htmlFor="inp">
         {props.label}
-        <p style={{ color: "#ffb302", display: "inline" }}>
+        <p style={{ color: "#e0aa3e", display: "inline" }}>
           {props.required ? "*" : ""}
         </p>
       </label>

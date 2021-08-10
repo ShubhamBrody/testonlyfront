@@ -30,7 +30,7 @@ const Viewers = (props) => {
 
   function changeColour1()
   {
-    document.getElementById("aboutus").style.color = "#c5a240";
+    document.getElementById("aboutus").style.color = "#e0aa3e";
     document.getElementById("mission").style.color = "#ffffff";
     document.getElementById("vision").style.color = "#ffffff";
     document.getElementById("history").style.color = "#ffffff";
@@ -48,7 +48,7 @@ const Viewers = (props) => {
   {
     document.getElementById("aboutus").style.color = "#ffffff";
     document.getElementById("mission").style.color = "#ffffff";
-    document.getElementById("vision").style.color = "#c5a240";
+    document.getElementById("vision").style.color = "#e0aa3e";
     document.getElementById("history").style.color = "#ffffff";
   }
 
@@ -57,7 +57,7 @@ const Viewers = (props) => {
     document.getElementById("aboutus").style.color = "#ffffff";
     document.getElementById("mission").style.color = "#ffffff";
     document.getElementById("vision").style.color = "#ffffff";
-    document.getElementById("history").style.color = "#c5a240";
+    document.getElementById("history").style.color = "#e0aa3e";
   }
 
   return (
@@ -66,7 +66,7 @@ const Viewers = (props) => {
               <Nav>
                 <NavMenu>
                     <button onClick={() => { setContent(details["About Us"]); changeColour1()} } style={{color: "black"}}>
-                        <span style={{color: "#c5a240"}} id={"aboutus"}>About Us</span>
+                        <span style={{color: "#e0aa3e"}} id={"aboutus"}>About Us</span>
                     </button>
                     <button onClick={() => { setContent(details["Mission"]);changeColour2()} } style={{color: "black"}}>
                         <span id={"mission"}>Mission</span>
@@ -95,7 +95,7 @@ const Pfake = styled.p`
   padding-right: 100px;
   height: 250px;
 
-  border-right: 2px solid #c5a240;
+  border-right: 2px solid #e0aa3e;
   animation: text 0.7s ease-in-out;
 
   @media (max-width: 1300px) {
@@ -185,7 +185,7 @@ const Nav = styled.div`
   margin-top: 80px;
   padding-top: -20px;
   padding-right: 20px;
-  border-right: 2px solid #c5a240;
+  border-right: 2px solid #e0aa3e;
 
   p {
     margin: 0px auto;
@@ -254,7 +254,7 @@ const NavMenu = styled.div`
         transform: scaleX(1);
         visibility: visible;
         opacity: 1 !important;
-        color: #c5a240;
+        color: #e0aa3e;
       }
     }
   }
