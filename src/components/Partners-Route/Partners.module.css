@@ -18,35 +18,51 @@
     text-align: center ;
     background-color: rgb(71, 69, 69);
     font-size: 18px;
-    margin:0px 100px;
+    margin:0px 100px 50px 100px;
     color: white;
     word-spacing: 10px;
-    height: 120px;
-    padding:20px 60px;
+    padding:8px 60px;
     border-radius: 7px;
 }
 .contentWrapper
 {
-    font-size: 20px;
+    font-size: 18px;
     text-align: justify;
     justify-content: space-around;
     display: flex;
-    margin:50px;
+    margin: 60px 30px;
     
+}
+.contentWrapper1
+{
+    font-size: 18px;
+    text-align: justify;
+    justify-content: space-around;
+    display: flex;
+    margin: 20px 30px;
 }
 .contentWrapper img
 {
-    height: 250px;
-    margin:50px;
+    height: 200px;
+    margin:auto 0px;
+    margin-right: 80px;
+}
+.contentWrapper1 img
+{
+    height: 200px;
+    margin: auto 0px;
+    margin-left: 80px;
 }
 .heading
 {
-    text-align: center;
+    text-align: left;
     background-color: black;
     color: goldenrod;
     font-size: 25px;
-    margin: 20px 50px 50px 50px;
+    margin: 20px 0px;
     border-radius: 5px;
+    width: 80%;
+    padding: 5px 0px 5px 15px;
 }
 .bgimage
 {
@@ -55,11 +71,22 @@
     height: auto;
     background-repeat: no-repeat;
 }
-
-@media (max-width: 1200px) {
-    .top {
-        height: 450px;
-        margin: 25px  140px ;
-        background-position-x: center;
-    }
+.headingWrapper
+{
+    text-align: center;
 }
+.wrapper
+{
+    padding: 0px 30px;
+    margin: 20px 0px;
+}
+.arrow svg {
+    font-size: 35px;
+    color: goldenrod;
+}
+.arrow
+{
+    float: right;
+    padding-right: 15px;
+}
+
