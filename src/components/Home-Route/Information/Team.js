@@ -171,7 +171,7 @@ const Carousel = styled(Slider)`
     margin-left: -7px;
 
     li {
-      width: 2px;
+      width: 1px;
       margin-top: 40px;
     }
   }
@@ -198,6 +198,7 @@ const Carousel = styled(Slider)`
     margin-right: 160px;
     padding-bottom: 10px;
 
+    z-index: 9998;
     @media (max-width: 1400px) {
       margin-top: 160px;
       margin-right: 300px;
