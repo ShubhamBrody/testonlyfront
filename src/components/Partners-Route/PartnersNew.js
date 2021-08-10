@@ -4,8 +4,7 @@ import textData from './PartnersTextData';
 import image from '../../resources/images/our-partners.png';
 import { Fragment } from 'react';
 import { BiUpArrow, BiDownArrow } from 'react-icons/bi';
-import { useState, useEffect } from 'react';
-import { extend } from 'jquery';
+// import { useState, useEffect } from 'react';
 import React from 'react';
 
 class Partnercomponent extends React.Component {
@@ -61,7 +60,7 @@ class Partnercomponent extends React.Component {
                                     </div>
                                 </Fragment>
                             }
-                            { ((index + 1) % 2 == 0) &&
+                            { ((index + 1) % 2 === 0) &&
                                 <Fragment>
                                     <div className={classes.headingWrapper} key={index}>
                                         <button type="button" onClick={() => this.fun(index)} className={classes.heading} data-toggle="collapse" data-target={'#new' + index}>
