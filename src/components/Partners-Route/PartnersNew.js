@@ -3,61 +3,91 @@ import classes from './Partners.module.css';
 import textData from './PartnersTextData';
 import image from '../../resources/images/our-partners.png';
 import { Fragment } from 'react';
+import { BiUpArrow, BiDownArrow } from 'react-icons/bi';
+import { useState, useEffect } from 'react';
+import { extend } from 'jquery';
+import React from 'react';
 
-export default () => {
-    return (
-        <div>
-            <div className={classes.top}>
-                <img src={image} alt="refresh for img"/>
-            </div>
-            <div className={classes.message}>
-                The club has collaborated and partnered-up with a bunch of organisations and companies. We have 8 partner-organisations right now and we're expanding our reach and network to bring in more and make this initiative successful for the youth of our country.
-            </div>
-            <div className={classes.contentWrapper}>
-                <div>
-                    <img src={textData[0].imgsrc} alt="refresh for img"/>
+class Partnercomponent extends React.Component {
+    constructor(props) {
+        super(props);
+        const data = [];
+        textData.forEach((item) => {
+            data.push(false);
+        })
+        this.state = {
+            isCollapsed: data
+        };
+        this.fun = this.fun.bind(this);
+    }
+    fun(index) {
+        const temp = this.state.isCollapsed;
+        temp[index] = !temp[index];
+        this.setState({
+            isCollapsed: temp
+        });
+    }
+    render() {
+        return (
+            <div>
+                <div className={classes.top}>
+                    <img src={image} alt="refresh for img" />
                 </div>
-                <div>
-                    <div className={classes.heading}>{textData[0].heading}</div>
-                    <div>{textData[0].message}</div>
-                </div>
+                <div className={classes.message}>
+                    The club has collaborated and partnered-up with a bunch of organisations and companies. We have 8 partner-organisations right now and we're expanding our reach and network to bring in more and make this initiative successful for the youth of our country.
             </div>
-            <div className={classes.bgimage}>
                 {
-                    textData.map((data, index) => (
-                        <div className={classes.contentWrapper} key={index}>
-                            { ((index + 1) % 2 !== 0) && (index !== 0) && (index !== textData.length - 1) &&
+                    textData.map((item, index) => (
+                        <div className={classes.wrapper}>
+                            { ((index + 1) % 2 !== 0) &&
                                 <Fragment>
-                                    <div>
-                                        <img src={data.imgsrc} alt="refresh for img"/>
+                                    <div className={classes.headingWrapper} key={index}>
+                                        <button onClick={() => this.fun(index)} type="button" className={classes.heading} data-toggle="collapse" data-target={'#new' + index}>
+                                            {
+                                                <span>
+                                                    {item.heading}
+                                                    <span className={classes.arrow}>
+                                                        {!this.state.isCollapsed[index] ? <BiDownArrow /> : <BiUpArrow />}
+                                                    </span>
+                                                </span>
+                                            }
+                                        </button>
                                     </div>
-                                    <div>
-                                        <div className={classes.heading}>{data.heading}</div>
-                                        <div>{data.message}</div>
+                                    <div id={'new' + index} class="collapse">
+                                        <div className={classes.contentWrapper}>
+                                            <img src={item.imgsrc} alt="refresh for img" />
+                                            <div>{item.message}</div>
+                                        </div>
                                     </div>
-                                </Fragment>}
-                            { ((index + 1) % 2 === 0) && (index !== textData.length - 1) &&
+                                </Fragment>
+                            }
+                            { ((index + 1) % 2 == 0) &&
                                 <Fragment>
-                                    <div>
-                                        <div className={classes.heading}>{data.heading}</div>
-                                        <div>{data.message}</div>
+                                    <div className={classes.headingWrapper} key={index}>
+                                        <button type="button" onClick={() => this.fun(index)} className={classes.heading} data-toggle="collapse" data-target={'#new' + index}>
+                                            {
+                                                <span>
+                                                    {item.heading}
+                                                    <span className={classes.arrow}>
+                                                        {!this.state.isCollapsed[index] ? <BiDownArrow /> : <BiUpArrow />}
+                                                    </span>
+                                                </span>
+                                            }
+                                        </button>
                                     </div>
-                                    <div>
-                                        <img src={data.imgsrc} alt="refresh for img"/>
+                                    <div id={'new' + index} class="collapse">
+                                        <div className={classes.contentWrapper1}>
+                                            <div>{item.message}</div>
+                                            <img src={item.imgsrc} alt="refresh for img" />
+                                        </div>
                                     </div>
-                                </Fragment>}
+                                </Fragment>
+                            }
                         </div>
                     ))
-                } </div>
-            <div className={classes.contentWrapper}>
-                <div>
-                    <div className={classes.heading}>{textData[textData.length - 1].heading}</div>
-                    <div>{textData[textData.length - 1].message}</div>
-                </div>
-                <div>
-                    <img src={textData[textData.length - 1].imgsrc} alt="refresh for img"/>
-                </div>
+                }
             </div>
-        </div>
-    )
+        )
+    }
 }
+export default Partnercomponent;
