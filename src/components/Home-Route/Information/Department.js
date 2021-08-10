@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const itemStyle = {
     "backgroundColor": "rgba(25,25,25,1)",
-    "color": "white", 
+    "color": "#fff", 
     "text-align": "center",
     "border": "0.5px solid #ffffff",
     "borderRadius": "8px",
@@ -45,11 +45,11 @@ function Department(props) {
             <br/>
             <XDropdown onMouseEnter={() => updateIsOpen(true)}
             onMouseLeave={() => updateIsOpen(false)} show={isOpen}>
-                <Toggle variant="dark" style={{ color:"white", fontSize:"calc(1.275rem + .3vw)", backgroundColor:"#191919", opacity:"1" }}>
+                <Toggle variant="dark" style={{ color:"#fff", fontSize:"calc(1.275rem + .3vw)", backgroundColor:"#191919", opacity:"1" }}>
                     {title} &nbsp; <div style={{display:'inline-block', width: 0, height: 0, borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderTop: "15px solid #e0aa3e" }} > </div>
                 </Toggle>
 
-                <Dropdown.Menu style={{ backgroundColor:"#191919" , color:"white", opacity:"1", border: "0px", borderRadius: "6px", width: "320px", marginBottom: "0px"}}>
+                <Dropdown.Menu style={{ backgroundColor:"#191919" , color:"#fff", opacity:"1", border: "0px", borderRadius: "6px", width: "320px", marginBottom: "0px"}}>
                     <Dropdown.Item onClick={() => { setContent(departmentContent["Public Relations"]); updateIsOpen(false); setTitle("Public Relations") } } style={itemStyle}>Public Relations</Dropdown.Item>
                     <Dropdown.Item onClick={() => { setContent(departmentContent["Marketing"]); updateIsOpen(false); setTitle("Marketing") } } style={itemStyle}>Marketing</Dropdown.Item>
                     <Dropdown.Item onClick={() => { setContent(departmentContent["Sessions Management"]); updateIsOpen(false); setTitle("Sessions Management") } } style={itemStyle}>Sessions Management</Dropdown.Item>
@@ -83,7 +83,7 @@ const Grid = styled(Card)`
     border-radius: 6px;
     position: relative;
     text-align: center;
-    color: white;
+    color: #fff;
     overflow: hidden;
     @media (max-width: 1400px) {
         width: 56rem;

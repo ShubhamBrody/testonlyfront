@@ -25,7 +25,7 @@ const Events = (props) => {
             
             <SecondDiv>
                 <h2>ONGOING EVENTS</h2>
-                <p style={{color: "white", textAlign: "center", marginBottom: "100px"}}>In our digital sessions, we are holding ice breaking sessios for our newly joined youth along with the presentations given by the team members regarding personality development. We are recruiting and training volunteers as well.</p>
+                <p style={{color: "#fff", textAlign: "center", marginBottom: "100px"}}>In our digital sessions, we are holding ice breaking sessios for our newly joined youth along with the presentations given by the team members regarding personality development. We are recruiting and training volunteers as well.</p>
 
                 { displayContent }
             </SecondDiv> 
@@ -43,7 +43,7 @@ const Inner = styled.div`
 
 const Description = styled.div`
     text-align: justify;
-    color: white;
+    color: #fff;
     width: 700px;
     margin-left: -200px;
 
@@ -116,14 +116,14 @@ const Container = styled(Card)`
 
 const SecondDiv = styled.div`
     h2 {
-        color: white;
+        color: #fff;
         margin-top: 200px; 
         font-size: 40px;
     }
     p {
         text-align: justify;
         marginTop: 65px;
-        color: white;
+        color: #fff;
         width: 900px;
     }
 

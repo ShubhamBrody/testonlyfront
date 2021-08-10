@@ -1,5 +1,5 @@
 .signInContainer {
-    color: white;
+    color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,7 +39,7 @@
     border-radius: 25px;
     padding: 10px 15px;
     font-weight: 600;
-    color: white;
+    color: #fff;
     cursor: pointer;
     margin: 1.5rem auto;
     outline: none;
@@ -53,7 +53,7 @@
     border: 3px solid #fff !important;
     border-radius: 25px !important;
     padding: 5px 10px !important;
-    color: white !important;
+    color: #fff !important;
     width: 20vw !important;
     height: 3rem !important;
     background: transparent;

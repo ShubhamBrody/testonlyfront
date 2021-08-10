@@ -224,7 +224,7 @@ const NavMenu = styled.div`
     }
 
     span {
-      color: white;
+      color: #fff;
       font-size: 15px;
       letter-spacing: 1.42px;
       line-height: 1.08;

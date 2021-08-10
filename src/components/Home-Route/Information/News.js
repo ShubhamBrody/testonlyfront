@@ -83,7 +83,7 @@ const TextArea = styled.textarea`
   resize: none;
   z-index: -1;
   pointer-events: none;
-  color: white;
+  color: #fff;
   overflow-y: auto;
 `;
 
@@ -95,7 +95,7 @@ const Grid = styled(Card)`
     border-radius: 6px;
     position: relative;
     text-align: center;
-    color: white;
+    color: #fff;
     // overflow: scroll;
 
     @media (max-width: 1400px) {

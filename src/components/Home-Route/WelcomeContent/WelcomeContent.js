@@ -68,7 +68,7 @@ const Container = styled.div`
 
     h3 {
         display: inline;
-        color: white;
+        color: #fff;
     }
 
     span {

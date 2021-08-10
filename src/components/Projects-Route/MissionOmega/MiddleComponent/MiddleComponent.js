@@ -135,11 +135,11 @@ export default () => {
           </FormBackground>
           <FormBackground style={{width: '80%', height: '40%'}}>
             <h3 style={{color: '#e0aa3e', textAlign: 'center'}}>Below are the details for Net Banking</h3>
-            <p style={{color: 'white'}}>Name - Geolife Foundation</p>
-            <p style={{color: 'white'}}>Account No. - 622011006511</p>
-            <p style={{color: 'white'}}>IFSC - KKBK0000642</p>
-            <p style={{color: 'white'}}>Kotak Mahindra Bank</p>
-            <p style={{color: 'white'}}>Branch - Mumbai - Mulund West</p>
+            <p style={{color: '#fff'}}>Name - Geolife Foundation</p>
+            <p style={{color: '#fff'}}>Account No. - 622011006511</p>
+            <p style={{color: '#fff'}}>IFSC - KKBK0000642</p>
+            <p style={{color: '#fff'}}>Kotak Mahindra Bank</p>
+            <p style={{color: '#fff'}}>Branch - Mumbai - Mulund West</p>
           </FormBackground>
         </div>
       </div>

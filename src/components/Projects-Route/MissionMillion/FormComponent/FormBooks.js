@@ -158,7 +158,7 @@ export default () => {
         </form>
       </div>
       <div className={classes.formConatiner} style={{marginTop: '50px'}}>
-          <p style={{color: 'white', textAlign: 'center'}}>Below are the details to contact us</p>
+          <p style={{color: '#fff', textAlign: 'center'}}>Below are the details to contact us</p>
       </div>
     </div>
   ) : (

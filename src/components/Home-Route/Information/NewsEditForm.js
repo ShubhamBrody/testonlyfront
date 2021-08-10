@@ -230,7 +230,7 @@ const TextArea = styled.textarea`
   resize: none;
   z-index: -1;
   pointer-events: none;
-  color: white;
+  color: #fff;
   overflow-y: auto;
 `;
 
