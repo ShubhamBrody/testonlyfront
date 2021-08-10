@@ -17,13 +17,8 @@ const data = {
     },
     missionomega : {
         text: [String.raw`Since the massive hit of the covid-19 pandemic, a lot of students across the country are unable to attend school due to the lack of digital infrastructure. Most of these students have no access to smartphones/laptops due to which online lectures cannot be conducted for them. Geolife Youth Club has come up with
-        DIGITAL OMEGA campaign to pillar education for such students through donation of devices. This campaign will help us collect second hand devices (in working condition) and raise funds to refurbish these devices as well as buy new ones.
-        • Devices will be donated through trustworthy agencies likes schools/colleges or other NGOs.
-        • All devices will be made student-friendly to avoid misuse.
-        • Periodic reports will be made about the usage of the donated devices.
-        • Teachers will be trained to use the devices and various available digital tools.
-        • Digital platforms will be established for the students through which we will conduct development and skill-enhancement sessions along with career counselling and mentoring.
-        • Workshops, activities and competitions will also be held for these students which will help them explore and learn.`],
+        DIGITAL OMEGA campaign to pillar education for such students through donation of devices. This campaign will help us collect second hand devices (in working condition) and raise funds to refurbish these devices as well as buy new ones.`],
+        list: ["Devices will be donated through trustworthy agencies likes schools/colleges or other NGOs.", "All devices will be made student-friendly to avoid misuse.", "Periodic reports will be made about the usage of the donated devices.", "Teachers will be trained to use the devices and various available digital tools.", "Digital platforms will be established for the students through which we will conduct development and skill-enhancement sessions along with career counselling and mentoring.", "Workshops, activities and competitions will also be held for these students which will help them explore and learn."],
         imgSrc: missionomegaimg
     }
 }

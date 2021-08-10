@@ -1,61 +1,43 @@
 import styled from "styled-components";
-import { Card, CardTitle, } from "react-bootstrap-card";
+import { Card } from "react-bootstrap-card";
+import data from "./EventsTextData";
 
 const Events = (props) => {
+    const displayContent = data.map((event) => {
+        return <>
+            <Heading>{event.heading}</Heading>
+            <ContentWrapper>
+                <Inner>
+                    <img src={event.imgsrc} alt="Refresh for img"/>
+                </Inner>
+                <Inner>
+                    <Description>{event.content}</Description>
+                </Inner>
+            </ContentWrapper>
+        </>
+    })
+
     return (
         <Container>     
-            <img src="events-title.png" style={{marginTop: "120px"}}></img>
+            <img src="events-title.png" style={{marginTop: "120px", animation: "image 1s ease-in-out"}}></img>
             <p style={{marginTop: "120px", marginBottom: "6px"}}>We have started with our own digital sessions every sunday for rural youth</p>
-            <img src="online-sessions.png" style={{marginTop: "50px", marginBottom: "0px"}}></img>
+            <img src="online-sessions.png" alt="Refresh for image" style={{marginTop: "50px", marginBottom: "20px"}}></img>
             
             <SecondDiv>
+                <h2>ONGOING EVENTS</h2>
+                <p style={{color: "white", textAlign: "center", marginBottom: "100px"}}>In our digital sessions, we are holding ice breaking sessios for our newly joined youth along with the presentations given by the team members regarding personality development. We are recruiting and training volunteers as well.</p>
 
-            <h2>ONGOING EVENTS</h2>
-            <p style={{color: "white", textAlign: "center", marginBottom: "100px"}}>In our digital sessions, we are holding ice breaking sessios for our newly joined youth along with the presentations given by the team members regarding personality development. We are recruiting and training volunteers as well.</p>
-
-            <Heading>Session with Signal school, Thane</Heading><br/>
-            <ContentWrapper>
-            
-                <Inner>
-                    <img src="events1.jpg" alt="refresh for img" />
-                </Inner>
-                
-                <div>
-                    <Description>Signal school is an innovative concept initialized by Samarth Bharat Vyaspith along with Thane Municipal Corporation, on 14th June 2016. It aims at providing education to underprivileged children living on signals in Thane, Maharashtra. This would make these children capable to adjust themselves to the mainstream world. We, the GYC team, had our first session with them last Saturday wherein we spent good time with the students to get to know them and make them feel comfortable.</Description>
-                </div>
-            </ContentWrapper>
-
-            <Heading>Session with Swadhey</Heading>
-            <ContentWrapper>
-                <Inner>
-                    <img src="events2.jpg" alt="refresh for img"/>
-                </Inner>
-                <div>
-                    
-                    <Description>Swadhey is a collective organization which started in January of 2020. They work on fighting for the basic needs of the the people. They have taken many heart warming steps to help create a better society. Their main objectives are environmental conservation, providing education, water conservation and fort conservation. Our sessions team is currently working with them to conduct online sessions. These sessions are being held for developing reading and writing skills in English to students who are accustomed to Marathi.</Description>
-                </div>
-            </ContentWrapper>
-
-            <Heading>Sessions with the Digital Omega Batch</Heading>
-            <ContentWrapper>
-                <Inner>
-                    <img src="events3.jpg" alt="refresh for img"/>
-                </Inner>
-                <div>
-                    <Description>Our campaign, Digital Omega aims at bringing education one step closer to the bright, rural minds of India. We visited Dnyandarpan English school along with the Rotary club of Akola and France Telecom, to personally deliver 50 devices to the teachers and students. Our visit also provided us the opportunity to interact with the students and get to know them. We have started our 6-month curriculum for the students. Our sessions team conducts sessions for them every Sunday!</Description>
-                </div>
-            </ContentWrapper>
-
+                { displayContent }
             </SecondDiv> 
         </Container>
     );
 };
 
 const Inner = styled.div`
-    margin-top: -55px;
+    margin: auto 30px;
 
     @media (max-width: 1400px) {
-        margin-top: 30px;
+        // margin-top: 30px;
     }
 `;
 
@@ -87,10 +69,11 @@ const ContentWrapper = styled.div`
     margin:50px;
 
     img {
+        vertical-align: middle;
         height: 250px;
         width: 250px;
-        margin: 50px;
-        border-radius: 250px;
+        // margin: 50px;
+        border-radius: 300px;
     }
 `;
 
@@ -117,6 +100,17 @@ const Container = styled(Card)`
         color: #c5a240;
     }
 
+    @keyframes image {
+        from {
+            opacity: 0;
+            transform: translateX(-200px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+
     background: url("background.png") center center / cover no-repeat fixed;
 `;
 
@@ -134,14 +128,19 @@ const SecondDiv = styled.div`
     }
 
     background-image: url(events-bottom-image.png);
+    // background-image: url(events_bg.png);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    // background-position-y: bottom;
+
+    background-position: 0% 87%;
     @media (max-width: 1000px) {
         h2 {
             margin-top: 150px; 
         }
-        background-position-y: bottom;
+        // background-position-y: bottom;
+
+        background-position: 0% -100%;
     }
 `;
 

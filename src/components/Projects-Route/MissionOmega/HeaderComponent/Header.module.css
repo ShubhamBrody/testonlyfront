@@ -12,6 +12,13 @@
     animation: text 0.7s ease-in-out;
 }
 
+.headerContainer ul, li {
+    text-align: justify;
+    line-height: 3rem !important;
+    font-size: 1.25rem !important;
+    animation: text 0.7s ease-in-out;
+}
+
 .headerContainer img {
     width: 28vw;
     animation: image 0.7s ease-in-out;

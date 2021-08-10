@@ -4,6 +4,10 @@ import Video from "../../../UI/Video";
 import textData from "../../ProjectTextData";
 
 export default () => {
+  const listItems = textData.missionomega.list.map((data) => {
+    return <li style={{ color: '#191919', pointerEvents: 'none' }}>{data}</li>
+  })
+
   return (
     <div className={classes.headerContainer}>
       <div className={classes.leftContainer}>
@@ -22,6 +26,7 @@ export default () => {
         {textData.missionomega.text.map((para) => (
           <p>{para}</p>
         ))}
+        <ul style={{ listStyleType: "circle" }}> { listItems } </ul>
       </div>
     </div>
   );
