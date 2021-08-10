@@ -65,9 +65,9 @@ router.post("/createorupdate", (req, res) => {
         res.send("error :" + err);
       } else {
         var mailOptions = {
-          from: "st8896464352@gmail.com",
-          to: "st8896464352@outlook.com",
-          subject: "Fund Raising",
+          from: 'geolifeyouthclub@gmail.com',
+          to: "geolifeyouthclubhr@gmail.com",
+          subject: "Device Donations",
           text:
             "This is to inform you that a new fund raising request is recieved. The details are as follows :\n\nName : " +
             results.name +

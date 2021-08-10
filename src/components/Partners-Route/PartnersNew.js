@@ -59,7 +59,7 @@ class Partnercomponent extends React.Component {
                                     </div>
                                 </Fragment>
                             }
-                            { ((index + 1) % 2 == 0) &&
+                            { ((index + 1) % 2 === 0) &&
                                 <Fragment>
                                     <div className={classes.headingWrapper} key={index}>
                                         <button type="button" onClick={() => this.fun(index)} className={classes.heading} data-toggle="collapse" data-target={'#new' + index}>

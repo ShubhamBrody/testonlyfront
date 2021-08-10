@@ -59,8 +59,8 @@ router.post("/createorupdate", (req, res) => {
         res.send("error :" + err);
       } else {
         var mailOptions = {
-          from: "st8896464352@gmail.com",
-          to: "st8896464352@outlook.com",
+          from: 'geolifeyouthclub@gmail.com',
+          to: "geolifeyouthclubhr@gmail.com",
           subject: "Fund Raising",
           text:
             "This is to inform you that a new fund raising request is recieved. The details are as follows :\n\nName : " +
@@ -71,7 +71,8 @@ router.post("/createorupdate", (req, res) => {
             results.email +
             "\nAmount : Rs." +
             results.amount +
-            "/-",
+            "/-" + 
+            "\n\nThank You\n\n(This is an automated message no need to reply.)",
         };
 
         transporter.sendMail(mailOptions, function (error, info) {
