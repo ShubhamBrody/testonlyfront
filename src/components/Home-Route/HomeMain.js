@@ -50,14 +50,22 @@ export default () => {
   ];
 
   const checkIfAFileISImage = (fileName) => {
-    if (fileName.split(".").pop() in imageExtensons) {
+    console.log(fileName.split(".").pop());
+    if (imageExtensons.includes(fileName.split(".").pop())) {
+      console.log("true");
       return true;
     }
+    else
     return false;
   };
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
+
+    if (fileName === "" || file === "") {
+      alert("Please select a file to upload");
+      return;
+    }
 
     if (!checkIfAFileISImage(file.name)) {
       alert("Please upload a valid image file");
@@ -75,16 +83,10 @@ export default () => {
           },
         })
         .then((response) => {
-          // if(response.data === "Image Already Exists") {
-          //   console.log("Exista");
-          //   alert("File already exists");
-          // }
-          // else{
           const { fileName, filePath, repeated } = response.data;
           setUploadedFile({ fileName, filePath });
           setIsUploaded(true);
           if (repeated) alert(`File "${fileName}" already exists`);
-          // }
         })
         .catch((error) => {
           console.log("Error occured : " + error);
