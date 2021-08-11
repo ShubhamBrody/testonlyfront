@@ -6,7 +6,6 @@
     align-items: center;
     margin-top: 2rem;
     font-size: 20px !important;
-    overflow: hidden;
 }
 
 .background {
@@ -16,6 +15,7 @@
     background-image: url('../../resources/images/backgroundSignIn.png');
     background-repeat: no-repeat;
     background-position: center;
+    overflow: auto;
 }
 
 #parallaxBG {
@@ -91,5 +91,10 @@
         width: 70vw !important;
         height: 4rem !important;
         font-size: 2rem !important;
+    }
+    .background {
+        background-position: center;
+        background-size: cover;
+        overflow: hidden;
     }
 }

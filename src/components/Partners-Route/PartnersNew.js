@@ -24,6 +24,9 @@ class Partnercomponent extends React.Component {
         this.setState({
             isCollapsed: temp
         });
+        const newsid = document.getElementById('new'+index);
+        (newsid.style.display === 'none') ? newsid.style.display = 'flex' : newsid.style.display = 'none';
+        console.log(newsid)
     }
     render() {
         return (
@@ -34,6 +37,7 @@ class Partnercomponent extends React.Component {
                 <div className={classes.message}>
                     The club has collaborated and partnered-up with a bunch of organisations and companies. We have 8 partner-organisations right now and we're expanding our reach and network to bring in more and make this initiative successful for the youth of our country.
             </div>
+            <div style={{ marginBottom: '50px' }}>
                 {
                     textData.map((item, index) => (
                         <div className={classes.wrapper}>
@@ -51,7 +55,7 @@ class Partnercomponent extends React.Component {
                                             }
                                         </button>
                                     </div>
-                                    <div id={'new' + index} class="collapse">
+                                    <div id={'new' + index} style={{ display: 'none', marginLeft: '150px', marginRight: '150px' }}>
                                         <div className={classes.contentWrapper}>
                                             <img src={item.imgsrc} alt="refresh for img" />
                                             <div>{item.message}</div>
@@ -73,7 +77,7 @@ class Partnercomponent extends React.Component {
                                             }
                                         </button>
                                     </div>
-                                    <div id={'new' + index} class="collapse">
+                                    <div id={'new' + index} style={{ display: 'none', marginLeft: '150px', marginRight: '150px' }}>
                                         <div className={classes.contentWrapper1}>
                                             <div>{item.message}</div>
                                             <img src={item.imgsrc} alt="refresh for img" />
@@ -84,6 +88,7 @@ class Partnercomponent extends React.Component {
                         </div>
                     ))
                 }
+            </div>
             </div>
         )
     }
