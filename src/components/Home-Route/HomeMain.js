@@ -8,6 +8,7 @@ import Navbar from "../Navbar/Navbar";
 import logo from "../../resources/images/logo.png";
 import Footer from "../Footer/Footer";
 import Welcome from "./WelcomeContent/WelcomeContent";
+import {Helmet} from "react-helmet";
 
 import { useState } from "react";
 import axios from "axios";
@@ -106,6 +107,10 @@ export default () => {
   };
   return (
     <Fragment>
+      <Helmet>
+        <title>Welcome to Geo Youth Club</title>
+        <link rel="icon" href="/GYClogo.png" type="image/icon type"></link>
+      </Helmet>
       <form onSubmit={onFormSubmit}>
         <h1>File Upload</h1>
         <input

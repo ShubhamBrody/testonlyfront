@@ -11,7 +11,7 @@ var bgcont = document.getElementById("parallaxContainer");
 
 window.addEventListener("scroll", () => {
   var val = window.scrollY;
-  if (bg) bg.style.top = val * -0.5 + "px";
+  if (bg) bg.style.top = val * -0.4 + "px";
   if (bgcont) bgcont.style.top = val + "px";
 });
 
