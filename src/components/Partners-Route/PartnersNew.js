@@ -46,7 +46,8 @@ class Partnercomponent extends React.Component {
                                     <div className={classes.headingWrapper} key={index}>
                                         <button onClick={() => this.fun(index)} type="button" className={classes.heading} data-toggle="collapse" data-target={'#new' + index}>
                                             {
-                                                <span>
+                                                <span style={{ lineHeight: '55px', marginLeft: '10px' }}>
+                                                    <img src={item.imgsrc} alt="Refresh for img"/>
                                                     {item.heading}
                                                     <span className={classes.arrow}>
                                                         {!this.state.isCollapsed[index] ? <BiDownArrow /> : <BiUpArrow />}
@@ -68,7 +69,8 @@ class Partnercomponent extends React.Component {
                                     <div className={classes.headingWrapper} key={index}>
                                         <button type="button" onClick={() => this.fun(index)} className={classes.heading} data-toggle="collapse" data-target={'#new' + index}>
                                             {
-                                                <span>
+                                                <span style={{ lineHeight: '55px', marginLeft: '10px' }}>
+                                                    <img src={item.imgsrc} alt="Refresh for img"/>
                                                     {item.heading}
                                                     <span className={classes.arrow}>
                                                         {!this.state.isCollapsed[index] ? <BiDownArrow /> : <BiUpArrow />}
