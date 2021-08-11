@@ -7,23 +7,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const itemStyle = {
     "backgroundColor": "rgba(25,25,25,1)",
-    "color": "white", 
+    "color": "#fff", 
     "text-align": "center",
     "border": "0.5px solid #ffffff",
     "borderRadius": "8px",
     "font-size":'18px',
     "justify-content": "justify"
 }
-
-// const departmentContent = {
-//     "Human Resources": "We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​ We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​ We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​ We aim for free educational guidance, overall personality development and upliftment of the youth of rural India by providing career counselling and one to one mentoring. Our mission is to establish a platform for the youth to exchange their views and ideas.​",
-//     "Design": "",
-//     "Social Media": "",
-//     "Public Relations": "",
-//     "Sessions Management": "",
-//     "Content Development": "",
-//     "Marketing": ""
-// }
 
 function Department(props) {
     const [title, setTitle] = useState("Department");
@@ -40,11 +30,11 @@ function Department(props) {
         }
 
         const listItems = content.map((data) => {
-            return <li style={{ color: '#fff', pointerEvents: 'none' }}>{data}</li>
+            return <li style={{ color: '#fff', pointerEvents: 'none', fontSize: '18px', textAlign: "left", lineHeight: '33px' }}>{data}</li>
         })
 
         return (
-            <CardText visible={false} style={{ paddingTop: '1.5rem', paddingLeft: "4rem", paddingRight: "2rem", position: "relative", textAlign: "left", lineHeight: '32px', height: '500px', overflowY: "auto", paddingBottom: '0px', marginBottom: '0px', marginTop: '20px' }}>
+            <CardText visible={false} style={{ paddingLeft: "3.5rem", paddingRight: "2rem", position: "relative", textAlign: "left", height: '450px', overflowY: "auto", paddingBottom: '0px', marginBottom: '0px', marginTop: '20px' }}>
                 <ul style={{ listStyleType: "circle", listStylePosition: "inside" }}> {listItems} </ul>
             </CardText>
         )
@@ -55,11 +45,11 @@ function Department(props) {
             <br/>
             <XDropdown onMouseEnter={() => updateIsOpen(true)}
             onMouseLeave={() => updateIsOpen(false)} show={isOpen}>
-                <Toggle variant="dark" style={{ color:"white", fontSize:"calc(1.275rem + .3vw)", backgroundColor:"#191919", opacity:"1" }}>
+                <Toggle variant="dark" style={{ color:"#fff", fontSize:"calc(1.275rem + .3vw)", backgroundColor:"#191919", opacity:"1" }}>
                     {title} &nbsp; <div style={{display:'inline-block', width: 0, height: 0, borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderTop: "15px solid #e0aa3e" }} > </div>
                 </Toggle>
 
-                <Dropdown.Menu style={{ backgroundColor:"#191919" , color:"white", opacity:"1", border: "0px", borderRadius: "6px", width: "320px", marginBottom: "0px"}}>
+                <Dropdown.Menu style={{ backgroundColor:"#191919" , color:"#fff", opacity:"1", border: "0px", borderRadius: "6px", width: "320px", marginBottom: "0px"}}>
                     <Dropdown.Item onClick={() => { setContent(departmentContent["Public Relations"]); updateIsOpen(false); setTitle("Public Relations") } } style={itemStyle}>Public Relations</Dropdown.Item>
                     <Dropdown.Item onClick={() => { setContent(departmentContent["Marketing"]); updateIsOpen(false); setTitle("Marketing") } } style={itemStyle}>Marketing</Dropdown.Item>
                     <Dropdown.Item onClick={() => { setContent(departmentContent["Sessions Management"]); updateIsOpen(false); setTitle("Sessions Management") } } style={itemStyle}>Sessions Management</Dropdown.Item>
@@ -93,7 +83,7 @@ const Grid = styled(Card)`
     border-radius: 6px;
     position: relative;
     text-align: center;
-    color: white;
+    color: #fff;
     overflow: hidden;
     @media (max-width: 1400px) {
         width: 56rem;

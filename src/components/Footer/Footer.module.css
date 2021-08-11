@@ -9,19 +9,19 @@
  .contact
  {
      text-align: center;
-     color: white ;
+     color: #fff;
      font-size: 20px;
      padding-top: 20px;
  }
  .number
  {
      text-align: center;
-     color: white;
+     color: #fff;
      font-size: 15px;
  } 
  .copyright
  {
-     color: white;
+     color: #fff;
      display: inline;
      
  }
@@ -41,7 +41,7 @@
 }
 .twitter svg{font-size: 50px !important;}
 .twitter:hover{
-    color: white !important;
+    color: #fff !important;
 }
  .youtube
  {
@@ -51,7 +51,7 @@
 }
 .youtube svg{font-size: 50px !important};
 .youtube:hover{
-    color: white !important;
+    color: #fff !important;
 }
  .fb
  {
@@ -61,7 +61,7 @@
      }
      .fb svg{font-size: 50px !important};
      .fb:hover{
-          color: white !important;
+          color: #fff !important;
      }
  .insta
  {
@@ -71,7 +71,7 @@
  }
  .insta svg{font-size: 50px !important};
  .insta:hover{
-    color: white !important;
+    color: #fff !important;
 }
 .c1
 {

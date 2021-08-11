@@ -1,11 +1,4 @@
 /* eslint-disable import/no-anonymous-default-export */
-
-// {
-//     linkto: "/signin",
-//     text: 'SignIn',
-//     style: {fontWeight: 'bold'}
-//   }
-
 import { NavLink } from "react-router-dom";
 import classes from "./Navbar.module.css";
 

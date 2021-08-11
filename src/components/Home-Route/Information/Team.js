@@ -19,7 +19,7 @@ const Team = (props) => {
 
         <Grid>
             <br/>
-            <CardTitle style={{color: 'white'}}>Our Team</CardTitle><br/>
+            <CardTitle style={{color: '#fff'}}>Our Team</CardTitle><br/>
             <Carousel {...settings}>
               <div class="slider__item">
                   <img src="/team_members/nidhi.jpg" alt=""/>
@@ -88,7 +88,7 @@ const Grid = styled(Card)`
     border-radius: 6px;
     position: relative;
     text-align: center;
-    color: white;
+    color: #fff;
     // overflow: scroll;
 
     @media (max-width: 1400px) {
@@ -159,7 +159,7 @@ const Carousel = styled(Slider)`
     
   .slick-dots li button:before {
     opacity: 1;
-    color: white;
+    color: #fff;
   }
 
   .slick-dots li.slick-active button:before {
@@ -178,7 +178,7 @@ const Carousel = styled(Slider)`
 
   p
   {
-      color: white;
+      color: #fff;
   }
 
   h6 {

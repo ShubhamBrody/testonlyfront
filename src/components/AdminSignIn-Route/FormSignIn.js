@@ -82,7 +82,7 @@ export default (props) => {
           <p
             id="userPassWrong"
             style={{
-              color: "yellow",
+              color: "#e0aa3e",
               fontSize: "1rem",
               textAlign: "center",
               visibility: "hidden",

@@ -58,7 +58,7 @@ export default (props) => {
       </FormBackground>
       {props.contactDetailsTag && (
         <FormBackground style={{ marginTop: "50px", ...props.customStyle }}>
-          <p style={{ color: "white", textAlign: "center" }}>
+          <p style={{ color: "#fff", textAlign: "center" }}>
             {props.bottomTabText}
           </p>
         </FormBackground>
@@ -69,7 +69,7 @@ export default (props) => {
       <FormBackground
         style={{ width: "90%", textAlign: "center" }}
       >
-        <h1 style={{ color: "#ffb302", fontSize: "6rem" }}>THANK YOU</h1>
+        <h1 style={{ color: "#e0aa3e", fontSize: "6rem" }}>THANK YOU</h1>
         <button
           className={classes.submitbtn}
           onClick={(e) => {

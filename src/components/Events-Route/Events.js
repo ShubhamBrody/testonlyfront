@@ -19,13 +19,13 @@ const Events = (props) => {
 
     return (
         <Container>     
-            <img src="events-title.png" style={{marginTop: "120px", animation: "image 1s ease-in-out"}}></img>
+            <img src="events-title.png" style={{marginTop: "50px", animation: "image 1s ease-in-out"}}></img>
             <p style={{marginTop: "120px", marginBottom: "6px"}}>We have started with our own digital sessions every sunday for rural youth</p>
             <img src="online-sessions.png" alt="Refresh for image" style={{marginTop: "50px", marginBottom: "20px"}}></img>
             
             <SecondDiv>
                 <h2>ONGOING EVENTS</h2>
-                <p style={{color: "white", textAlign: "center", marginBottom: "100px"}}>In our digital sessions, we are holding ice breaking sessios for our newly joined youth along with the presentations given by the team members regarding personality development. We are recruiting and training volunteers as well.</p>
+                <p style={{color: "#fff", textAlign: "center", marginBottom: "100px"}}>In our digital sessions, we are holding ice breaking sessios for our newly joined youth along with the presentations given by the team members regarding personality development. We are recruiting and training volunteers as well.</p>
 
                 { displayContent }
             </SecondDiv> 
@@ -43,7 +43,7 @@ const Inner = styled.div`
 
 const Description = styled.div`
     text-align: justify;
-    color: white;
+    color: #fff;
     width: 700px;
     margin-left: -200px;
 
@@ -55,7 +55,7 @@ const Description = styled.div`
 
 const Heading = styled.div`
     text-align: center;
-    color: #c5a240;
+    color: #e0aa3e;
     font-size: 35px;
     // margin: 20px 50px 50px 50px;
     border-radius: 5px;
@@ -97,7 +97,7 @@ const Container = styled(Card)`
     h2
     {
         text-align: center;
-        color: #c5a240;
+        color: #e0aa3e;
     }
 
     @keyframes image {
@@ -116,14 +116,14 @@ const Container = styled(Card)`
 
 const SecondDiv = styled.div`
     h2 {
-        color: white;
+        color: #fff;
         margin-top: 200px; 
         font-size: 40px;
     }
     p {
         text-align: justify;
         marginTop: 65px;
-        color: white;
+        color: #fff;
         width: 900px;
     }
 
