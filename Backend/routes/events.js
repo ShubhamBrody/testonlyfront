@@ -70,25 +70,23 @@ router.post("/createorupdate", async (req, res) => {
   });
 });
 
-// router.post('/createorupdate', upload.single('myImage'), (req, res, next) => {
+router.post("/delete", async (req, res) => {
+  const file = req.body.fileName;
+  const path = Path.join(__dirname, `../../public/uploads/${file}`);
 
-//     var obj = {
-//         heading: req.body.heading,
-//         content: req.body.content,
-//         image: {
-//             data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.myImage)),
-//             contentType: 'image/png'
-//         }
-//     }
-//     Events.create(obj, (err, item) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else {
-//             // item.save();
-//             res.send("Success");
-//         }
-//     });
-// });
+  if (await exists(path).then(res => res) === true) {
+    await fs.unlink(path, (err) => {
+      if (err) {
+        console.log("err occ : ", err);
+        res.send("ERROR");
+      }
+    });
+    res.send("SUCCESS");
+  }
+  else {
+    res.send("FILE DOESNT EXIST");
+  }
+});
+
 
 module.exports = router;

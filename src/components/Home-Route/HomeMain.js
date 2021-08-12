@@ -8,7 +8,7 @@ import Navbar from "../Navbar/Navbar";
 import logo from "../../resources/images/logo.png";
 import Footer from "../Footer/Footer";
 import Welcome from "./WelcomeContent/WelcomeContent";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 import { useState } from "react";
 import axios from "axios";
@@ -55,9 +55,36 @@ export default () => {
     if (imageExtensons.includes(fileName.split(".").pop())) {
       console.log("true");
       return true;
+    } else return false;
+  };
+
+  const onDeleteFile = async () => {
+    try {
+      await axios
+        .post("http://localhost:5000/events/delete", { fileName: fileName })
+        .then((response) => {
+          if (response.data === "SUCCESS") {
+            setUploadedFile({});
+            setIsUploaded(false);
+            alert("The file has been deleted successfully!");
+          }
+          else if(response.data === 'FILE DOESNT EXIST'){
+            alert("The file doesn't exist!");
+          }
+          else if(response.data === "ERROR") {
+            alert("An error has occurred in the server!");
+          }
+        })
+        .catch((error) => {
+          console.log("Error occured : " + error);
+        });
+    } catch (err) {
+      if (err.response.status === 500) {
+        console.log(err);
+      } else {
+        console.log(err.response.data);
+      }
     }
-    else
-    return false;
   };
 
   const onFormSubmit = async (e) => {
@@ -121,13 +148,22 @@ export default () => {
         />
         <button type="submit">Upload</button>
       </form>
-      {isUploaded && (
-        <img
-          style={{ width: "10%" }}
-          src={uploadedFile.filePath || "Default_Image.png"}
-          alt={uploadedFile.fileName || "just an image"}
-        />
-      )}
+
+      <input
+        type="text"
+        placeholder="Name of the file to be deleted(case sensitive)"
+        style={{width: "25%"}}
+        onChange={(e) => {
+          setFileName(e.target.value);
+        }}
+      />
+      <button onClick={onDeleteFile}>Delete Image From Server</button>
+      <img
+        style={{ width: "10%" }}
+        src={uploadedFile.filePath || "Default_Image.png"}
+        alt={uploadedFile.fileName || "just an image"}
+      />
+      <h5 style={{display: 'inline-block'}}>{uploadedFile.fileName || "DEFAULT IMAGE"}</h5>
       <Navbar links={links} imgSrc={logo} />
       <Welcome />
       <AboutUs />
