@@ -6,6 +6,7 @@ import classes from "./SignIn.module.css";
 import Form from "./FormSignIn";
 import ForgotPass from "./ForgotPass";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 export default () => {
   const [isForgotPass, setIsForgotPass] = useState(false);
@@ -16,6 +17,10 @@ export default () => {
 
   return (
     <div className={classes.background}>
+      <Helmet>
+        <title>Sign In [ADMIN-ONLY]</title>
+        <link rel="icon" href='GYClogo.png' type="image/icon type"></link>
+      </Helmet>
       <Navbar links={links} imgSrc={logo} />
       <div className={classes.warning}>
         <h4>The Sign-In option is only for the Admin of the website.</h4>
