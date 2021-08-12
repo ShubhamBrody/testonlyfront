@@ -27,7 +27,7 @@ const data = [
     {
         "message": "Orange Business services is an infrastructure operator, technology integrator and supplier of value-added services, Orange Business Services supports businesses and local governments and public sector organizations through every step of their digital transformation. Leader in enterprise communication & driving digital transformation for businesses. This company is a technical partner for the campaign. They will provide us with all sorts of technical support. The gadgets donated will be purchased and refurbished by them. After the establishment of a student-friendly digital platform, they will conduct guidance sessions on using the digital tools and softwares installed in the gadgets.",
         imgsrc: orange,
-        heading : "Orange - France Telecom - Campaign Partner (Technical)"
+        heading : "Orange -France Telecom -Campaign Partner(Technical)"
     },
     {
         "message": "Rotary Club of Akola is the Implementation Partner for our ongoing campaign #DigitalOmega. They convey to us, problems and grievances faced by our receivers who with respect to this campaign are the students receiving digital devices. Moreover they help us with project management, predominantly comprising application and implementation on our platform. We at Geolife Youth Club are pleased to have them as our partner.",
