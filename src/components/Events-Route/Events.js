@@ -383,7 +383,7 @@ class Events extends Component {
         </p>
         <img
           src="online-sessions.png"
-          style={{ marginTop: "50px", marginBottom: "40px" }}
+          style={{ marginTop: "50px", marginBottom: "0px" }}
           alt=""
         ></img>
 
@@ -391,7 +391,7 @@ class Events extends Component {
           <h2>ONGOING EVENTS</h2>
           <p
             style={{
-              color: "#fff",
+              color: "#191919",
               textAlign: "center",
               marginBottom: "100px",
             }}
@@ -660,7 +660,7 @@ const Container = styled(Card)`
 const SecondDiv = styled.div`
   h2 {
     color: black;
-    margin-top: 200px;
+    margin-top: 100px;
     font-size: 40px;
   }
   p {
