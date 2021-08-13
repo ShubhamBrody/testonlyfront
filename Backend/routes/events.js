@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const Events = require("../models/booksform.model");
+const Events = require("../models/events.model");
 const Path = require("path");
 const fileUpload = require("express-fileupload");
 const fs = require("fs");
@@ -19,9 +19,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 router.use(
-  fileUpload({
-    debug: true,
-  })
+  fileUpload()
 );
 
 mongoose.connect(process.env.MONGO_DB, {
@@ -34,12 +32,28 @@ router.get("/getall", (req, res) => {
     if (err) {
       res.send("error :");
     } else {
+      console.log(results);
       res.send(results);
     }
   });
 });
 
-router.post("/createorupdate", async (req, res) => {
+router.post("/eventupload", (req, res) => {
+  Events.create({
+    imagename: req.body.imagename,
+    title: req.body.title,
+    description: req.body.description,
+  }, (err, result) => {
+    if (err) {
+      res.send("ERROR");
+      console.log("events err : ", err);
+    } else {
+      res.send("SUCCESS");
+    }
+  })
+})
+
+router.post("/imageupload", async (req, res) => {
   if (req.files === null) {
     res.send("No files found");
   }
