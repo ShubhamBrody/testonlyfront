@@ -84,7 +84,19 @@ router.post("/imageupload", async (req, res) => {
   });
 });
 
-router.post("/delete", async (req, res) => {
+router.post("/deleteevent", (req, res) => {
+  Events.findOneAndDelete({id: req.body.id}, (err, results) => {
+    if(err)
+    {
+      console.log(err);
+      res.send("ERROR")
+    }
+    else
+    res.send("SUCCESS");
+  })
+})
+
+router.post("/deleteimage", async (req, res) => {
   const file = req.body.fileName;
   const path = Path.join(__dirname, `../../public/uploads/${file}`);
 

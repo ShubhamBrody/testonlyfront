@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import $ from "jquery";
 import styled from "styled-components";
 import { Card, CardTitle } from "react-bootstrap-card";
-import data from "./EventsTextData";
 import axios from "axios";
 
 class Events extends Component {
@@ -52,7 +51,7 @@ class Events extends Component {
     "xbm",
     "xpm",
   ];
-
+  
   checkIfAFileISImage = (fileName) => {
     console.log(fileName.split(".").pop());
     if (this.imageExtensions.includes(fileName.split(".").pop())) {
@@ -60,12 +59,12 @@ class Events extends Component {
       return true;
     } else return false;
   };
-
-  onDeleteFile = async () => {
+  
+  onDeleteFile = async (fileName) => {
     try {
       await axios
-        .post("http://localhost:5000/events/delete", {
-          fileName: this.state.fileName,
+        .post("http://localhost:5000/events/deleteimage", {
+          fileName: fileName,
         })
         .then((response) => {
           if (response.data === "SUCCESS") {
@@ -94,6 +93,35 @@ class Events extends Component {
     }
   };
 
+  onDeleteEvent = async (id, fileName) => { 
+    try {
+      await axios
+        .post("http://localhost:5000/events/deleteevent", {
+          id: id,
+        })
+        .then((response) => {
+          if (response.data === "SUCCESS") {
+            this.onDeleteFile(fileName);
+            this.getAllEvents();
+            alert("The event was deleted successfully");
+          } else if (response.data === "ERROR") {
+            alert(
+              "An error has occurred in the server while deleting the event!"
+            );
+          }
+        })
+        .catch((error) => {
+          alert("Error occured : " + error);
+        });
+    } catch (err) {
+      if (err.response.status === 500) {
+        console.log(err);
+      } else {
+        console.log(err.response.data);
+      }
+    }
+  }
+
   createEvent = async (eventTitle, eventDescription, fileName) => {
     try {
       await axios
@@ -107,12 +135,12 @@ class Events extends Component {
             alert("The event has been created successfully!");
             this.getAllEvents();
           } else if (response.data === "ERROR") {
-            this.onDeleteFile();
+            this.onDeleteFile(this.state.fileName);
             alert("An error has occurred in the server while uploading event!");
           }
         })
         .catch((error) => {
-          this.onDeleteFile();
+          this.onDeleteFile(this.state.fileName);
           alert("Error occured : " + error);
         });
     } catch (err) {
@@ -130,6 +158,12 @@ class Events extends Component {
 
     if (this.state.fileName === "" || this.state.file === "") {
       alert("Please select a file to upload");
+      return;
+    }
+
+    if(this.state.eventTitle === '' || this.state.eventDescription === '')
+    {
+      alert("Event title / description should not be empty");
       return;
     }
 
@@ -297,7 +331,7 @@ class Events extends Component {
               </button>
               <button
                 className="btn btn-light btn-sm"
-                onClick={this.editOnClick}
+                onClick={() => this.onDeleteEvent(event.id, event.imagename)}
                 style={{
                   height: "40px",
                   backgroundColor: "transparent",
@@ -325,98 +359,6 @@ class Events extends Component {
       </>
     );
   }));
-  // displayContent = data.map((event) => {
-  //   return (
-  //     <>
-  //       <ContentDiv>
-  //         <Heading>{event.heading}</Heading>
-  //         {this.edit ? (
-  //           <span
-  //             style={{
-  //               zIndex: 10,
-  //               height: "40px",
-  //               marginTop: "-7%",
-  //               marginRight: "15px",
-  //               float: "right",
-  //             }}
-  //           >
-  //             <button
-  //               className="btn btn-light"
-  //               type="submit"
-  //               style={{
-  //                 backgroundColor: "transparent",
-  //                 borderColor: "transparent",
-  //                 color: "#e0aa3e",
-  //               }}
-  //             >
-  //               Save{" "}
-  //             </button>
-  //             <button
-  //               className="btn btn-light"
-  //               onClick={this.cancelOnClick}
-  //               style={{
-  //                 backgroundColor: "transparent",
-  //                 borderColor: "transparent",
-  //                 color: "#e0aa3e",
-  //               }}
-  //             >
-  //               Cancel{" "}
-  //             </button>
-  //           </span>
-  //         ) : (
-  //           <span
-  //             style={{
-  //               zIndex: 10,
-  //               height: "40px",
-  //               marginTop: "-7%",
-  //               marginRight: "15px",
-  //               float: "right",
-  //             }}
-  //           >
-  //             <button
-  //               className="btn btn-light btn-sm"
-  //               onClick={this.editOnClick}
-  //               style={{
-  //                 backgroundColor: "transparent",
-  //                 border: "transparent",
-  //               }}
-  //             >
-  //               <img
-  //                 src="pencil-alt-solid.svg"
-  //                 style={{ width: "20px", height: "20px" }}
-  //                 alt="pencil"
-  //               />
-  //             </button>
-  //             <button
-  //               className="btn btn-light btn-sm"
-  //               onClick={this.editOnClick}
-  //               style={{
-  //                 height: "40px",
-  //                 backgroundColor: "transparent",
-  //                 border: "transparent",
-  //               }}
-  //             >
-  //               <img
-  //                 src="trash.svg"
-  //                 style={{ width: "22px", height: "27px" }}
-  //                 alt="trash"
-  //               />
-  //             </button>
-  //           </span>
-  //         )}
-  //         <ContentWrapper>
-  //           <Inner>
-  //             <img src={event.imgsrc} alt="Refresh for img" />
-  //           </Inner>
-  //           <Inner>
-  //             <Description>{event.content}</Description>
-  //           </Inner>
-  //         </ContentWrapper>
-  //       </ContentDiv>
-  //       <br />
-  //     </>
-  //   );
-  // });
 
   render() {
     return (
