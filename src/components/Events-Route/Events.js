@@ -24,6 +24,7 @@ class Events extends Component {
       titleEdit: "",
       descriptionEdit: "",
       imagenameEdit: "",
+      imageEdit: "",
     };
   }
 
@@ -158,6 +159,103 @@ class Events extends Component {
     return "SUCCESS";
   };
 
+  UpdateEvent = async () => {
+    if (this.state.titleEdit === "" || this.state.descriptionEdit === "") {
+      alert("Event title / description should not be empty");
+      return;
+    }
+
+    if (!this.checkIfAFileISImage(this.state.imagenameEdit)) {
+      alert("Please upload a valid image file");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", this.state.imageEdit);
+
+    try {
+      await axios
+        .post("http://localhost:5000/events/updateevent", {
+          id: this.state.idToEdit,
+          imagename: this.state.imagenameEdit,
+          title: this.state.titleEdit,
+          description: this.state.descriptionEdit,
+        })
+        .then((response) => {
+          if (response.data.report === "SUCCESS") {
+            if (response.data.imagename !== this.state.imagenameEdit) {
+              this.onDeleteFile(response.data.imagename);
+              this.ImageUpload(formData, false);
+            }
+            this.getAllEvents();
+            this.setState({
+              ...this.state,
+              idToEdit: "",
+              titleEdit: "",
+              descriptionEdit: "",
+              imagenameEdit: "",
+            });
+            alert("The event was updated successfully");
+          } else if (response.data === "ERROR") {
+            alert(
+              "An error has occurred in the server while updating the event!"
+            );
+          }
+        })
+        .catch((error) => {
+          alert("Error occured : " + error);
+        });
+    } catch (err) {
+      if (err.response.status === 500) {
+        console.log(err);
+      } else {
+        console.log(err.response.data);
+      }
+    }
+  };
+
+  ImageUpload = async (formData, canCreate) => {
+    try {
+      await axios
+        .post("http://localhost:5000/events/imageupload", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((response) => {
+          const { fileName, filePath, repeated } = response.data;
+          this.setState({
+            ...this.state,
+            isUploaded: true,
+            uploadedFile: { fileName, filePath },
+          });
+          if (repeated) alert(`Image "${fileName}" already exists`);
+          else if (canCreate) {
+            if (
+              this.createEvent(
+                this.state.eventTitle,
+                this.state.eventDescription,
+                this.state.fileName
+              ) === "SUCCESS"
+            )
+              this.onCancel();
+            alert("Event Created Successfully!");
+          } else {
+            this.getAllEvents();
+          }
+        })
+        .catch((error) => {
+          console.log("Error occured : " + error);
+        });
+    } catch (err) {
+      if (err.response.status === 500) {
+        console.log(err);
+      } else {
+        console.log(err.response.data);
+      }
+    }
+  };
+
   onFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -179,43 +277,7 @@ class Events extends Component {
     const formData = new FormData();
     formData.append("file", this.state.file);
 
-    try {
-      await axios
-        .post("http://localhost:5000/events/imageupload", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((response) => {
-          const { fileName, filePath, repeated } = response.data;
-          this.setState({
-            ...this.state,
-            isUploaded: true,
-            uploadedFile: { fileName, filePath },
-          });
-          if (repeated) alert(`Image "${fileName}" already exists`);
-          else {
-            if (
-              this.createEvent(
-                this.state.eventTitle,
-                this.state.eventDescription,
-                this.state.fileName
-              ) === "SUCCESS"
-            )
-              this.onCancel();
-            alert("Event Created Successfully!");
-          }
-        })
-        .catch((error) => {
-          console.log("Error occured : " + error);
-        });
-    } catch (err) {
-      if (err.response.status === 500) {
-        console.log(err);
-      } else {
-        console.log(err.response.data);
-      }
-    }
+    this.ImageUpload(formData, true);
   };
 
   onChange = (e) => {
@@ -230,6 +292,23 @@ class Events extends Component {
       var reader = new FileReader();
       reader.onload = function (e) {
         $("#image").attr("src", e.target.result);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  };
+
+  onChangeInputForEdit = (e) => {
+    e.target.files[0] &&
+      this.setState({
+        ...this.state,
+        imageEdit: e.target.files[0],
+        imagenameEdit: e.target.files[0].name,
+      });
+    console.log("Changed image name : ", this.state.imagenameEdit);
+    if (e.target.files && e.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $("#imageforediting").attr("src", e.target.result);
       };
       reader.readAsDataURL(e.target.files[0]);
     }
@@ -278,7 +357,7 @@ class Events extends Component {
     );
   };
 
-  onCancelChanges = () => { 
+  onCancelChanges = () => {
     this.setState({
       ...this.state,
       idToEdit: "",
@@ -286,7 +365,7 @@ class Events extends Component {
       descriptionEdit: "",
       imagenameEdit: "",
     });
-  }
+  };
 
   editOnClick = (event) => {
     this.setState({
@@ -297,23 +376,6 @@ class Events extends Component {
       imagenameEdit: event.imagename,
     });
   };
-
-  onChangeInputForEdit = (e) => { 
-    console.log(e);
-    e.target.files[0] &&
-      this.setState({
-        ...this.state,
-        file: e.target.files[0],
-        fileName: e.target.files[0].name,
-      });
-    if (e.target.files && e.target.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $("#imageforediting").attr("src", e.target.result);
-      };
-      reader.readAsDataURL(e.target.files[0]);
-    }
-  }
 
   FirstEditEventPhase = ({ event }) => (
     <span
@@ -377,114 +439,119 @@ class Events extends Component {
       );
     });
 
-    EditingContent = ({ event }) => {
-      return (
-        <>
-          <Grid>
+  EditingContent = ({ event }) => {
+    return (
+      <>
+        <Grid>
+          <br />
+          <CardTitle style={{ color: "#e0aa3e" }}>Edit Event</CardTitle>
+          <span style={{ marginTop: "-4%", marginLeft: "87%" }}>
+            <button
+              onClick={this.UpdateEvent}
+              style={{
+                // width: "30px",
+                height: "auto",
+                backgroundColor: "transparent",
+                borderColor: "transparent",
+              }}
+            >
+              Save{" "}
+            </button>
+            <button
+              onClick={this.onCancelChanges}
+              style={{
+                marginLeft: "7px",
+                // width: "50px",
+                height: "auto",
+                backgroundColor: "transparent",
+                borderColor: "transparent",
+              }}
+            >
+              Cancel{" "}
+            </button>
+          </span>
+          <br />
+          <MyForm>
+            <input
+              style={{ color: "black" }}
+              value={this.state.titleEdit}
+              type="text"
+              id="eventtitle"
+              placeholder="Event Name"
+              onChange={(e) => {
+                this.setState({
+                  ...this.state,
+                  titleEdit: e.target.value,
+                });
+              }}
+            />
+
             <br />
-            <CardTitle style={{ color: "#e0aa3e" }}>Edit Event</CardTitle>
-            <span style={{ marginTop: "-4%", marginLeft: "87%" }}>
-              <button
-                onClick={this.onFormSubmit}
-                style={{
-                  // width: "30px",
-                  height: "auto",
-                  backgroundColor: "transparent",
-                  borderColor: "transparent",
-                }}
-              >
-                Save{' '}
-              </button>
-              <button
-                onClick={this.onCancelChanges}
-                style={{
-                  marginLeft: "7px",
-                  // width: "50px",
-                  height: "auto",
-                  backgroundColor: "transparent",
-                  borderColor: "transparent",
-                }}
-              >
-                Cancel{' '}
-              </button>
-            </span>
-            <br />
-            <MyForm>
-              <input
-                style={{ color: "black" }}
-                value={this.state.titleEdit}
-                type="text"
-                id="eventtitle"
-                placeholder="Event Name"
-                onChange={(e) => {
-                  this.setState({
-                    ...this.state,
-                    titleEdit: e.target.value,
-                  });
-                }}
-              />
-  
-              <br />
-  
-              <img
-                onClick={() => {
-                  $("#editingimage").click();
-                }}
-                id="imageforediting"
-                src={`uploads/${this.state.imagenameEdit}`}
-                style={{ cursor: "pointer" }}
-                alt=""
-              />
-  
-              <input
-                type="file"
-                accept="image/*"
-                id="editingimage"
-                style={{ display: "none" }}
-                onChange={this.onChangeInputForEdit}
-              />
-  
-              <textarea
-                style={{ color: "black" }}
-                rows="9"
-                cols="70"
-                value={this.state.descriptionEdit}
-                id="eventdescription"
-                placeholder="Event Description"
-                onChange={(e) => {
-                  this.setState({
-                    ...this.state,
-                    descriptionEdit: e.target.value,
-                  });
-                }}
-              />
-            </MyForm>
-          </Grid>
-        </>
-      );
-    };
+
+            <img
+              onClick={() => {
+                $("#editingimage").click();
+              }}
+              id="imageforediting"
+              src={`uploads/${this.state.imagenameEdit}`}
+              style={{ cursor: "pointer" }}
+              alt=""
+            />
+
+            <input
+              type="file"
+              accept="image/*"
+              id="editingimage"
+              style={{ display: "none" }}
+              onChange={this.onChangeInputForEdit}
+            />
+
+            <textarea
+              style={{ color: "black" }}
+              rows="9"
+              cols="70"
+              value={this.state.descriptionEdit}
+              id="eventdescription"
+              placeholder="Event Description"
+              onChange={(e) => {
+                this.setState({
+                  ...this.state,
+                  descriptionEdit: e.target.value,
+                });
+              }}
+            />
+          </MyForm>
+        </Grid>
+      </>
+    );
+  };
 
   EditableContent = () =>
     this.state.eventsData.map((event) => {
       return (
         <>
-        {this.state.idToEdit === event._id ?
-          <this.EditingContent event={event} />
-          : <><ContentDiv>
-            <Heading>{event.title}</Heading>
-            <this.FirstEditEventPhase event={event} />
-            <ContentWrapper>
-              <Inner>
-                <img src={`uploads/${event.imagename}`} alt="Refresh for img" />
-              </Inner>
-              <Inner>
-                <Description>{event.description}</Description>
-              </Inner>
-            </ContentWrapper>
-          </ContentDiv>
-          <br />
-          </>
-        }
+          {this.state.idToEdit === event._id ? (
+            <this.EditingContent event={event} />
+          ) : (
+            <>
+              <ContentDiv>
+                <Heading>{event.title}</Heading>
+                <this.FirstEditEventPhase event={event} />
+                <ContentWrapper>
+                  <Inner>
+                    <img
+                      src={`uploads/${event.imagename}`}
+                      alt="Refresh for img"
+                    />
+                  </Inner>
+                  <Inner>
+                    <Description>{event.description}</Description>
+                  </Inner>
+                </ContentWrapper>
+              </ContentDiv>
+              <br />
+            </>
+          )}
         </>
       );
     });
@@ -522,7 +589,12 @@ class Events extends Component {
             training volunteers as well.
           </p>
 
-          {this.state.isContentLoaded && (this.props.signInDetails ? <this.EditableContent /> : <this.DisplayContentForUser />)}
+          {this.state.isContentLoaded &&
+            (this.props.signInDetails ? (
+              <this.EditableContent />
+            ) : (
+              <this.DisplayContentForUser />
+            ))}
           {this.props.signInDetails && (
             <span>
               <button
