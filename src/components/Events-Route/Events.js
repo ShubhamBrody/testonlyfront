@@ -19,7 +19,6 @@ class Events extends Component {
       eventDescription: "",
       eventsData: [],
       isContentLoaded: false,
-      isEditable: this.props.signInDetails,
       addEvent: false,
     };
   }
@@ -246,7 +245,7 @@ class Events extends Component {
         console.log(err);
       });
   };
-
+  
   async componentDidMount() {
     await this.getAllEvents()
       .then(() => {
@@ -281,40 +280,42 @@ class Events extends Component {
         <>
           <ContentDiv>
             <Heading>{event.title}</Heading>
-            {this.edit ? (
-              <span
-                style={{
-                  zIndex: 10,
-                  height: "40px",
-                  marginTop: "-7%",
-                  marginRight: "15px",
-                  float: "right",
-                }}
-              >
-                <button
-                  className="btn btn-light"
-                  type="submit"
-                  style={{
-                    backgroundColor: "transparent",
-                    borderColor: "transparent",
-                    color: "#e0aa3e",
-                  }}
-                >
-                  Save{" "}
-                </button>
-                <button
-                  className="btn btn-light"
-                  onClick={this.cancelOnClick}
-                  style={{
-                    backgroundColor: "transparent",
-                    borderColor: "transparent",
-                    color: "#e0aa3e",
-                  }}
-                >
-                  Cancel{" "}
-                </button>
-              </span>
-            ) : (
+            {this.props.signInDetails ? (
+              //This code needs to be activated when clicking the pencil button
+          //     <span
+          //     style={{
+          //       zIndex: 10,
+          //       height: "40px",
+          //       marginTop: "-7%",
+          //       marginRight: "15px",
+          //       float: "right",
+          //     }}
+          //   >
+          //     <button
+          //       className="btn btn-light"
+          //       type="submit"
+          //       style={{
+          //         backgroundColor: "transparent",
+          //         borderColor: "transparent",
+          //         color: "#e0aa3e",
+          //       }}
+          //     >
+          //       Save{" "}
+          //     </button>
+          //     <button
+          //       className="btn btn-light"
+          //       onClick={this.cancelOnClick}
+          //       style={{
+          //         backgroundColor: "transparent",
+          //         borderColor: "transparent",
+          //         color: "#e0aa3e",
+          //       }}
+          //     >
+          //       Cancel{" "}
+          //     </button>
+          //   </span>
+          // )
+
               <span
                 style={{
                   zIndex: 10,
@@ -354,7 +355,7 @@ class Events extends Component {
                   />
                 </button>
               </span>
-            )}
+            ): <span></span>}
             <ContentWrapper>
               <Inner>
                 <img src={`uploads/${event.imagename}`} alt="Refresh for img" />
@@ -404,7 +405,8 @@ class Events extends Component {
 
           {this.state.isContentLoaded && this.displayContent()}
 
-          <button
+          {this.props.signInDetails && <span>
+            <button
             onClick={() => {
               console.log($("myfile"));
               this.setState({ ...this.state, addEvent: !this.state.addEvent });
@@ -509,7 +511,7 @@ class Events extends Component {
                 />
               </MyForm>
             </Grid>
-          )}
+          )}</span>}
         </SecondDiv>
       </Container>
     );
