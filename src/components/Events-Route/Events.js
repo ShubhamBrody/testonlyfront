@@ -4,7 +4,9 @@ import styled from "styled-components";
 import { Card, CardTitle } from "react-bootstrap-card";
 import axios from "axios";
 import { connect } from "react-redux";
+import { withFormik, Form, Field } from "formik";
 
+const form_id = "form_id";
 class Events extends Component {
   // state = {};
 
@@ -53,6 +55,22 @@ class Events extends Component {
     "xbm",
     "xpm",
   ];
+
+  editOnClick = (event) => {
+    event.preventDefault();
+    const data = !this?.props?.status?.edit;
+    this.props.setStatus({
+      edit: data,
+    });
+  };
+
+  cancelOnClick = (event) => {
+    event.preventDefault();
+    this.props.resetForm();
+    this.props.setStatus({
+      edit: false,
+    });
+  };
 
   checkIfAFileISImage = (fileName) => {
     console.log(fileName.split(".").pop());
@@ -316,46 +334,46 @@ class Events extends Component {
           //   </span>
           // )
 
-              <span
-                style={{
-                  zIndex: 10,
-                  height: "40px",
-                  marginTop: "-7%",
-                  marginRight: "15px",
-                  float: "right",
-                }}
-              >
-                <button
-                  className="btn btn-light btn-sm"
-                  onClick={this.editOnClick}
-                  style={{
-                    backgroundColor: "transparent",
-                    border: "transparent",
-                  }}
-                >
-                  <img
-                    src="pencil-alt-solid.svg"
-                    style={{ width: "20px", height: "20px" }}
-                    alt="pencil"
-                  />
-                </button>
-                <button
-                  className="btn btn-light btn-sm"
-                  onClick={() => this.onDeleteEvent(event.id, event.imagename)}
-                  style={{
-                    height: "40px",
-                    backgroundColor: "transparent",
-                    border: "transparent",
-                  }}
-                >
-                  <img
-                    src="trash.svg"
-                    style={{ width: "22px", height: "27px" }}
-                    alt="trash"
-                  />
-                </button>
-              </span>
-            ): <span></span>}
+          <span
+          style={{
+            zIndex: 10,
+            height: "40px",
+            marginTop: "-7%",
+            marginRight: "15px",
+            float: "right",
+          }}
+        >
+          <button
+            className="btn btn-light btn-sm"
+            onClick={this.editOnClick}
+            style={{
+              backgroundColor: "transparent",
+              border: "transparent",
+            }}
+          >
+            <img
+              src="pencil-alt-solid.svg"
+              style={{ width: "20px", height: "20px" }}
+              alt="pencil"
+            />
+          </button>
+          <button
+            className="btn btn-light btn-sm"
+            onClick={() => this.onDeleteEvent(event.id, event.imagename)}
+            style={{
+              height: "40px",
+              backgroundColor: "transparent",
+              border: "transparent",
+            }}
+          >
+            <img
+              src="trash.svg"
+              style={{ width: "22px", height: "27px" }}
+              alt="trash"
+            />
+          </button>
+        </span>
+      ): <span></span>}
             <ContentWrapper>
               <Inner>
                 <img src={`uploads/${event.imagename}`} alt="Refresh for img" />
@@ -363,12 +381,142 @@ class Events extends Component {
               <Inner>
                 <Description>{event.description}</Description>
               </Inner>
-            </ContentWrapper>
+            </ContentWrapper>          
           </ContentDiv>
           <br />
         </>
       );
     });
+
+    _renderAction() {
+      return (
+        <React.Fragment>
+          <div className="form-statusbar">
+            {this?.props?.status?.edit ? (
+              <React.Fragment>
+                <button
+                  className="btn btn-light"
+                  type="submit"
+                  form={form_id}
+                  onClick={this.databaseUpdate}
+                  style={{
+                    marginTop: "-90px",
+                    marginLeft: "420px",
+                    zIndex: "10",
+                    backgroundColor: "transparent",
+                    borderColor: "transparent",
+                    color: '#e0aa3e',
+                  }}
+                >
+                  Save
+                </button>
+                <button
+                className="btn btn-light"
+                  onClick={this.cancelOnClick}
+                  style={{
+                    marginTop: "-139px",
+                    marginLeft: "530px",
+                    zIndex: "10",
+                    backgroundColor: "transparent",
+                    borderColor: "transparent",
+                    color: '#e0aa3e',
+                  }}
+                >
+                  Cancel
+                </button>
+              </React.Fragment>
+            ) : (
+              <button
+                className="btn btn-light btn-sm"
+                onClick={this.editOnClick}
+                style={{
+                  marginTop: "-90px",
+                  marginLeft: "515px",
+                  zIndex: "10",
+                  backgroundColor: "transparent",
+                  border: "transparent"
+                }}
+              >
+                <img
+                  src="pencil-alt-solid.svg"
+                  style={{ width: "20px", height: "20px", color: "#e0aa3e"}}
+                  alt="pencil"
+                />
+              </button>
+            )}
+          </div>
+        </React.Fragment>
+      );
+    }
+    
+  
+    _renderFormView = () => {
+      return (
+              <React.Fragment>
+                <p>bruh</p>
+              </React.Fragment>
+
+      );
+    };
+  
+    _renderFormInput = () => {
+      return (
+        <React.Fragment>
+          <Grid>
+          <MyForm>
+                <input
+                  style={{ color: "black" }}
+                  value={this.state.eventTitle}
+                  type="text"
+                  id="eventtitle"
+                  placeholder="Event Name"
+                  onChange={(e) => {
+                    this.setState({
+                      ...this.state,
+                      eventTitle: e.target.value,
+                    });
+                  }}
+                />
+
+                <br />
+
+                <img
+                  onClick={() => {
+                    $("#myfile").click();
+                  }}
+                  id="image"
+                  src=""
+                  style={{ cursor: "pointer" }}
+                  alt=""
+                />
+
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="myfile"
+                  style={{ display: "none" }}
+                  onChange={this.onChange}
+                />
+
+                <textarea
+                  style={{ color: "black" }}
+                  rows="9"
+                  cols="70"
+                  value={this.state.eventDescription}
+                  id="eventdescription"
+                  placeholder="Event Description"
+                  onChange={(e) => {
+                    this.setState({
+                      ...this.state,
+                      eventDescription: e.target.value,
+                    });
+                  }}
+                />
+              </MyForm>
+              </Grid>
+        </React.Fragment>
+      );
+    };
 
   render() {
     return (
@@ -403,7 +551,12 @@ class Events extends Component {
             training volunteers as well.
           </p>
 
-          {this.state.isContentLoaded && this.displayContent()}
+          {this._renderAction()}
+          {this?.props?.status?.edit
+                    ? this._renderFormInput()
+                    : this.displayContent()}
+
+          {/* {this.state.isContentLoaded && this.displayContent()} */}
 
           {this.props.signInDetails && <span>
             <button
@@ -460,7 +613,7 @@ class Events extends Component {
                 </button>
               </span>
               <br />
-              <MyForm>
+              <MyForm>      
                 <input
                   style={{ color: "black" }}
                   value={this.state.eventTitle}
@@ -508,7 +661,7 @@ class Events extends Component {
                       eventDescription: e.target.value,
                     });
                   }}
-                />
+                />         
               </MyForm>
             </Grid>
           )}</span>}
@@ -531,17 +684,14 @@ const MyForm = styled.form`
     margin-bottom: 25px;
     // background-color: transparent;
   }
-
   img {
     width: 250px;
     height: 250px;
     border-radius: 300px;
-
     margin-left: 60px;
     margin-top: 0px;
     float: left;
   }
-
   textarea {
     margin-left: 0px;
     margin-top: 12px;
@@ -549,7 +699,6 @@ const MyForm = styled.form`
     overflow: auto;
     // background-color: transparent;
   }
-
   @media (max-width: 1050px) {
     img {
       margin-left: 20px;
@@ -565,10 +714,8 @@ const Grid = styled(Card)`
   position: relative;
   text-align: center;
   color: white;
-
   margin: 0px auto;
   margin-bottom: 60px;
-
   @media (max-width: 1050px) {
     width: 56rem;
   }
@@ -576,7 +723,6 @@ const Grid = styled(Card)`
 
 const Inner = styled.div`
   margin: auto 30px;
-
   @media (max-width: 1400px) {
     // margin-top: 30px;
   }
@@ -588,7 +734,6 @@ const Description = styled.div`
   width: 700px;
   margin-left: -100px;
   // margin-top: 20px;
-
   @media (max-width: 1400px) {
     width: 500px;
     margin-left: -50px;
@@ -615,7 +760,6 @@ const ContentWrapper = styled.div`
   text-align: justify;
   justify-content: space-around;
   display: flex;
-
   img {
     vertical-align: middle;
     height: 250px;
@@ -630,21 +774,17 @@ const Container = styled(Card)`
   overflow: hidden;
   border: 0;
   border-radius: 0px;
-
   p {
     text-align: center;
     // margin-left: 200px;
     // margin-right: 200px;
     // margin-top: 30px;
-
     margin: 30px auto;
   }
-
   h2 {
     text-align: center;
     color: #e0aa3e;
   }
-
   @keyframes image {
     from {
       opacity: 0;
@@ -655,7 +795,6 @@ const Container = styled(Card)`
       transform: translateX(0px);
     }
   }
-
   background: url("background.png") center center / cover no-repeat fixed;
 `;
 
@@ -671,7 +810,6 @@ const SecondDiv = styled.div`
     color: black;
     width: 900px;
   }
-
   @media (max-width: 1000px) {
     h2 {
       margin-top: 150px;
@@ -685,7 +823,6 @@ const ContentDiv = styled.div`
   position: relative;
   margin: 0px 150px 30px 150px;
   padding: 30px 0px 40px 0px;
-
   @media (max-width: 1200px) {
     margin: 0px 100px 30px 100px;
   }
@@ -694,4 +831,51 @@ const ContentDiv = styled.div`
   }
 `;
 
-export default connect(mapStateToProps)(Events);
+const Date = styled.input`
+  border: none;
+  background-color: #191919;
+  color: #e0aa3e;
+  font-size: 15px;
+  margin: 0px auto;
+  text-align: center;
+  margin-bottom: 20px;
+  pointer-events: none;
+  z-index: -1;
+`;
+
+const TextArea = styled.textarea`
+  font-size: 18px;
+  margin-top: 5px;
+  border: none;
+  background-color: #191919;
+  margin: 0px auto;
+  text-align: center;
+  resize: none;
+  z-index: -1;
+  pointer-events: none;
+  color: #fff;
+  overflow-y: auto;
+`;
+
+const FinalEvents = withFormik({
+  mapPropsToStatus: (props) => {
+    return {
+      edit: props?.edit || false,
+    };
+  },
+  mapPropsToValues: (props) => {
+    return {
+      // date: props.fields.date,
+      // news: props.fields.news,
+    };
+  },
+  enableReinitialize: true,
+  handleSubmit: (values, { props, ...actions }) => {
+    props.updateFields(values);
+    actions.setStatus({
+      edit: false,
+    });
+  },
+})(Events);
+
+export default connect(mapStateToProps)(FinalEvents);
