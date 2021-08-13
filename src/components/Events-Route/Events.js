@@ -3,9 +3,10 @@ import $ from "jquery";
 import styled from "styled-components";
 import { Card, CardTitle } from "react-bootstrap-card";
 import axios from "axios";
+import { connect } from "react-redux";
 
 class Events extends Component {
-  state = {};
+  // state = {};
 
   constructor(props) {
     super(props);
@@ -18,6 +19,8 @@ class Events extends Component {
       eventDescription: "",
       eventsData: [],
       isContentLoaded: false,
+      isEditable: this.props.signInDetails,
+      addEvent: false,
     };
   }
 
@@ -51,7 +54,7 @@ class Events extends Component {
     "xbm",
     "xpm",
   ];
-  
+
   checkIfAFileISImage = (fileName) => {
     console.log(fileName.split(".").pop());
     if (this.imageExtensions.includes(fileName.split(".").pop())) {
@@ -59,7 +62,7 @@ class Events extends Component {
       return true;
     } else return false;
   };
-  
+
   onDeleteFile = async (fileName) => {
     try {
       await axios
@@ -93,15 +96,15 @@ class Events extends Component {
     }
   };
 
-  onDeleteEvent = async (id, fileName) => { 
+  onDeleteEvent = async (id, fileName) => {
     try {
       await axios
         .post("http://localhost:5000/events/deleteevent", {
           id: id,
         })
         .then((response) => {
-          if (response.data === "SUCCESS") {
-            this.onDeleteFile(fileName);
+          if (response.data.report === "SUCCESS") {
+            this.onDeleteFile(response.data.imagename);
             this.getAllEvents();
             alert("The event was deleted successfully");
           } else if (response.data === "ERROR") {
@@ -120,7 +123,7 @@ class Events extends Component {
         console.log(err.response.data);
       }
     }
-  }
+  };
 
   createEvent = async (eventTitle, eventDescription, fileName) => {
     try {
@@ -132,7 +135,6 @@ class Events extends Component {
         })
         .then((response) => {
           if (response.data === "SUCCESS") {
-            alert("The event has been created successfully!");
             this.getAllEvents();
           } else if (response.data === "ERROR") {
             this.onDeleteFile(this.state.fileName);
@@ -155,15 +157,14 @@ class Events extends Component {
 
   onFormSubmit = async (e) => {
     e.preventDefault();
-
-    if (this.state.fileName === "" || this.state.file === "") {
-      alert("Please select a file to upload");
+    
+    if (this.state.eventTitle === "" || this.state.eventDescription === "") {
+      alert("Event title / description should not be empty");
       return;
     }
-
-    if(this.state.eventTitle === '' || this.state.eventDescription === '')
-    {
-      alert("Event title / description should not be empty");
+    
+    if (this.state.fileName === "" || this.state.file === "") {
+      alert("Please select a file to upload");
       return;
     }
 
@@ -198,6 +199,7 @@ class Events extends Component {
                 this.state.fileName
               ) === "SUCCESS"
             )
+              this.onCancel();
               alert("Event Created Successfully!");
           }
         })
@@ -221,6 +223,13 @@ class Events extends Component {
         file: e.target.files[0],
         fileName: e.target.files[0].name,
       });
+    if (e.target.files && e.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $("#image").attr("src", e.target.result);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
   };
 
   getAllEvents = async () => {
@@ -249,116 +258,116 @@ class Events extends Component {
       .catch(() => {
         console.log("Error occured while loading the content");
       });
-    $("#image").click(function () {
-      $("#myfile").click();
-    });
-
-    $("#myfile").change(function () {
-      if (this.files && this.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          $("#image").attr("src", e.target.result);
-        };
-
-        reader.readAsDataURL(this.files[0]);
-      }
-    });
   }
 
-  edit = false;
-
-  displayContent = () => (this.state.eventsData.map((event) => {
-    return (
-      <>
-        <ContentDiv>
-          <Heading>{event.title}</Heading>
-          {this.edit ? (
-            <span
-              style={{
-                zIndex: 10,
-                height: "40px",
-                marginTop: "-7%",
-                marginRight: "15px",
-                float: "right",
-              }}
-            >
-              <button
-                className="btn btn-light"
-                type="submit"
-                style={{
-                  backgroundColor: "transparent",
-                  borderColor: "transparent",
-                  color: "#e0aa3e",
-                }}
-              >
-                Save{" "}
-              </button>
-              <button
-                className="btn btn-light"
-                onClick={this.cancelOnClick}
-                style={{
-                  backgroundColor: "transparent",
-                  borderColor: "transparent",
-                  color: "#e0aa3e",
-                }}
-              >
-                Cancel{" "}
-              </button>
-            </span>
-          ) : (
-            <span
-              style={{
-                zIndex: 10,
-                height: "40px",
-                marginTop: "-7%",
-                marginRight: "15px",
-                float: "right",
-              }}
-            >
-              <button
-                className="btn btn-light btn-sm"
-                onClick={this.editOnClick}
-                style={{
-                  backgroundColor: "transparent",
-                  border: "transparent",
-                }}
-              >
-                <img
-                  src="pencil-alt-solid.svg"
-                  style={{ width: "20px", height: "20px" }}
-                  alt="pencil"
-                />
-              </button>
-              <button
-                className="btn btn-light btn-sm"
-                onClick={() => this.onDeleteEvent(event.id, event.imagename)}
-                style={{
-                  height: "40px",
-                  backgroundColor: "transparent",
-                  border: "transparent",
-                }}
-              >
-                <img
-                  src="trash.svg"
-                  style={{ width: "22px", height: "27px" }}
-                  alt="trash"
-                />
-              </button>
-            </span>
-          )}
-          <ContentWrapper>
-            <Inner>
-              <img src={`uploads/${event.imagename}`} alt="Refresh for img" />
-            </Inner>
-            <Inner>
-              <Description>{event.description}</Description>
-            </Inner>
-          </ContentWrapper>
-        </ContentDiv>
-        <br />
-      </>
+  onCancel = (e) => {
+    e.preventDefault();
+    this.setState({
+      ...this.state,
+      file: {},
+      fileName: "",
+      eventTitle: "",
+      eventDescription: "",
+    });
+    $("#image").attr(
+      "src",
+      "https://image.flaticon.com/icons/png/512/25/25340.png"
     );
-  }));
+  };
+
+  displayContent = () =>
+    this.state.eventsData.map((event) => {
+      return (
+        <>
+          <ContentDiv>
+            <Heading>{event.title}</Heading>
+            {this.edit ? (
+              <span
+                style={{
+                  zIndex: 10,
+                  height: "40px",
+                  marginTop: "-7%",
+                  marginRight: "15px",
+                  float: "right",
+                }}
+              >
+                <button
+                  className="btn btn-light"
+                  type="submit"
+                  style={{
+                    backgroundColor: "transparent",
+                    borderColor: "transparent",
+                    color: "#e0aa3e",
+                  }}
+                >
+                  Save{" "}
+                </button>
+                <button
+                  className="btn btn-light"
+                  onClick={this.cancelOnClick}
+                  style={{
+                    backgroundColor: "transparent",
+                    borderColor: "transparent",
+                    color: "#e0aa3e",
+                  }}
+                >
+                  Cancel{" "}
+                </button>
+              </span>
+            ) : (
+              <span
+                style={{
+                  zIndex: 10,
+                  height: "40px",
+                  marginTop: "-7%",
+                  marginRight: "15px",
+                  float: "right",
+                }}
+              >
+                <button
+                  className="btn btn-light btn-sm"
+                  onClick={this.editOnClick}
+                  style={{
+                    backgroundColor: "transparent",
+                    border: "transparent",
+                  }}
+                >
+                  <img
+                    src="pencil-alt-solid.svg"
+                    style={{ width: "20px", height: "20px" }}
+                    alt="pencil"
+                  />
+                </button>
+                <button
+                  className="btn btn-light btn-sm"
+                  onClick={() => this.onDeleteEvent(event.id, event.imagename)}
+                  style={{
+                    height: "40px",
+                    backgroundColor: "transparent",
+                    border: "transparent",
+                  }}
+                >
+                  <img
+                    src="trash.svg"
+                    style={{ width: "22px", height: "27px" }}
+                    alt="trash"
+                  />
+                </button>
+              </span>
+            )}
+            <ContentWrapper>
+              <Inner>
+                <img src={`uploads/${event.imagename}`} alt="Refresh for img" />
+              </Inner>
+              <Inner>
+                <Description>{event.description}</Description>
+              </Inner>
+            </ContentWrapper>
+          </ContentDiv>
+          <br />
+        </>
+      );
+    });
 
   render() {
     return (
@@ -394,7 +403,12 @@ class Events extends Component {
           </p>
 
           {this.state.isContentLoaded && this.displayContent()}
+
           <button
+            onClick={() => {
+              console.log($("myfile"));
+              this.setState({ ...this.state, addEvent: !this.state.addEvent });
+            }}
             style={{
               backgroundColor: "rgba(25, 25, 25, 0.8)",
               color: "#e0aa3e",
@@ -404,90 +418,109 @@ class Events extends Component {
               width: "220px",
             }}
           >
-            Add new Event
+            {this.state.addEvent ? "Cancel Add Event" : "Add Event"}
           </button>
-          <Grid>
-            <br />
-            <CardTitle style={{ color: "#e0aa3e" }}>Create Event</CardTitle>
-            <span style={{ marginTop: "-4%", marginLeft: "87%" }}>
-              <button
-                onClick={this.onFormSubmit}
-                style={{
-                  width: "30px",
-                  height: "auto",
-                  backgroundColor: "transparent",
-                  borderColor: "transparent",
-                }}
-              >
-                <img
-                  src="checked.svg"
-                  style={{ height: "25px", marginLeft: "-5px" }}
-                  alt="Tick"
-                />
-              </button>
-              <button
-                style={{
-                  marginLeft: "7px",
-                  width: "30px",
-                  height: "auto",
-                  backgroundColor: "transparent",
-                  borderColor: "transparent",
-                }}
-              >
-                <img
-                  src="cancel.svg"
-                  style={{ height: "30px", marginLeft: "-6px" }}
-                  alt="Cross"
-                />
-              </button>
-            </span>
-            <br />
-            <MyForm>
-              <input
-                style={{ color: "black" }}
-                type="text"
-                placeholder="Event Name"
-                onChange={(e) => {
-                  this.setState({ ...this.state, eventTitle: e.target.value });
-                }}
-              />
-
+          {this.state.addEvent && (
+            <Grid>
               <br />
+              <CardTitle style={{ color: "#e0aa3e" }}>Create Event</CardTitle>
+              <span style={{ marginTop: "-4%", marginLeft: "87%" }}>
+                <button
+                  onClick={this.onFormSubmit}
+                  style={{
+                    width: "30px",
+                    height: "auto",
+                    backgroundColor: "transparent",
+                    borderColor: "transparent",
+                  }}
+                >
+                  <img
+                    src="checked.svg"
+                    style={{ height: "25px", marginLeft: "-5px" }}
+                    alt="Tick"
+                  />
+                </button>
+                <button
+                  onClick={this.onCancel}
+                  style={{
+                    marginLeft: "7px",
+                    width: "30px",
+                    height: "auto",
+                    backgroundColor: "transparent",
+                    borderColor: "transparent",
+                  }}
+                >
+                  <img
+                    src="cancel.svg"
+                    style={{ height: "30px", marginLeft: "-6px" }}
+                    alt="Cross"
+                  />
+                </button>
+              </span>
+              <br />
+              <MyForm>
+                <input
+                  style={{ color: "black" }}
+                  value={this.state.eventTitle}
+                  type="text"
+                  id="eventtitle"
+                  placeholder="Event Name"
+                  onChange={(e) => {
+                    this.setState({
+                      ...this.state,
+                      eventTitle: e.target.value,
+                    });
+                  }}
+                />
 
-              <img
-                id="image"
-                src="https://image.flaticon.com/icons/png/512/25/25340.png"
-                style={{ cursor: "pointer" }}
-                alt=""
-              />
+                <br />
 
-              <input
-                type="file"
-                accept="image/*"
-                id="myfile"
-                style={{ display: "none" }}
-                onChange={this.onChange}
-              />
+                <img
+                  onClick={() => {
+                    $("#myfile").click();
+                  }}
+                  id="image"
+                  src="https://image.flaticon.com/icons/png/512/25/25340.png"
+                  style={{ cursor: "pointer" }}
+                  alt=""
+                />
 
-              <textarea
-                style={{ color: "black" }}
-                rows="9"
-                cols="70"
-                placeholder="Event Description"
-                onChange={(e) => {
-                  this.setState({
-                    ...this.state,
-                    eventDescription: e.target.value,
-                  });
-                }}
-              />
-            </MyForm>
-          </Grid>
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="myfile"
+                  style={{ display: "none" }}
+                  onChange={this.onChange}
+                />
+
+                <textarea
+                  style={{ color: "black" }}
+                  rows="9"
+                  cols="70"
+                  value={this.state.eventDescription}
+                  id="eventdescription"
+                  placeholder="Event Description"
+                  onChange={(e) => {
+                    this.setState({
+                      ...this.state,
+                      eventDescription: e.target.value,
+                    });
+                  }}
+                />
+              </MyForm>
+            </Grid>
+          )}
         </SecondDiv>
       </Container>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    signInDetails: state.signedIn,
+  };
+};
 
 const MyForm = styled.form`
   input {
@@ -659,4 +692,4 @@ const ContentDiv = styled.div`
   }
 `;
 
-export default Events;
+export default connect(mapStateToProps)(Events);

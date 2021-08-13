@@ -86,13 +86,14 @@ router.post("/imageupload", async (req, res) => {
 
 router.post("/deleteevent", (req, res) => {
   Events.findOneAndDelete({id: req.body.id}, (err, results) => {
+    console.log(results);
     if(err)
     {
       console.log(err);
       res.send("ERROR")
     }
     else
-    res.send("SUCCESS");
+    res.json({report: "SUCCESS", imagename: results.imagename});
   })
 })
 
