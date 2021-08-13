@@ -11,7 +11,8 @@ const News = (props) => {
 
   const [newsObj, setNewsObj] = useState({
     date: "",
-      news: "",
+    news: "",
+    hasUpdated: false,
   });
 
   useEffect(() => {
@@ -28,6 +29,7 @@ const News = (props) => {
         setNewsObj({
           date: res.data.date,
           news: res.data.news,
+          hasUpdated: true,
         });
       })
       .catch((err) => {
@@ -49,7 +51,7 @@ const News = (props) => {
             
           <Container>
 
-          {signedInToken
+          {signedInToken && newsObj.hasUpdated
           ? (<NewsEditForm fields={newsObj} updateFields={updateFields} />)
           :  (<>
             <br/>

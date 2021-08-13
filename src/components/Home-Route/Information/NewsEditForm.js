@@ -8,8 +8,8 @@ class MaintenanceForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: this?.props?.fields?.date,
-      news: this?.props?.fields?.news,
+      date: this.props.fields.date,
+      news: this.props.fields.news,
     };
   }
 
@@ -49,7 +49,7 @@ class MaintenanceForm extends Component {
     return (
       <React.Fragment>
         <div className="form-statusbar">
-          {this?.props?.status?.edit ? (
+          {this.props.status.edit ? (
             <React.Fragment>
               <button
                 className="btn btn-light"
