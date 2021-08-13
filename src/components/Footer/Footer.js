@@ -13,7 +13,7 @@ class Footer extends React.Component {
             <div className={classes.bg}>
                 <p className={classes.contact}> CONTACT US </p>
                     <div className="row">
-                        <div className="col-md-3 col-2" style={{marginRight: '30px'}}></div>
+                        <div className="col-md-3 col-2" style={{ marginRight: '6.5%' }}></div>
                         <div className="col-md-1 col-1.6">
                             <a href="https://www.facebook.com/geolifeyouthclub/" target="_blank" className={classes.fb} ><FaFacebookSquare /></a>
                         </div>
