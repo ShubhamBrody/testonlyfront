@@ -138,8 +138,9 @@ class Events extends Component {
           imagename: fileName,
         })
         .then((response) => {
-          if (response.data === "SUCCESS") {
+          if (response.data.report === "SUCCESS") {
             this.getAllEvents();
+            this.onCancel(null);
           } else if (response.data === "ERROR") {
             this.onDeleteFile(this.state.fileName);
             alert("An error has occurred in the server while uploading event!");
@@ -147,7 +148,7 @@ class Events extends Component {
         })
         .catch((error) => {
           this.onDeleteFile(this.state.fileName);
-          alert("Error occured : " + error);
+          alert("Error occured : -------- " + error);
         });
     } catch (err) {
       if (err.response.status === 500) {
@@ -237,16 +238,14 @@ class Events extends Component {
                 this.state.eventDescription,
                 this.state.fileName
               ) === "SUCCESS"
-            )
-              this.onCancel();
+            ) {
               this.getAllEvents();
-            alert("Event Created Successfully!");
-          } 
-        //   else
-        //     this.getAllEvents();
+              alert("Event Created Successfully!");
+            }
+          } else this.getAllEvents();
         })
         .catch((error) => {
-          console.log("Error occured : " + error);
+          console.log("Error occured --- : " + error);
         });
     } catch (err) {
       if (err.response.status === 500) {
@@ -279,7 +278,6 @@ class Events extends Component {
     formData.append("file", this.state.file);
 
     this.ImageUpload(formData, true);
-
   };
 
   onChange = (e) => {
@@ -345,7 +343,7 @@ class Events extends Component {
   }
 
   onCancel = (e) => {
-    e.preventDefault();
+    e && e.preventDefault();
     this.setState({
       ...this.state,
       file: {},
@@ -453,7 +451,7 @@ class Events extends Component {
               style={{
                 // width: "30px",
                 height: "auto",
-                color: '#e0aa3e',
+                color: "#e0aa3e",
                 backgroundColor: "transparent",
                 borderColor: "transparent",
               }}
@@ -466,7 +464,7 @@ class Events extends Component {
                 marginLeft: "7px",
                 // width: "50px",
                 height: "auto",
-                color: '#e0aa3e',
+                color: "#e0aa3e",
                 backgroundColor: "transparent",
                 borderColor: "transparent",
               }}
@@ -587,10 +585,10 @@ class Events extends Component {
               marginBottom: "100px",
             }}
           >
-            In our digital sessions, we are holding ice breaking sessions for our
-            newly joined youth along with the presentations given by the team
-            members regarding personality development. We are recruiting and
-            training volunteers as well.
+            In our digital sessions, we are holding ice breaking sessions for
+            our newly joined youth along with the presentations given by the
+            team members regarding personality development. We are recruiting
+            and training volunteers as well.
           </p>
 
           {this.state.isContentLoaded &&
