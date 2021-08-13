@@ -14,7 +14,7 @@ export default () => {
   return (
     <Fragment>
       <Helmet>
-        <title>Welcome to Geo Youth Club</title>
+        <title>Welcome to GeoLife Youth Club</title>
         <link rel="icon" href="/GYClogo.png" type="image/icon type"></link>
       </Helmet>
       <Navbar links={links} imgSrc={logo} />

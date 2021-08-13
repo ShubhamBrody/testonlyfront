@@ -1,5 +1,6 @@
 .header {
     margin: 0 3rem;
+    margin-top: 10px;
     overflow-x: hidden;
 }
 .header p {

@@ -447,12 +447,13 @@ class Events extends Component {
         <Grid>
           <br />
           <CardTitle style={{ color: "#e0aa3e" }}>Edit Event</CardTitle>
-          <span style={{ marginTop: "-4%", marginLeft: "87%" }}>
+          <span style={{ marginTop: "-3%", marginLeft: "82%" }}>
             <button
               onClick={this.UpdateEvent}
               style={{
                 // width: "30px",
                 height: "auto",
+                color: '#e0aa3e',
                 backgroundColor: "transparent",
                 borderColor: "transparent",
               }}
@@ -465,6 +466,7 @@ class Events extends Component {
                 marginLeft: "7px",
                 // width: "50px",
                 height: "auto",
+                color: '#e0aa3e',
                 backgroundColor: "transparent",
                 borderColor: "transparent",
               }}
@@ -475,7 +477,7 @@ class Events extends Component {
           <br />
           <MyForm>
             <input
-              style={{ color: "black" }}
+              style={{ color: "#191919" }}
               value={this.state.titleEdit}
               type="text"
               id="eventtitle"
@@ -511,7 +513,7 @@ class Events extends Component {
             <textarea
               style={{ color: "black" }}
               rows="9"
-              cols="70"
+              cols="80"
               value={this.state.descriptionEdit}
               id="eventdescription"
               placeholder="Event Description"
@@ -585,7 +587,7 @@ class Events extends Component {
               marginBottom: "100px",
             }}
           >
-            In our digital sessions, we are holding ice breaking sessios for our
+            In our digital sessions, we are holding ice breaking sessions for our
             newly joined youth along with the presentations given by the team
             members regarding personality development. We are recruiting and
             training volunteers as well.
@@ -755,7 +757,7 @@ const MyForm = styled.form`
 
 const Grid = styled(Card)`
   background-color: rgba(25, 25, 25, 0.8);
-  width: 64rem;
+  width: 80%;
   height: 27rem;
   border-radius: 6px;
   position: relative;
