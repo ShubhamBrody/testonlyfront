@@ -583,7 +583,7 @@ class Events extends Component {
               marginBottom: "100px",
             }}
           >
-            In our digital sessions, we are holding ice breaking sessios for our
+            In our digital sessions, we are holding ice breaking sessions for our
             newly joined youth along with the presentations given by the team
             members regarding personality development. We are recruiting and
             training volunteers as well.
