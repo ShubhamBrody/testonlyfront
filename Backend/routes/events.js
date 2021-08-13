@@ -85,7 +85,7 @@ router.post("/imageupload", async (req, res) => {
 });
 
 router.post("/deleteevent", (req, res) => {
-  Events.findOneAndDelete({id: req.body.id}, (err, results) => {
+  Events.findOneAndDelete({_id: req.body.idVal}, (err, results) => {
     console.log(results);
     if(err)
     {

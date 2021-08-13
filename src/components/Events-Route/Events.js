@@ -97,9 +97,10 @@ class Events extends Component {
 
   onDeleteEvent = async (id, fileName) => {
     try {
+      console.log("This was the ID : ", id);
       await axios
         .post("http://localhost:5000/events/deleteevent", {
-          id: id,
+          idVal: id,
         })
         .then((response) => {
           if (response.data.report === "SUCCESS") {
@@ -156,12 +157,12 @@ class Events extends Component {
 
   onFormSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (this.state.eventTitle === "" || this.state.eventDescription === "") {
       alert("Event title / description should not be empty");
       return;
     }
-    
+
     if (this.state.fileName === "" || this.state.file === "") {
       alert("Please select a file to upload");
       return;
@@ -199,7 +200,7 @@ class Events extends Component {
               ) === "SUCCESS"
             )
               this.onCancel();
-              alert("Event Created Successfully!");
+            alert("Event Created Successfully!");
           }
         })
         .catch((error) => {
@@ -245,7 +246,7 @@ class Events extends Component {
         console.log(err);
       });
   };
-  
+
   async componentDidMount() {
     await this.getAllEvents()
       .then(() => {
@@ -282,39 +283,39 @@ class Events extends Component {
             <Heading>{event.title}</Heading>
             {this.props.signInDetails ? (
               //This code needs to be activated when clicking the pencil button
-          //     <span
-          //     style={{
-          //       zIndex: 10,
-          //       height: "40px",
-          //       marginTop: "-7%",
-          //       marginRight: "15px",
-          //       float: "right",
-          //     }}
-          //   >
-          //     <button
-          //       className="btn btn-light"
-          //       type="submit"
-          //       style={{
-          //         backgroundColor: "transparent",
-          //         borderColor: "transparent",
-          //         color: "#e0aa3e",
-          //       }}
-          //     >
-          //       Save{" "}
-          //     </button>
-          //     <button
-          //       className="btn btn-light"
-          //       onClick={this.cancelOnClick}
-          //       style={{
-          //         backgroundColor: "transparent",
-          //         borderColor: "transparent",
-          //         color: "#e0aa3e",
-          //       }}
-          //     >
-          //       Cancel{" "}
-          //     </button>
-          //   </span>
-          // )
+              //     <span
+              //     style={{
+              //       zIndex: 10,
+              //       height: "40px",
+              //       marginTop: "-7%",
+              //       marginRight: "15px",
+              //       float: "right",
+              //     }}
+              //   >
+              //     <button
+              //       className="btn btn-light"
+              //       type="submit"
+              //       style={{
+              //         backgroundColor: "transparent",
+              //         borderColor: "transparent",
+              //         color: "#e0aa3e",
+              //       }}
+              //     >
+              //       Save{" "}
+              //     </button>
+              //     <button
+              //       className="btn btn-light"
+              //       onClick={this.cancelOnClick}
+              //       style={{
+              //         backgroundColor: "transparent",
+              //         borderColor: "transparent",
+              //         color: "#e0aa3e",
+              //       }}
+              //     >
+              //       Cancel{" "}
+              //     </button>
+              //   </span>
+              // )
 
               <span
                 style={{
@@ -341,7 +342,7 @@ class Events extends Component {
                 </button>
                 <button
                   className="btn btn-light btn-sm"
-                  onClick={() => this.onDeleteEvent(event.id, event.imagename)}
+                  onClick={() => this.onDeleteEvent(event._id, event.imagename)}
                   style={{
                     height: "40px",
                     backgroundColor: "transparent",
@@ -355,7 +356,9 @@ class Events extends Component {
                   />
                 </button>
               </span>
-            ): <span></span>}
+            ) : (
+              <span></span>
+            )}
             <ContentWrapper>
               <Inner>
                 <img src={`uploads/${event.imagename}`} alt="Refresh for img" />
@@ -405,113 +408,121 @@ class Events extends Component {
 
           {this.state.isContentLoaded && this.displayContent()}
 
-          {this.props.signInDetails && <span>
-            <button
-            onClick={() => {
-              console.log($("myfile"));
-              this.setState({ ...this.state, addEvent: !this.state.addEvent });
-            }}
-            style={{
-              backgroundColor: "rgba(25, 25, 25, 0.8)",
-              color: "#e0aa3e",
-              fontSize: "22px",
-              margin: "0px 40px 40px 75%",
-              padding: "15px",
-              width: "220px",
-            }}
-          >
-            {this.state.addEvent ? "Cancel Add Event" : "Add Event"}
-          </button>
-          {this.state.addEvent && (
-            <Grid>
-              <br />
-              <CardTitle style={{ color: "#e0aa3e" }}>Create Event</CardTitle>
-              <span style={{ marginTop: "-4%", marginLeft: "87%" }}>
-                <button
-                  onClick={this.onFormSubmit}
-                  style={{
-                    width: "30px",
-                    height: "auto",
-                    backgroundColor: "transparent",
-                    borderColor: "transparent",
-                  }}
-                >
-                  <img
-                    src="checked.svg"
-                    style={{ height: "25px", marginLeft: "-5px" }}
-                    alt="Tick"
-                  />
-                </button>
-                <button
-                  onClick={this.onCancel}
-                  style={{
-                    marginLeft: "7px",
-                    width: "30px",
-                    height: "auto",
-                    backgroundColor: "transparent",
-                    borderColor: "transparent",
-                  }}
-                >
-                  <img
-                    src="cancel.svg"
-                    style={{ height: "30px", marginLeft: "-6px" }}
-                    alt="Cross"
-                  />
-                </button>
-              </span>
-              <br />
-              <MyForm>
-                <input
-                  style={{ color: "black" }}
-                  value={this.state.eventTitle}
-                  type="text"
-                  id="eventtitle"
-                  placeholder="Event Name"
-                  onChange={(e) => {
-                    this.setState({
-                      ...this.state,
-                      eventTitle: e.target.value,
-                    });
-                  }}
-                />
+          {this.props.signInDetails && (
+            <span>
+              <button
+                onClick={() => {
+                  console.log($("myfile"));
+                  this.setState({
+                    ...this.state,
+                    addEvent: !this.state.addEvent,
+                  });
+                }}
+                style={{
+                  backgroundColor: "rgba(25, 25, 25, 0.8)",
+                  color: "#e0aa3e",
+                  fontSize: "22px",
+                  margin: "0px 40px 40px 75%",
+                  padding: "15px",
+                  width: "220px",
+                }}
+              >
+                {this.state.addEvent ? "Cancel Add Event" : "Add Event"}
+              </button>
+              {this.state.addEvent && (
+                <Grid>
+                  <br />
+                  <CardTitle style={{ color: "#e0aa3e" }}>
+                    Create Event
+                  </CardTitle>
+                  <span style={{ marginTop: "-4%", marginLeft: "87%" }}>
+                    <button
+                      onClick={this.onFormSubmit}
+                      style={{
+                        width: "30px",
+                        height: "auto",
+                        backgroundColor: "transparent",
+                        borderColor: "transparent",
+                      }}
+                    >
+                      <img
+                        src="checked.svg"
+                        style={{ height: "25px", marginLeft: "-5px" }}
+                        alt="Tick"
+                      />
+                    </button>
+                    <button
+                      onClick={this.onCancel}
+                      style={{
+                        marginLeft: "7px",
+                        width: "30px",
+                        height: "auto",
+                        backgroundColor: "transparent",
+                        borderColor: "transparent",
+                      }}
+                    >
+                      <img
+                        src="cancel.svg"
+                        style={{ height: "30px", marginLeft: "-6px" }}
+                        alt="Cross"
+                      />
+                    </button>
+                  </span>
+                  <br />
+                  <MyForm>
+                    <input
+                      style={{ color: "black" }}
+                      value={this.state.eventTitle}
+                      type="text"
+                      id="eventtitle"
+                      placeholder="Event Name"
+                      onChange={(e) => {
+                        this.setState({
+                          ...this.state,
+                          eventTitle: e.target.value,
+                        });
+                      }}
+                    />
 
-                <br />
+                    <br />
 
-                <img
-                  onClick={() => {
-                    $("#myfile").click();
-                  }}
-                  id="image"
-                  src="https://image.flaticon.com/icons/png/512/25/25340.png"
-                  style={{ cursor: "pointer" }}
-                  alt=""
-                />
+                    <img
+                      onClick={() => {
+                        $("#myfile").click();
+                      }}
+                      id="image"
+                      src="https://image.flaticon.com/icons/png/512/25/25340.png"
+                      style={{ cursor: "pointer" }}
+                      alt=""
+                    />
 
-                <input
-                  type="file"
-                  accept="image/*"
-                  id="myfile"
-                  style={{ display: "none" }}
-                  onChange={this.onChange}
-                />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      id="myfile"
+                      style={{ display: "none" }}
+                      onChange={this.onChange}
+                    />
 
-                <textarea
-                  style={{ color: "black" }}
-                  rows="9"
-                  cols="70"
-                  value={this.state.eventDescription}
-                  id="eventdescription"
-                  placeholder="Event Description"
-                  onChange={(e) => {
-                    this.setState({
-                      ...this.state,
-                      eventDescription: e.target.value,
-                    });
-                  }}
-                />
-              </MyForm>
-            </Grid>
-          )}</span>}
+                    <textarea
+                      style={{ color: "black" }}
+                      rows="9"
+                      cols="70"
+                      value={this.state.eventDescription}
+                      id="eventdescription"
+                      placeholder="Event Description"
+                      onChange={(e) => {
+                        this.setState({
+                          ...this.state,
+                          eventDescription: e.target.value,
+                        });
+                      }}
+                    />
+                  </MyForm>
+                </Grid>
+              )}
+            </span>
+          )}
         </SecondDiv>
       </Container>
     );
