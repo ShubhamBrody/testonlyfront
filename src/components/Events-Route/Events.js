@@ -239,10 +239,11 @@ class Events extends Component {
               ) === "SUCCESS"
             )
               this.onCancel();
+              this.getAllEvents();
             alert("Event Created Successfully!");
-          } else {
-            this.getAllEvents();
-          }
+          } 
+        //   else
+        //     this.getAllEvents();
         })
         .catch((error) => {
           console.log("Error occured : " + error);
@@ -278,6 +279,7 @@ class Events extends Component {
     formData.append("file", this.state.file);
 
     this.ImageUpload(formData, true);
+
   };
 
   onChange = (e) => {
@@ -715,48 +717,6 @@ class Events extends Component {
     );
   }
 }
-
-// {this.props.signInDetails ? (
-// <span
-//   style={{
-//     zIndex: 10,
-//     height: "40px",
-//     marginTop: "-7%",
-//     marginRight: "15px",
-//     float: "right",
-//   }}
-// >
-//   <button
-//     className="btn btn-light btn-sm"
-//     onClick={this.editOnClick}
-//     style={{
-//       backgroundColor: "transparent",
-//       border: "transparent",
-//     }}
-//   >
-//     <img
-//       src="pencil-alt-solid.svg"
-//       style={{ width: "20px", height: "20px" }}
-//       alt="pencil"
-//     />
-//   </button>
-//   <button
-//     className="btn btn-light btn-sm"
-//     onClick={() => this.onDeleteEvent(event._id, event.imagename)}
-//     style={{
-//       height: "40px",
-//       backgroundColor: "transparent",
-//       border: "transparent",
-//     }}
-//   >
-//     <img
-//       src="trash.svg"
-//       style={{ width: "22px", height: "27px" }}
-//       alt="trash"
-//     />
-//   </button>
-// </span>
-// ) : <span></span>}
 
 const mapStateToProps = (state) => {
   return {
