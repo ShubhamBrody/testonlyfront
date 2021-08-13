@@ -23,7 +23,7 @@ export default () => {
       </Helmet>
       <Navbar links={links} imgSrc={logo} />
       <div className={classes.warning}>
-        <h4>The Sign-In option is only for the Admin of the website.</h4>
+        <h4 style={{fontSize: '1.125rem'}}>The Sign-In option is only for the Admin of the website.</h4>
       </div>
       <div className={classes.signInContainer}>
         {!isForgotPass ? (

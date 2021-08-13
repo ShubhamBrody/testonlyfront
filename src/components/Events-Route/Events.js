@@ -20,6 +20,10 @@ class Events extends Component {
       eventsData: [],
       isContentLoaded: false,
       addEvent: false,
+      idToEdit: -1,
+      titleEdit: "",
+      descriptionEdit: "",
+      imagenameEdit: "",
     };
   }
 
@@ -97,10 +101,9 @@ class Events extends Component {
 
   onDeleteEvent = async (id, fileName) => {
     try {
-      console.log("This was the ID : ", id);
       await axios
         .post("http://localhost:5000/events/deleteevent", {
-          idVal: id,
+          id: id,
         })
         .then((response) => {
           if (response.data.report === "SUCCESS") {
@@ -275,90 +278,91 @@ class Events extends Component {
     );
   };
 
-  displayContent = () =>
+  onCancelChanges = () => { 
+    this.setState({
+      ...this.state,
+      idToEdit: "",
+      titleEdit: "",
+      descriptionEdit: "",
+      imagenameEdit: "",
+    });
+  }
+
+  editOnClick = (event) => {
+    this.setState({
+      ...this.state,
+      idToEdit: event._id,
+      titleEdit: event.title,
+      descriptionEdit: event.description,
+      imagenameEdit: event.imagename,
+    });
+  };
+
+  onChangeInputForEdit = (e) => { 
+    console.log(e);
+    e.target.files[0] &&
+      this.setState({
+        ...this.state,
+        file: e.target.files[0],
+        fileName: e.target.files[0].name,
+      });
+    if (e.target.files && e.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $("#imageforediting").attr("src", e.target.result);
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  }
+
+  FirstEditEventPhase = ({ event }) => (
+    <span
+      style={{
+        zIndex: 10,
+        height: "40px",
+        marginTop: "-7%",
+        marginRight: "15px",
+        float: "right",
+      }}
+    >
+      <button
+        className="btn btn-light btn-sm"
+        onClick={() => this.editOnClick(event)}
+        style={{
+          backgroundColor: "transparent",
+          border: "transparent",
+        }}
+      >
+        <img
+          src="pencil-alt-solid.svg"
+          style={{ width: "20px", height: "20px" }}
+          alt="pencil"
+        />
+      </button>
+      <button
+        className="btn btn-light btn-sm"
+        onClick={() => this.onDeleteEvent(event._id, event.imagename)}
+        style={{
+          height: "40px",
+          backgroundColor: "transparent",
+          border: "transparent",
+        }}
+      >
+        <img
+          src="trash.svg"
+          style={{ width: "22px", height: "27px" }}
+          alt="trash"
+        />
+      </button>
+    </span>
+  );
+
+  DisplayContentForUser = () =>
     this.state.eventsData.map((event) => {
       return (
         <>
           <ContentDiv>
             <Heading>{event.title}</Heading>
-            {this.props.signInDetails ? (
-              //This code needs to be activated when clicking the pencil button
-              //     <span
-              //     style={{
-              //       zIndex: 10,
-              //       height: "40px",
-              //       marginTop: "-7%",
-              //       marginRight: "15px",
-              //       float: "right",
-              //     }}
-              //   >
-              //     <button
-              //       className="btn btn-light"
-              //       type="submit"
-              //       style={{
-              //         backgroundColor: "transparent",
-              //         borderColor: "transparent",
-              //         color: "#e0aa3e",
-              //       }}
-              //     >
-              //       Save{" "}
-              //     </button>
-              //     <button
-              //       className="btn btn-light"
-              //       onClick={this.cancelOnClick}
-              //       style={{
-              //         backgroundColor: "transparent",
-              //         borderColor: "transparent",
-              //         color: "#e0aa3e",
-              //       }}
-              //     >
-              //       Cancel{" "}
-              //     </button>
-              //   </span>
-              // )
-
-              <span
-                style={{
-                  zIndex: 10,
-                  height: "40px",
-                  marginTop: "-7%",
-                  marginRight: "15px",
-                  float: "right",
-                }}
-              >
-                <button
-                  className="btn btn-light btn-sm"
-                  onClick={this.editOnClick}
-                  style={{
-                    backgroundColor: "transparent",
-                    border: "transparent",
-                  }}
-                >
-                  <img
-                    src="pencil-alt-solid.svg"
-                    style={{ width: "20px", height: "20px" }}
-                    alt="pencil"
-                  />
-                </button>
-                <button
-                  className="btn btn-light btn-sm"
-                  onClick={() => this.onDeleteEvent(event._id, event.imagename)}
-                  style={{
-                    height: "40px",
-                    backgroundColor: "transparent",
-                    border: "transparent",
-                  }}
-                >
-                  <img
-                    src="trash.svg"
-                    style={{ width: "22px", height: "27px" }}
-                    alt="trash"
-                  />
-                </button>
-              </span>
-            ) : (
-              <span></span>
-            )}
             <ContentWrapper>
               <Inner>
                 <img src={`uploads/${event.imagename}`} alt="Refresh for img" />
@@ -369,6 +373,118 @@ class Events extends Component {
             </ContentWrapper>
           </ContentDiv>
           <br />
+        </>
+      );
+    });
+
+    EditingContent = ({ event }) => {
+      return (
+        <>
+          <Grid>
+            <br />
+            <CardTitle style={{ color: "#e0aa3e" }}>Edit Event</CardTitle>
+            <span style={{ marginTop: "-4%", marginLeft: "87%" }}>
+              <button
+                onClick={this.onFormSubmit}
+                style={{
+                  // width: "30px",
+                  height: "auto",
+                  backgroundColor: "transparent",
+                  borderColor: "transparent",
+                }}
+              >
+                Save{' '}
+              </button>
+              <button
+                onClick={this.onCancelChanges}
+                style={{
+                  marginLeft: "7px",
+                  // width: "50px",
+                  height: "auto",
+                  backgroundColor: "transparent",
+                  borderColor: "transparent",
+                }}
+              >
+                Cancel{' '}
+              </button>
+            </span>
+            <br />
+            <MyForm>
+              <input
+                style={{ color: "black" }}
+                value={this.state.titleEdit}
+                type="text"
+                id="eventtitle"
+                placeholder="Event Name"
+                onChange={(e) => {
+                  this.setState({
+                    ...this.state,
+                    titleEdit: e.target.value,
+                  });
+                }}
+              />
+  
+              <br />
+  
+              <img
+                onClick={() => {
+                  $("#editingimage").click();
+                }}
+                id="imageforediting"
+                src={`uploads/${this.state.imagenameEdit}`}
+                style={{ cursor: "pointer" }}
+                alt=""
+              />
+  
+              <input
+                type="file"
+                accept="image/*"
+                id="editingimage"
+                style={{ display: "none" }}
+                onChange={this.onChangeInputForEdit}
+              />
+  
+              <textarea
+                style={{ color: "black" }}
+                rows="9"
+                cols="70"
+                value={this.state.descriptionEdit}
+                id="eventdescription"
+                placeholder="Event Description"
+                onChange={(e) => {
+                  this.setState({
+                    ...this.state,
+                    descriptionEdit: e.target.value,
+                  });
+                }}
+              />
+            </MyForm>
+          </Grid>
+        </>
+      );
+    };
+
+  EditableContent = () =>
+    this.state.eventsData.map((event) => {
+      return (
+        <>
+        {this.state.idToEdit === event._id ?
+          <this.EditingContent event={event} />
+          : <><ContentDiv>
+            <Heading>{event.title}</Heading>
+            <this.FirstEditEventPhase event={event} />
+            <ContentWrapper>
+              <Inner>
+                <img src={`uploads/${event.imagename}`} alt="Refresh for img" />
+              </Inner>
+              <Inner>
+                <Description>{event.description}</Description>
+              </Inner>
+            </ContentWrapper>
+          </ContentDiv>
+          <br />
+          </>
+        }
         </>
       );
     });
@@ -406,8 +522,7 @@ class Events extends Component {
             training volunteers as well.
           </p>
 
-          {this.state.isContentLoaded && this.displayContent()}
-
+          {this.state.isContentLoaded && (this.props.signInDetails ? <this.EditableContent /> : <this.DisplayContentForUser />)}
           {this.props.signInDetails && (
             <span>
               <button
@@ -529,6 +644,48 @@ class Events extends Component {
   }
 }
 
+// {this.props.signInDetails ? (
+// <span
+//   style={{
+//     zIndex: 10,
+//     height: "40px",
+//     marginTop: "-7%",
+//     marginRight: "15px",
+//     float: "right",
+//   }}
+// >
+//   <button
+//     className="btn btn-light btn-sm"
+//     onClick={this.editOnClick}
+//     style={{
+//       backgroundColor: "transparent",
+//       border: "transparent",
+//     }}
+//   >
+//     <img
+//       src="pencil-alt-solid.svg"
+//       style={{ width: "20px", height: "20px" }}
+//       alt="pencil"
+//     />
+//   </button>
+//   <button
+//     className="btn btn-light btn-sm"
+//     onClick={() => this.onDeleteEvent(event._id, event.imagename)}
+//     style={{
+//       height: "40px",
+//       backgroundColor: "transparent",
+//       border: "transparent",
+//     }}
+//   >
+//     <img
+//       src="trash.svg"
+//       style={{ width: "22px", height: "27px" }}
+//       alt="trash"
+//     />
+//   </button>
+// </span>
+// ) : <span></span>}
+
 const mapStateToProps = (state) => {
   return {
     signInDetails: state.signedIn,
@@ -542,17 +699,14 @@ const MyForm = styled.form`
     margin-bottom: 25px;
     // background-color: transparent;
   }
-
   img {
     width: 250px;
     height: 250px;
     border-radius: 300px;
-
     margin-left: 60px;
     margin-top: 0px;
     float: left;
   }
-
   textarea {
     margin-left: 0px;
     margin-top: 12px;
@@ -560,7 +714,6 @@ const MyForm = styled.form`
     overflow: auto;
     // background-color: transparent;
   }
-
   @media (max-width: 1050px) {
     img {
       margin-left: 20px;
@@ -576,10 +729,8 @@ const Grid = styled(Card)`
   position: relative;
   text-align: center;
   color: white;
-
   margin: 0px auto;
   margin-bottom: 60px;
-
   @media (max-width: 1050px) {
     width: 56rem;
   }
@@ -587,7 +738,6 @@ const Grid = styled(Card)`
 
 const Inner = styled.div`
   margin: auto 30px;
-
   @media (max-width: 1400px) {
     // margin-top: 30px;
   }
@@ -599,7 +749,6 @@ const Description = styled.div`
   width: 700px;
   margin-left: -100px;
   // margin-top: 20px;
-
   @media (max-width: 1400px) {
     width: 500px;
     margin-left: -50px;
@@ -626,7 +775,6 @@ const ContentWrapper = styled.div`
   text-align: justify;
   justify-content: space-around;
   display: flex;
-
   img {
     vertical-align: middle;
     height: 250px;
@@ -641,21 +789,17 @@ const Container = styled(Card)`
   overflow: hidden;
   border: 0;
   border-radius: 0px;
-
   p {
     text-align: center;
     // margin-left: 200px;
     // margin-right: 200px;
     // margin-top: 30px;
-
     margin: 30px auto;
   }
-
   h2 {
     text-align: center;
     color: #e0aa3e;
   }
-
   @keyframes image {
     from {
       opacity: 0;
@@ -666,7 +810,6 @@ const Container = styled(Card)`
       transform: translateX(0px);
     }
   }
-
   background: url("background.png") center center / cover no-repeat fixed;
 `;
 
@@ -682,7 +825,6 @@ const SecondDiv = styled.div`
     color: black;
     width: 900px;
   }
-
   @media (max-width: 1000px) {
     h2 {
       margin-top: 150px;
@@ -696,7 +838,6 @@ const ContentDiv = styled.div`
   position: relative;
   margin: 0px 150px 30px 150px;
   padding: 30px 0px 40px 0px;
-
   @media (max-width: 1200px) {
     margin: 0px 100px 30px 100px;
   }
