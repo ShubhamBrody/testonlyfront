@@ -300,40 +300,44 @@ class Events extends Component {
             <Heading>{event.title}</Heading>
             {this.props.signInDetails ? (
               //This code needs to be activated when clicking the pencil button
-          //     <span
-          //     style={{
-          //       zIndex: 10,
-          //       height: "40px",
-          //       marginTop: "-7%",
-          //       marginRight: "15px",
-          //       float: "right",
-          //     }}
-          //   >
-          //     <button
-          //       className="btn btn-light"
-          //       type="submit"
-          //       style={{
-          //         backgroundColor: "transparent",
-          //         borderColor: "transparent",
-          //         color: "#e0aa3e",
-          //       }}
-          //     >
-          //       Save{" "}
-          //     </button>
-          //     <button
-          //       className="btn btn-light"
-          //       onClick={this.cancelOnClick}
-          //       style={{
-          //         backgroundColor: "transparent",
-          //         borderColor: "transparent",
-          //         color: "#e0aa3e",
-          //       }}
-          //     >
-          //       Cancel{" "}
-          //     </button>
-          //   </span>
-          // )
-
+              this?.props?.status?.edit ? ( 
+                <>
+              <span
+              style={{
+                zIndex: 10,
+                height: "40px",
+                marginTop: "-7%",
+                marginRight: "15px",
+                float: "right",
+              }}
+            >
+              <button
+                className="btn btn-light"
+                type="submit"
+                style={{
+                  backgroundColor: "transparent",
+                  borderColor: "transparent",
+                  color: "#e0aa3e",
+                }}
+              >
+                Save{" "}
+              </button>
+              <button
+                className="btn btn-light"
+                onClick={this.cancelOnClick}
+                style={{
+                  backgroundColor: "transparent",
+                  borderColor: "transparent",
+                  color: "#e0aa3e",
+                }}
+              >
+                Cancel{" "}
+              </button>
+            </span>
+              { this._renderFormInput()  }
+              </>
+          ) : (
+          <>
           <span
           style={{
             zIndex: 10,
@@ -373,7 +377,16 @@ class Events extends Component {
             />
           </button>
         </span>
-      ): <span></span>}
+        <ContentWrapper>
+        <Inner>
+          <img src={`uploads/${event.imagename}`} alt="Refresh for img" />
+        </Inner>
+        <Inner>
+          <Description>{event.description}</Description>
+        </Inner>
+      </ContentWrapper>
+      </>
+      ) ) : (
             <ContentWrapper>
               <Inner>
                 <img src={`uploads/${event.imagename}`} alt="Refresh for img" />
@@ -382,72 +395,72 @@ class Events extends Component {
                 <Description>{event.description}</Description>
               </Inner>
             </ContentWrapper>          
-          </ContentDiv>
-          <br />
-        </>
-      );
-    });
+      ) }
+      </ContentDiv>
+      <br />
+      </>
+    ) });
 
-    _renderAction() {
-      return (
-        <React.Fragment>
-          <div className="form-statusbar">
-            {this?.props?.status?.edit ? (
-              <React.Fragment>
-                <button
-                  className="btn btn-light"
-                  type="submit"
-                  form={form_id}
-                  onClick={this.databaseUpdate}
-                  style={{
-                    marginTop: "-90px",
-                    marginLeft: "420px",
-                    zIndex: "10",
-                    backgroundColor: "transparent",
-                    borderColor: "transparent",
-                    color: '#e0aa3e',
-                  }}
-                >
-                  Save
-                </button>
-                <button
-                className="btn btn-light"
-                  onClick={this.cancelOnClick}
-                  style={{
-                    marginTop: "-139px",
-                    marginLeft: "530px",
-                    zIndex: "10",
-                    backgroundColor: "transparent",
-                    borderColor: "transparent",
-                    color: '#e0aa3e',
-                  }}
-                >
-                  Cancel
-                </button>
-              </React.Fragment>
-            ) : (
-              <button
-                className="btn btn-light btn-sm"
-                onClick={this.editOnClick}
-                style={{
-                  marginTop: "-90px",
-                  marginLeft: "515px",
-                  zIndex: "10",
-                  backgroundColor: "transparent",
-                  border: "transparent"
-                }}
-              >
-                <img
-                  src="pencil-alt-solid.svg"
-                  style={{ width: "20px", height: "20px", color: "#e0aa3e"}}
-                  alt="pencil"
-                />
-              </button>
-            )}
-          </div>
-        </React.Fragment>
-      );
-    }
+    // _renderAction() {
+    //   return (
+    //     <React.Fragment>
+    //       <div className="form-statusbar">
+    //         {this?.props?.status?.edit ? (
+    //           <React.Fragment>
+    //             <button
+    //               className="btn btn-light"
+    //               type="submit"
+    //               form={form_id}
+    //               onClick={this.databaseUpdate}
+    //               style={{
+    //                 marginTop: "-90px",
+    //                 marginLeft: "420px",
+    //                 zIndex: "10",
+    //                 backgroundColor: "transparent",
+    //                 borderColor: "transparent",
+    //                 color: '#e0aa3e',
+    //               }}
+    //             >
+    //               Save
+    //             </button>
+    //             <button
+    //             className="btn btn-light"
+    //               onClick={this.cancelOnClick}
+    //               style={{
+    //                 marginTop: "-139px",
+    //                 marginLeft: "530px",
+    //                 zIndex: "10",
+    //                 backgroundColor: "transparent",
+    //                 borderColor: "transparent",
+    //                 color: '#e0aa3e',
+    //               }}
+    //             >
+    //               Cancel
+    //             </button>
+    //           </React.Fragment>
+    //         ) : (
+    //           <button
+    //             className="btn btn-light btn-sm"
+    //             onClick={this.editOnClick}
+    //             style={{
+    //               marginTop: "-90px",
+    //               marginLeft: "515px",
+    //               zIndex: "10",
+    //               backgroundColor: "transparent",
+    //               border: "transparent"
+    //             }}
+    //           >
+    //             <img
+    //               src="pencil-alt-solid.svg"
+    //               style={{ width: "20px", height: "20px", color: "#e0aa3e"}}
+    //               alt="pencil"
+    //             />
+    //           </button>
+    //         )}
+    //       </div>
+    //     </React.Fragment>
+    //   );
+    // }
     
   
     _renderFormView = () => {
@@ -551,7 +564,7 @@ class Events extends Component {
             training volunteers as well.
           </p>
 
-          {this._renderAction()}
+          {/* {this._renderAction()} */}
           {this?.props?.status?.edit
                     ? this._renderFormInput()
                     : this.displayContent()}
