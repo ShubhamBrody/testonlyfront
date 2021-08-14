@@ -39,10 +39,11 @@ const News = (props) => {
   };
 
   const updateFields = (date, news) => { 
-    setNewsObj({
+    setNewsObj((prevData) => ({
       date: date,
       news: news,
-    });
+      hasUpdated: prevData.hasUpdated,
+    }))
   }
 
     return (
