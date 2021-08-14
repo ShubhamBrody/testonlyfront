@@ -146,7 +146,7 @@ const Carousel = styled(Slider)`
     border: 5px solid #e0aa3e;
     height: auto;
     display: initial;
-
+    pointer-events: none;
     @media (max-width: 1400px) {
       width: 280px;
       height: 280px;

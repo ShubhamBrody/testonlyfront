@@ -9,7 +9,7 @@ import { FaLinkedin } from 'react-icons/fa';
 
 class Footer extends React.Component {
     render() {
-        return <div className="container-fluid">
+        return <div>
             <div className={classes.bg}>
                 <p className={classes.contact}> CONTACT US </p>
                     <div className="row">

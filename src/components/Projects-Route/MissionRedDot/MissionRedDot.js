@@ -12,7 +12,7 @@ export default () => {
   return (
     <Fragment>
       <Helmet>
-        <title>Mission Red Dot</title>
+        <title>Project Red Dot</title>
         <link rel="icon" href="/GYClogo.png" type="image/icon type"></link>
       </Helmet>
       <Navbar links={links} imgSrc={logo} />
