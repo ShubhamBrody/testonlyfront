@@ -4,8 +4,7 @@ import classes from "./FormBooks.module.css";
 import Input from "../../../UI/Input";
 import { useState } from "react";
 import axios from "axios";
-import Form from "../../../UI/Form";
-import formBg from "../../../../resources/images/form-bg-books.png";
+import API from "../../../../api/ApiLink";
 
 export default () => {
   const [dbdata, setDbData] = useState({
@@ -25,7 +24,7 @@ export default () => {
     e.preventDefault();
     console.log(dbdata);
     await axios
-      .post("http://localhost:5000/books/createorupdate", dbdata)
+      .post(API("books", "createorupdate"), dbdata)
       .then((res) => {
         console.log(res.data);
         setIsFormFilled(true);
@@ -35,18 +34,9 @@ export default () => {
       });
   };
 
-  //Axios get ref
-  //   const getAllHandler = async (e) => {
-  //     await axios.get("http://localhost:5000/books/getall").then((res) => {
-  //         console.log(res.data);
-  //     }).catch((err) => {
-  //         console.error(err);
-  //     });
-  //   }
-
   const dataValidator = (data) => {
     if (data.label === "Contact number") {
-      if (!data.value.match(/^\d{10}$/)) {
+      if (!data.value.match(/^[-+]?[0-9]+$/)) {
         return false;
       }
     }
@@ -157,13 +147,18 @@ export default () => {
           </button>
         </form>
       </div>
-      <div className={classes.formConatiner} style={{marginTop: '50px'}}>
-          <p style={{color: '#fff', textAlign: 'center'}}>Below are the details to contact us</p>
+      <div className={classes.formConatiner} style={{ marginTop: "50px" }}>
+        <p style={{ color: "#fff", textAlign: "center" }}>
+          Below are the details to contact us
+        </p>
       </div>
     </div>
   ) : (
     <div className={classes.background}>
-      <div className={classes.formConatiner} style={{width: '90vw', textAlign: 'center'}}>
+      <div
+        className={classes.formConatiner}
+        style={{ width: "90vw", textAlign: "center" }}
+      >
         <h1 style={{ color: "#e0aa3e", fontSize: "6rem" }}>THANK YOU</h1>
         <button
           className={classes.submitbtn}

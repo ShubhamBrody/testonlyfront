@@ -46,6 +46,7 @@ router.get("/getall", (req, res) => {
 });
 
 router.post("/createorupdate", (req, res) => {
+  console.log("The smartphone data is :", res.body);
   Device.create(
     {
       email: req.body.email,

@@ -4,6 +4,9 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import API from '../../api/ApiLink';
+
+
 export default (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -34,7 +37,7 @@ export default (props) => {
     e.preventDefault();
     console.log("Works!!");
     await axios
-      .post("http://localhost:5000/admin/login", {
+      .post(API("admin", "login"), {
         username: credsEntered.username,
         password: credsEntered.password,
       })

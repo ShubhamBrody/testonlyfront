@@ -3,6 +3,7 @@ import Form from "../../../UI/Form";
 import formBg from "../../../../resources/images/formBGforOmega.png";
 import axios from "axios";
 import { useState } from "react";
+import API from '../../../../api/ApiLink';
 
 export default () => {
   const [dbdata, setDbData] = useState({
@@ -10,12 +11,12 @@ export default () => {
     email: "",
     contact: 0,
     address: "",
-    devicescount: 0,
     smartphone: false,
     laptop: false,
     tablet: false,
     model: "",
     age: 0,
+    number_of_devices: 0,
     condition: "",
   });
 
@@ -23,9 +24,9 @@ export default () => {
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log(dbdata);
+    console.log("BEFORE GOING TO DB : ", dbdata);
     await axios
-      .post("http://localhost:5000/devicedonation/createorupdate", dbdata)
+      .post(API("devicedonation", "createorupdate"), dbdata)
       .then((res) => {
         console.log(res.data);
         setIsFormFilled(true);
@@ -37,7 +38,7 @@ export default () => {
 
   const dataValidator = (data) => {
     if (data.label === "Contact number") {
-      if (!data.value.match(/^\d{10}$/)) {
+      if (!data.value.match(/^[-+]?[0-9]+$/)) {
         return false;
       }
     }
@@ -72,26 +73,27 @@ export default () => {
           case "Number of devices you wish to donate":
             return {
               ...prevData,
-              devicescount: data.value,
+              number_of_devices: data.value,
             };
           case "Device Type":
+            // console.log("The values are : ", data.value);
             return {
               ...prevData,
-              smartphone: data.value === "on",
-              laptop: data.value === "on",
-              tablet: data.value === "on",
+              smartphone: data.value[0] === "on",
+              laptop: data.value[1] === "on",
+              tablet: data.value[2] === "on",
             };
           case "Model of device":
             return {
               ...prevData,
               model: data.value,
             };
-          case "Age":
+          case "How old is the device?":
             return {
               ...prevData,
               age: data.value,
             };
-          case "Condition":
+          case "Please explain the condition of the device":
             return {
               ...prevData,
               condition: data.value,

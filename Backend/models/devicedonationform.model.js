@@ -9,7 +9,7 @@ const booksSchema = new mongoose.Schema({
   contact: Number,
   address: String,
   number_of_devices: Number,
-  smartPhone: Boolean,
+  smartphone: Boolean,
   laptop: Boolean,
   tablet: Boolean,
   model: String,

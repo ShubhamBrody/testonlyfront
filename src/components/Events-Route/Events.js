@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Card, CardTitle } from "react-bootstrap-card";
 import axios from "axios";
 import { connect } from "react-redux";
+import API from "../../api/ApiLink";
 
 class Events extends Component {
   // state = {};
@@ -70,7 +71,7 @@ class Events extends Component {
   onDeleteFile = async (fileName) => {
     try {
       await axios
-        .post("http://localhost:5000/events/deleteimage", {
+        .post(API("events", "deleteimage"), {
           fileName: fileName,
         })
         .then((response) => {
@@ -103,7 +104,7 @@ class Events extends Component {
   onDeleteEvent = async (id, fileName) => {
     try {
       await axios
-        .post("http://localhost:5000/events/deleteevent", {
+        .post(API("events", "deleteevent"), {
           id: id,
         })
         .then((response) => {
@@ -118,7 +119,7 @@ class Events extends Component {
           }
         })
         .catch((error) => {
-          alert("Error occured : " + error);
+          alert("Error occured while deleting event : " + error);
         });
     } catch (err) {
       if (err.response.status === 500) {
@@ -132,7 +133,7 @@ class Events extends Component {
   createEvent = async (eventTitle, eventDescription, fileName) => {
     try {
       await axios
-        .post("http://localhost:5000/events/eventupload", {
+        .post(API("events", "eventupload"), {
           title: eventTitle,
           description: eventDescription,
           imagename: fileName,
@@ -176,7 +177,7 @@ class Events extends Component {
 
     try {
       await axios
-        .post("http://localhost:5000/events/updateevent", {
+        .post(API("events", "updateevent"), {
           id: this.state.idToEdit,
           imagename: this.state.imagenameEdit,
           title: this.state.titleEdit,
@@ -218,7 +219,7 @@ class Events extends Component {
   ImageUpload = async (formData, canCreate) => {
     try {
       await axios
-        .post("http://localhost:5000/events/imageupload", formData, {
+        .post(API("events","imageupload"), formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -316,7 +317,7 @@ class Events extends Component {
 
   getAllEvents = async () => {
     await axios
-      .get("http://localhost:5000/events/getall")
+      .get(API("events","getall"))
       .then((response) => {
         this.setState({
           ...this.state,

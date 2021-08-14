@@ -4,6 +4,7 @@ import NewsEditForm from "./NewsEditForm";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from 'react-redux';
+import API from '../../../api/ApiLink';
 
 const News = (props) => {
 
@@ -22,7 +23,7 @@ const News = (props) => {
 
   const newsGetter = async () => {
     await axios
-      .post("http://localhost:5000/news/get", {
+      .post(API("news", "get"), {
         header: "News",
       })
       .then((res) => {

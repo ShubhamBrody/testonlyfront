@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withFormik, Form, Field } from "formik";
 import styled from "styled-components";
 import axios from "axios";
+import API from '../../../api/ApiLink';
 
 const form_id = "form_id";
 class MaintenanceForm extends Component {
@@ -31,7 +32,7 @@ class MaintenanceForm extends Component {
 
   databaseUpdate = async () => {
     await axios
-      .post("http://localhost:5000/news/update", {
+      .post(API("news", "update"), {
         header: "News",
         date: this.state.date,
         news: this.state.news,

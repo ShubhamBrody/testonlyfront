@@ -2,6 +2,7 @@
 import classes from "./SignIn.module.css";
 import { useState } from "react";
 import axios from "axios";
+import API from "../../api/ApiLink";
 
 export default (props) => {
   const [isSecKeyCorrect, setIsSecKeyCorrect] = useState(false);
@@ -18,7 +19,7 @@ export default (props) => {
       e.preventDefault();
     console.log("Works!!");
     await axios
-      .post("http://localhost:5000/admin/securitykeyvalidation", {
+      .post(API("admin", "securitykeyvalidation"), {
         securitykey: secKey,
       })
       .then((res) => {
@@ -50,7 +51,7 @@ export default (props) => {
       timerError("newPassWrong");
     } else {
       await axios
-        .post("http://localhost:5000/admin/updatepassword", {
+        .post(API("admin", "updatepassword"), {
           password: cnfPass,
         })
         .then((res) => {

@@ -4,14 +4,18 @@ import { useState } from "react";
 
 export default (props) => {
   const defaultValue = Array.from(Array(props.items.length).keys()).fill("off");
-  const [value, setValue] = useState(defaultValue);
+  const realSendVal = {
+    label: props.label,
+    value: defaultValue,
+  }
+  const [dataToSend, setDataToSend] = useState(realSendVal);
   const inputChangeHandler = (e) => {
-    console.log(e.target.value);
-    setValue((prevData) => {
-      prevData[e.target.id] = prevData[e.target.id] === "on" ? "off" : "on";
+    console.log("Index is : ", e.target.id);
+    setDataToSend((prevData) => {
+      prevData.value[e.target.id] = prevData.value[e.target.id] === "on" ? "off" : "on";
       return prevData;
-    });
-    props.inputChanged(value);
+    }, (newData) =>  console.log(newData));
+    props.inputChanged(dataToSend);
   };
 
   return (

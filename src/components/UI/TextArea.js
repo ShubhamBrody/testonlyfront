@@ -3,7 +3,7 @@ import classes from "./TextArea.module.css";
 import { useState } from "react";
 
 export default (props) => {
-  const [value, setValue] = useState("");
+  const [valueToSend, setValue] = useState("");
   const inputChangeHandler = (e) => {
     console.log(e.target.value);
     setValue(e.target.value);
@@ -22,7 +22,7 @@ export default (props) => {
         id="inp"
         type={props.type}
         required={props.required}
-        value={value}
+        value={valueToSend}
         onChange={inputChangeHandler}
         step={props.isNumber ? props.step : null}
         min={props.isNumber ? props.min : null}
