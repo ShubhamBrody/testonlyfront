@@ -30,13 +30,13 @@ function Department(props) {
         }
 
         const listItems = content.map((data) => {
-            return <li style={{ color: '#fff', pointerEvents: 'none', fontSize: '18px', textAlign: "left", lineHeight: '33px' }}>{data}</li>
+            return <List style={{ color: '#fff', pointerEvents: 'none', fontSize: '18px', textAlign: "left", lineHeight: '33px' }}>{data}</List>
         })
 
         return (
-            <CardText visible={false} style={{ paddingLeft: "3.5rem", paddingRight: "2rem", position: "relative", textAlign: "left", height: '450px', overflowY: "auto", paddingBottom: '0px', marginBottom: '0px', marginTop: '20px' }}>
+            <XCardText visible={false} style={{ paddingLeft: "3.5rem", paddingRight: "2rem", position: "relative", textAlign: "left", height: '450px', overflowY: "auto", paddingBottom: '0px', marginBottom: '0px', marginTop: '20px' }}>
                 <ul style={{ listStyleType: "circle", listStylePosition: "inside" }}> {listItems} </ul>
-            </CardText>
+            </XCardText>
         )
     }
 
@@ -64,6 +64,25 @@ function Department(props) {
         </Grid>
     );
 };
+
+const List = styled.li`
+    font-size: 18px;
+
+    @media (max-width: 1400px) {
+        font-size: 24px;
+    }
+
+`;
+
+const XCardText = styled(CardText)`
+    padding-left: 3.5rem;
+
+    @media (max-width: 1400px) {
+        padding-top: 3rem;
+        padding-left: 8rem;
+    }
+
+`;
 
 const XDropdown = styled(Dropdown)`
     margin: 0px auto;

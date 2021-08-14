@@ -219,6 +219,10 @@ const Date = styled.input`
   margin-bottom: 20px;
   pointer-events: none;
   z-index: -1;
+
+  @media (max-width: 1400px) {
+    font-size: 20px;
+  }
 `;
 
 const TextArea = styled.textarea`
@@ -233,6 +237,10 @@ const TextArea = styled.textarea`
   pointer-events: none;
   color: #fff;
   overflow-y: auto;
+
+  @media (max-width: 1400px) {
+    font-size: 24px;
+  }
 `;
 
 export default FormikForm;
