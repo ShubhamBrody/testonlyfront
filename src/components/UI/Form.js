@@ -16,7 +16,7 @@ export default (props) => {
   } : {};
   
   return !isFormFilled ? (
-    <div classNme={classes.background} style={bgStyle}>
+    <div className={classes.background} style={bgStyle}>
       <FormBackground style={props.customStyle}>
         <div className={classes.formTitle}>
           <h3>{props.title}</h3>

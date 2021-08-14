@@ -18,6 +18,11 @@
 
 @media only screen and (max-width: 1000px) {
     .submitbtn {
-        height: 100px;
+        height: 70px;
+        font-size: 1.5rem;
+    }
+
+    .background{
+        padding: 1rem 0 !important;
     }
 }

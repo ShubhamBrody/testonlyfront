@@ -52,7 +52,6 @@ const News = (props) => {
           <CardTitle style={{color: '#ffffff', zIndex: '-1', width: '70px', margin: "0px auto"}}>News</CardTitle>
             
           <Container>
-
           {signedInToken && newsObj.hasUpdated
           ? (<NewsEditForm fields={newsObj} updateFields={updateFields} />)
           :  (<>
