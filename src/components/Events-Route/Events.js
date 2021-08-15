@@ -512,7 +512,7 @@ class Events extends Component {
             <textarea
               style={{ color: "black" }}
               rows="9"
-              cols="80"
+              cols="70"
               value={this.state.descriptionEdit}
               id="eventdescription"
               placeholder="Event Description"

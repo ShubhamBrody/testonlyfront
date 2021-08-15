@@ -14,7 +14,7 @@ export default () => {
     <Fragment>
       <Navbar links={links} imgSrc={logo} />
       <Helmet>
-        <title>Mission Digital Omega</title>
+        <title>Digital Omega</title>
         <link rel="icon" href="/GYClogo.png" type="image/icon type"></link>
       </Helmet>
       <HeaderContent />

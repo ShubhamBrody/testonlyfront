@@ -153,6 +153,7 @@ export default () => {
           </h4>
           <img src={qrcode} alt="QR CODE" style={{ width: "70%" }} />
         </FormBackground>
+        <br/>
         <FormBackground style={{ width: "80%", height: "40%" }}>
           <h3 style={{ color: "#e0aa3e", textAlign: "center" }}>
             Below are the details for Net Banking
