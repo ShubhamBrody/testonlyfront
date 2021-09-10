@@ -5,7 +5,7 @@ const Welcome = (props) => {
   return (
     <Container>
       <VerticalButton>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScQprARSH57vG5dFy25GOgMryPUniSL7dU6KAA-0oRZo0TDLA/viewform" target="_blank" rel="noreferrer">Join Us</a>
+        <a href="https://forms.gle/QfHukive7AxHCQh37" target="_blank" rel="noreferrer">Join Us</a>
       </VerticalButton>
       <img src="geolife-youth-club.png" alt="GYC" style={{ float: "left", width: "40vw", marginTop: "10rem", marginLeft: "2rem", animation: "image 1s ease-in-out" }}/>
       <SecondDiv />
