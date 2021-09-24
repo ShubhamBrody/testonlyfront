@@ -1,6 +1,6 @@
 const API = (base, fn) => {
     return (
-        "https://geolifebackend.herokuapp.com//"+base+"/"+fn
+        "https://geolifebackend.herokuapp.com/"+base+"/"+fn
     )
 }
 
